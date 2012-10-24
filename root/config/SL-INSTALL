@@ -1,0 +1,128 @@
+#!/bin/tcsh
+# SL-INSTALL prepares any of the CLMC-Lab software directories. After
+# the first git-download of an CLMC-Lab software repository, SL-INSTALL 
+# needs to be called once from the root of the software directory to
+# initialize everything. 
+
+# if SL-INSTALL is called from the config/ directory, it will generate
+# the SL-CONFIG file, which should be source by the user's .cshrc 
+# to setup the SL environment variables for SL.
+
+# detect command line argument:
+set SL_INSTALL_DEFAULT = 0
+if ($#argv > 0 && "x$1" == "x-default") then
+  set SL_INSTALL_DEFAULT = 1
+endif
+
+# detect whether we are in config/
+if ( `pwd | grep -c /config` > 0 ) then
+    
+    if ($SL_INSTALL_DEFAULT == 0) then
+      echo "Path to SL core software ["`pwd | sed s_/config__`"]: "
+      set LAB_ROOT = $<
+    else
+      set LAB_ROOT = ""
+    endif
+    if ( $LAB_ROOT == "" ) then
+       set LAB_ROOT=`pwd | sed s_/config__`
+    endif
+
+    if ($SL_INSTALL_DEFAULT == 0) then
+      echo "Path to SL user software ["`pwd | sed s_/config__`"]: "
+      set PROG_ROOT = $<
+    else
+      set PROG_ROOT = ""
+    endif
+    if ( $PROG_ROOT == "" ) then
+       set PROG_ROOT=`pwd | sed s_/config__`
+    endif
+
+    if ( ! -d $LAB_ROOT/lib ) then
+       mkdir $LAB_ROOT/lib
+    endif 
+    if ( ! -d $LAB_ROOT/include ) then
+       mkdir $LAB_ROOT/include
+    endif 
+    if ( ! -d $PROG_ROOT/lib ) then
+        mkdir $PROG_ROOT/lib
+    endif 
+    if ( ! -d $PROG_ROOT/include ) then
+        mkdir $PROG_ROOT/include
+    endif 
+
+    /bin/rm -f SL-CONFIG
+    echo "setenv LAB_ROOT "$LAB_ROOT > SL-CONFIG
+    echo "setenv PROG_ROOT "$PROG_ROOT >> SL-CONFIG
+
+    echo ' \
+if ( $MACHTYPE == "i386" && `uname -a | grep -c Darwin` > 0 ) then \
+   setenv MACHTYPE i386mac \
+endif \
+\
+if ( $MACHTYPE == "x86_64" && `uname -a | grep -c Darwin` > 0 ) then \
+   setenv MACHTYPE x86_64mac \
+endif \
+\
+if ( `uname -a | grep -c ipipe` && `echo $MACHTYPE | grep -cv xeno` > 0 ) then \
+   setenv MACHTYPE $MACHTYPE"xeno" \
+endif \
+\
+alias imake           "imake -I$LAB_ROOT/config -TLAB_Imake.tmpl -D$MACHTYPE" \
+set path=(./$MACHTYPE $PROG_ROOT/bin/$MACHTYPE $LAB_ROOT/bin/$MACHTYPE . $path) \
+' >> SL-CONFIG
+
+    /bin/rm -f SL-CONFIG.sh
+    echo "export LAB_ROOT="$LAB_ROOT > SL-CONFIG.sh
+    echo "export PROG_ROOT="$PROG_ROOT >> SL-CONFIG.sh
+
+    echo ' \
+export HOST=`hostname` \
+\
+# Remove everything following the "-" in the MACHTYPE \
+export MACHTYPE=$(echo $MACHTYPE | sed '\''s/-.*//'\'') \
+\
+# Append mac to the MACHTYPE if needed \
+if uname -s | grep Darwin &>/dev/null && [ $MACHTYPE == '\''i386'\'' -o $MACHTYPE == '\''x86_64'\'' ] \
+then \
+    export MACHTYPE="$MACHTYPE"mac \
+fi \
+\
+# Append xeno to the MACHTYPE if needed (and prevent duplicates) \
+if uname -r | grep ipipe &>/dev/null && echo $MACHTYPE | grep -v xeno &>/dev/null \
+then \
+    export MACHTYPE="$MACHTYPE"xeno \
+fi \
+\
+alias imake='\''imake -I$LAB_ROOT/config -TLAB_Imake.tmpl -D$MACHTYPE'\'' \
+alias sl_make='\''imake; cd src; imake; cd ..; make -s -j clean; make -s -j all; make -s -j install'\'' \
+export PATH=./$MACHTYPE:$PROG_ROOT/bin/$MACHTYPE:$LAB_ROOT/bin/$MACHTYPE:.:$PATH \
+' >> SL-CONFIG.sh
+
+
+    echo "*************************************************************************"
+    echo "IMPORTANT: before installing any other SL software, execute:"
+    echo "           unix> source SL-CONFIG"
+    echo "           to finalize the setup of your environment variables"
+    echo "ADD THE LINE:"
+    echo "           source ~"`pwd | sed s.$HOME.$USER.`"/SL-CONFIG"
+    echo "to your ~/.cshrc file to keep the SL environment initialized."
+    echo "*************************************************************************"
+    echo "If you use bash instead of tcsh, you should run the following now:"
+    echo "           bash$ source SL-CONFIG.sh"
+    echo "ADD THE LINE:"
+    echo "           source ~"`pwd | sed s.$HOME.$USER.`"/SL-CONFIG.sh"
+    echo "to your ~/.bashrc file to keep the SL environment initialized."
+    echo "*************************************************************************"
+
+else 
+
+   imake -I$LAB_ROOT/config -TLAB_Imake.tmpl -D$MACHTYPE
+   cd src
+   imake -I$LAB_ROOT/config -TLAB_Imake.tmpl -D$MACHTYPE
+   cd ..
+
+   make -s -j clean
+   make -s -j install
+
+endif
+

@@ -1,0 +1,43 @@
+In order to use the imake and make functions of this directory, the 
+following unix commands have to be issued:
+
+alias imake  'imake -I$LAB_ROOT/config -TLAB_Imake.tmpl -D$MACHTYPE'
+
+We assume that the "make" command is GNU make.
+We assume that "imake" is installed, usually as part of X11
+We assume that you use a tcsh (otherwise some environment variables will be missing).
+We assume that $LAB_ROOT points to directory where the "config/" directory
+is installed.
+
+If you copy this imake facility and use different path names than given
+here, you might want to change the LAB.cf file. It specifies the default
+paths to some directories where to install files, like libraries, header
+files, and binary files. Changing these variable should be straight
+forward and self-explanatory.
+
+Note that Imakefiles use a variety of special variable. Some of them
+are shown below, but this list is not complete. To find out which
+other variable are used for which Imake rules, check the LAB_Imake.rules
+and LAB_Imake.tmpl files. This gives you a hint to what is going on.
+
+You will also find in config/ some shell scripts to setup your unix
+environment.
+
+/*****************************************************************************
+ Definition of variables:
+
+ SOURCES  : All source files which are used in this Imakefile. Imake
+            will automatically generate dependencies to keep these
+            source files up-to-date with repect to included header files.
+
+ HEADERS  : All header to be kept up to data
+ OBJECTS  : All object files to be used in certain rules. See LAB_Imake.rules
+ SRCDIR   : Directory where source files come from (global variable)
+ LIBDIR   : Where to install a lib
+ HEADERDIR: Where to install header files
+ BINDIR   : Where to install executables
+ INCLUDES : All include directories
+
+ Stefan Schaal, September 1996, updated Nov. 2009
+
+****************************************************************************/

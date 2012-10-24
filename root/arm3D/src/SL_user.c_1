@@ -1,0 +1,494 @@
+/*============================================================================
+  
+  SL_user.c
+  
+  by Stefan Schaal, Jan 1999
+  ============================================================================
+  Remarks:
+  
+  This program contains all user functions for a particular simulation.
+  
+  ===========================================================================*/
+  
+/* global headers */
+
+#include "stdio.h"
+#include "math.h"
+#include "stdlib.h"
+#include "string.h"
+#include "strings.h"
+
+/* openGL headers */
+#ifdef alpha
+#undef alpha
+#endif
+#include "GL/glut.h"
+
+/* user specific headers */
+#include "utility.h"
+#include "SL.h"
+#include "SL_openGL.h"
+#include "SL_user.h"
+#include "mdefs.h"
+#include "motor_servo.h"
+#include "task_servo.h"
+#include "vision_servo.h"
+#include "invdyn_servo.h"
+#include "tasks.h"
+#include "dynamics.h"
+#include "controller.h"
+#include "vx_fake.h"
+#include "collect_data.h"
+#include "SL_common.h"
+
+
+/* local variables */
+static void   (*user_display_function)  (void) = NULL;
+  
+/* local functions */
+int 
+createWindows(void);
+static void  
+myDrawGLElement(int num, double length, int flag);
+void 
+display(void);
+void
+idle(void);
+void 
+addUserDisplayFunc(void (*fptr)(void));
+
+
+/* external functions */
+extern void initUserTasks(void);
+
+
+/*****************************************************************************
+ *****************************************************************************
+ Function Name	: initSimulation
+ Date		: July 1998
+ 
+ Remarks:
+ 
+ initializes everything needed for the simulation.
+ 
+ *****************************************************************************
+Paramters:  (i/o = input/output)
+
+ argc (i) : number of elements in argv
+ argv (i) : array of argc character strings
+ 
+
+*****************************************************************************/
+int
+initSimulation(int argc, char** argv)
+
+{
+  
+  int i,j,n;
+  int rc;
+  int ans;
+
+  /* initialize the servos */
+  init_task_servo();  /* the first servo sets the sampling 
+			 rate in collect data */
+  read_whichDOFs("task_sim_servo");
+  init_motor_servo();
+  read_whichDOFs("motor_sim_servo");
+  init_vision_servo();
+  read_whichDOFs("vision_sim_servo");
+  init_invdyn_servo(); 
+  read_whichDOFs("invdyn_sim_servo");
+  
+  /* we need the dynamics initalized */
+  init_dynamics();
+
+  /* user specific tasks */
+  initUserTasks();
+
+  /* create simulation windows */
+  if (!createWindows())
+    return FALSE;
+
+  /* reset motor_servo variables */
+  servo_enabled            = 1;
+  motor_servo_calls        = 0;
+  servo_time               = 0;
+  motor_servo_rate         = SERVO_BASE_RATE;
+  zero_integrator();
+  bzero((char *)&(joint_sim_state[1]),sizeof(SL_DJstate)*N_DOFS);
+  for (i=1; i<=N_DOFS; ++i) {
+    joint_sim_state[i].th = joint_default_state[i].th;
+    joint_des_state[i].th = joint_default_state[i].th;
+  }
+
+  /* reset task_servo variables */
+  servo_enabled           = 1;
+  task_servo_calls        = 0;
+  task_servo_time         = 0;
+  task_servo_errors       = 0;
+  task_servo_rate         = SERVO_BASE_RATE/(double) task_servo_ratio;
+  setTaskByName(NO_TASK);
+  setDefaultPosture();
+  changeCollectFreq(task_servo_rate);
+
+  /* reset vision servo variables */
+  servo_enabled           = 1;
+  vision_servo_calls      = 0;
+  vision_servo_time       = 0;
+  vision_servo_errors     = 0;
+  vision_servo_rate       = VISION_SERVO_RATE;
+
+  /* initialize all vision variables to safe values */
+  init_vision_states();
+  init_learning();
+
+  /* reset the invdyn servo variables */
+  servo_enabled             = 1;
+  invdyn_servo_errors       = 0;
+  invdyn_lookup_data        = 0;
+  invdyn_learning_data      = 0;
+
+  /* initalize objects in the environment */
+  readObjects();
+
+  return TRUE;
+}
+
+/*****************************************************************************
+ *****************************************************************************
+ Function Name	: createWindows
+ Date		: July 1998
+ 
+ Remarks:
+ 
+ initializes graphic windows
+ 
+ *****************************************************************************
+Paramters:  (i/o = input/output)
+
+ none
+ 
+
+*****************************************************************************/
+int
+createWindows(void)
+
+{
+
+  OpenGLWPtr w;
+  
+  /* change the view */
+  changeCameraViewPoint(0.0,0.0,-0.,-1.5);
+  
+  /* get a window structure, initialized with default values */
+  w=getOpenGLWindow();
+  if (w==NULL)
+    return FALSE;
+  
+  w->display = display;
+  w->idle    = idle;
+  w->width   = 300;
+  w->height  = 300;
+  if (!createWindow(w))
+    return FALSE;
+
+  return TRUE;
+
+}
+
+/*****************************************************************************
+******************************************************************************
+Function Name	: display
+Date		: August 7, 1992
+   
+Remarks:
+
+        this function updates the OpenGL graphics
+
+******************************************************************************
+Paramters:  (i/o = input/output)
+
+
+*****************************************************************************/
+void 
+display(void)
+
+{
+  int i;
+  static SL_Jstate *state = joint_sim_state;
+  static SL_endeff *eff = endeff;
+  GLfloat  objscolor[4]={(float)0.,(float)0.,(float)0.,(float)0.0};
+
+#include "OpenGL.h"
+
+  glColor4fv(objscolor); 
+  drawObjects();
+
+  if (user_display_function != NULL)
+    (*user_display_function)();
+  
+  /* glutSwapBuffers(); */
+  
+}
+
+/*****************************************************************************
+******************************************************************************
+Function Name	: addUserDisplayFunc
+Date		: August 7, 1992
+   
+Remarks:
+
+        assigns an additional display function to the openGL updates
+
+******************************************************************************
+Paramters:  (i/o = input/output)
+
+   fptr (i): function pointer
+
+
+*****************************************************************************/
+void 
+addUserDisplayFunc(void (*fptr)(void))
+{
+  user_display_function = fptr;
+}
+
+/*****************************************************************************
+******************************************************************************
+Function Name	: myDrawGLElement
+Date		: August 7, 1992
+   
+Remarks:
+
+        draws a GL element of a particular length in z direction
+
+******************************************************************************
+Paramters:  (i/o = input/output)
+
+	num   (i): ID number of element (just for info)
+	length(i): length of element
+ 	flag  (i): draw joint element (yes, not)
+
+
+*****************************************************************************/
+static void  
+myDrawGLElement(int num, double length, int flag)
+
+{
+		
+  double width=0.03;
+  double thumb_width = 0.02;
+  double finger_width = 0.02;
+  double hand_width = 0.07;
+  GLfloat  gray[4]={(float)0.8,(float)0.8,(float)0.8,(float)1.0};
+  GLfloat  green[4]={(float)0.1,(float)0.5,(float)0.5,(float)1.0};
+  GLfloat  red[4]={(float)1.0,(float)0.25,(float)0.25,(float)1.0};
+  GLfloat  blue[4]={(float)0.1,(float)0.1,(float)1.0,(float)1.0};
+  GLfloat  black[4]={(float)0.,(float)0.,(float)0.0,(float)1.0};
+  GLfloat  white[4]={(float)1.,(float)1.,(float)1.0,(float)1.0};
+  GLfloat  yellow[4]={(float)1.0,(float)0.8,(float)0.7,(float)1.0};
+	
+  if (flag==1) {
+    glTranslated(0.0,0.0,length); 
+
+    if (num==999) {/* the base coordinate system */
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, blue);
+      glColor4fv(blue);
+    } else if (num == 8 || num == 9 || num ==10) {
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, white);
+      glColor4fv(white);
+    } else {
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, green);
+      glColor4fv(green);
+    }
+
+    if (num == 8 || num == 9 || num == 10) {
+      if (solid)
+	glutSolidSphere(0.5*width,10,10);
+      else
+	glutWireSphere(0.5*width,10,10);
+    } else {
+      if (solid)
+	glutSolidSphere(1.2*width,5,5);
+      else
+	glutWireSphere(1.2*width,5,5);
+    }
+    glTranslated(0.0,0.0,-length);
+  }
+	
+
+  switch (num) {
+
+  case 108: /* the hand */
+	
+    glScaled(hand_width,hand_width/3.,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(yellow);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, yellow);
+    if (solid)
+      glutSolidSphere(0.5,8,8);
+    else
+      glutWireSphere(0.5,8,8);
+    break;
+	
+  case 109: /* the thumb */
+	
+    glScaled(thumb_width,thumb_width,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(yellow);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, yellow);
+    if (solid)
+      glutSolidSphere(0.5,8,8);
+    else
+      glutWireSphere(0.5,8,8);
+    break;
+	
+  case 110: /* the finger */
+	
+    glScaled(finger_width,finger_width,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(yellow);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, yellow);
+    if (solid)
+      glutSolidSphere(0.5,8,8);
+    else
+      glutWireSphere(0.5,8,8);
+    break;
+	
+  case 8: /* the finger */
+	
+    glScaled(thumb_width*1.5,thumb_width*1.5,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(gray);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, gray);
+    if (solid)
+      glutSolidSphere(0.5,8,8);
+    else
+      glutWireSphere(0.5,8,8);
+    break;
+	
+  case 9: /* the finger */
+	
+    glScaled(thumb_width*1.5,thumb_width*1.5,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(gray);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, gray);
+    if (solid)
+      glutSolidSphere(0.5,8,8);
+    else
+      glutWireSphere(0.5,8,8);
+    break;
+	
+  case 10: /* the finger */
+	
+    glScaled(thumb_width*1.5,thumb_width*1.5,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(gray);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, gray);
+    if (solid)
+      glutSolidSphere(0.5,8,8);
+    else
+      glutWireSphere(0.5,8,8);
+    break;
+	
+  default:
+	
+    glScaled(width,width,length);
+    glTranslated(0.0,0.0,0.5);
+    glColor4fv(gray);
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, gray);
+    if (solid)
+      glutSolidCube(1.0);
+    else
+      glutWireCube(1.0);
+			
+  }
+}
+
+/*****************************************************************************
+******************************************************************************
+Function Name	: idle
+Date		: June 1999
+   
+Remarks:
+
+      The function called by openGL whenever processing time available.
+      Here, the servo-loops are implemented
+
+******************************************************************************
+Paramters:  (i/o = input/output)
+
+
+*****************************************************************************/
+void
+idle(void)
+
+{
+  int i;
+  static double last_draw_time=0;
+  double k,kd;
+  double delta;
+  extern double *controller_gain_th;
+  extern double *controller_gain_thd;
+
+  ++motor_servo_calls;
+  servo_time += 1./(double)motor_servo_rate;
+
+  /* sequentially go through all the servos */
+  if ((task_servo_calls+1)/(double)task_servo_rate <= servo_time) {
+    run_task_servo();
+    run_invdyn_servo_lookup();
+  }
+  if ((vision_servo_calls+1)/(double)vision_servo_rate <= servo_time) {
+    ++count_all_frames;
+    run_vision_servo();
+    run_invdyn_servo_learning();
+  }
+  run_motor_servo();
+  
+  /* check limits */
+  for (i=1; i<=N_DOFS; ++i) {
+    k  = controller_gain_th[i]*10.0;
+    kd = controller_gain_thd[i]*sqrt(10.0);
+    delta = joint_sim_state[i].th - joint_range[i][MIN_THETA];
+    if ( delta < 0 ){
+      printf("-%s",joint_names[i]);
+      fflush(stdout);
+      joint_sim_state[i].u += - delta * k - joint_sim_state[i].thd * kd;
+    }
+    delta = joint_range[i][MAX_THETA] - joint_sim_state[i].th;
+    if (delta < 0){
+      printf("+%s",joint_names[i]);
+      fflush(stdout);
+      joint_sim_state[i].u += delta * k - joint_sim_state[i].thd * kd;
+    }
+  }
+
+  /* check contacts */ 
+  checkContacts();
+ 
+  /* integrate the simulation */
+  /* SL_IntegrateRK(joint_sim_state, base_state, base_orient, uext, endeff,
+		    1./(double)motor_servo_rate,N_DOFS); */
+  SL_IntegrateEuler(joint_sim_state, &base_state, &base_orient, uext, endeff,
+		    1./(double)motor_servo_rate,N_DOFS,TRUE);
+
+  if (servo_time-last_draw_time > 1./15.) {
+    glutPostRedisplay();
+    last_draw_time = servo_time;
+  }
+  
+  /* check the keyboard interaction */
+  checkKeyboard();
+}
+
+
+
+
+
+
+
+
+
+
+

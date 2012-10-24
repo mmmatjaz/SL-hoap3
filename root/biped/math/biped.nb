@@ -1,0 +1,153 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      4179,        144]
+NotebookOptionsPosition[      3137,        108]
+NotebookOutlinePosition[      3760,        132]
+CellTagsIndexPosition[      3717,        129]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\</Volumes/vangogh/sschaal/Documents/Math/ControlTheory\>\"", "]"}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"<<", "RigidBodyDynamics.m"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<biped\>\"", "]"}], ";"}]], "Input"],
+
+Cell["Generate the C-code", "Text"],
+
+Cell[BoxData[
+ RowBox[{"OpenGLKinematics", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"InvDynNE", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.494468019819537*^9, 3.494468019969507*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"InvDynArt", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"LinkEndpointKinematics", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\""}], "]"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"119", ",", "112"}], "}"}], ",", "\"\<biped\>\""}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ForDynArt", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.494468031697859*^9, 3.494468033489691*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"ForDynComp", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"LinkInformation", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ParmEst", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", 
+   RowBox[{"{", "120", "}"}], ",", "\"\<biped_head\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"LinkRotationMatrix", "[", 
+  RowBox[{"\"\<biped.dyn\>\"", ",", 
+   RowBox[{"{", "120", "}"}], ",", "\"\<biped_head\>\""}], "]"}]], "Input"]
+},
+WindowToolbars->{},
+CellGrouping->Automatic,
+WindowSize->{775, 853},
+WindowMargins->{{14, Automatic}, {Automatic, 72}},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowSelection->True,
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->"MacintoshAutomaticEncoding",
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 153, 5, 27, "Input"],
+Cell[724, 28, 88, 2, 27, "Input"],
+Cell[815, 32, 95, 2, 27, "Input"],
+Cell[913, 36, 35, 0, 26, "Text"],
+Cell[951, 38, 120, 2, 27, "Input"],
+Cell[1074, 42, 299, 7, 27, "Input"],
+Cell[1376, 51, 209, 5, 27, "Input"],
+Cell[1588, 58, 151, 3, 27, "Input"],
+Cell[1742, 63, 187, 5, 27, "Input"],
+Cell[1932, 70, 300, 7, 27, "Input"],
+Cell[2235, 79, 235, 6, 27, "Input"],
+Cell[2473, 87, 119, 2, 27, "Input"],
+Cell[2595, 91, 207, 5, 27, "Input"],
+Cell[2805, 98, 162, 3, 27, "Input"],
+Cell[2970, 103, 163, 3, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

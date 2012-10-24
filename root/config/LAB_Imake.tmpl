@@ -1,0 +1,844 @@
+/*
+ *  Note that this file is a (slightly) modified version of the
+ *  standard release Imake.tmpl file. 
+ *
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ *  Description :
+ *    This file contains all the Imake template information. 
+ *
+ *****************************************************************************/
+
+/******************************************************************************
+ *
+ *  Supercede values by defining them here. The values that may be
+ *  specified are the following:
+ *
+ *    ImakeCmd - The command to run Imake.
+ *    ArCmd - The command to create library archives.
+ *    CcCmd - The standard compile program for C source.
+ *    CppCmd - The command to run the C preprocessor.
+ *    InstallCmd - The command to install programs.
+ *    LdCmd - The command to run the linker.
+ *    MakeCmd - The command to execute make.
+ *    MvCmd - The command to move files.
+ *    CpCmd - The command to copy files.
+ *    RanlibCmd - The command to update archive lists.
+ *    RmCmd - The command to delete files.
+ *    TagsCmd - The tags command to use.
+ *    AsCmd - The assemble command to use.
+ *    CatCmd - The cat command to use.
+ *    MkdirCmd - The command used to make directories.
+ *
+ *    InstDistFlags - Flags to use for distributing all files.
+ *    InstObjFlags - Flags to use for installed '.o' files.
+ *    InstBinFlags - Flags to use for installed executable files.
+ *    InstLibFlags - Flags to use for installed libraries.
+ *    InstManFlags - Flags to use for installed man pages.
+ *    InstDatFlags - Flags to use for installed data files. (config files)
+ *    InstHeaderFlags - Flags to use for installed header files.
+ *    InstDocFlags - Flags to use for installed header files.
+ *    RanlibInstFlags - Flags for ranlib on installed libraries.
+ *    NormalCcFlags - Flags to include in all compiler lines.
+ *    AnsiCcFlags - Flags to include in ansi programs.
+ *    DebugCcFlags - Flags to enable the debug options.
+ *    OptimizeCcFlags - Flags to enable the optimizer.
+ *    LintCcFlags - Flags to enable all warning messages on files.
+ *    LabLdFlags - Lab-wide loader flags.
+ *    ProjLdFlags - Project loader flags.
+ *    LdCombineFlags - Flags to combine objects using LD.
+ *
+ *    LabLibraries - Lab-wide libraries to include.
+ *    ProjLibraries - Project libraries to include.
+ *
+ *    LabDefines - Lab-wide defines.
+ *    ProjDefines - Project Defines.
+ *    DependDefines - Definitions used only by depend.
+ *
+ *****************************************************************************/
+
+/**/XCOMM  Note that the LAB-Imake.tmpl file includes the LAB.cf file at this
+/**/XCOMM  point and that LAB-Imake.tmpl continues after this included file with
+/**/XCOMM  more defines.
+
+/* this interfers with my sparc directories: thus make sure it is undefined */
+/* #undef  sparc */
+
+#include <LAB.cf>
+
+/**/XCOMM  The LAB-Imake.tmpl file resumes at this point.
+
+/******************************************************************************
+ *
+ *  Modifications below this line modify the default values for all
+ *  unspecified definitions. In other words, system defaults should
+ *  be set here. All definitions that allow the individual projects to
+ *  override them should be #ifndef'd as the Project.tmpl is included
+ *  before the default definitions.
+ *
+ *****************************************************************************/
+
+/*
+ *  Directory specifications.
+ */
+
+#ifndef SysIncludeDirs
+#ifdef powerpc
+#define SysIncludeDirs   -I/usr/X11/include -I/opt/local/include -I/sw/include -I/usr/include 
+#endif
+#ifdef i586
+#define SysIncludeDirs   -I/usr/include
+#endif
+#ifdef i386mac
+#define SysIncludeDirs   -I/usr/X11/include -I/opt/local/include -I/sw/include -I/usr/include 
+#endif
+#ifdef x86_64mac
+#define SysIncludeDirs   -I/usr/X11/include -I/opt/local/include -I/sw/include -I/usr/include 
+#endif
+#ifdef i486xeno
+/* #define SysIncludeDirs   $(shell $(XENOMAI_ROOT)/bin/xeno-config --posix-cflags) */
+#define SysIncludeDirs   $(shell $(XENOMAI_ROOT)/bin/xeno-config --skin=native --cflags)
+#endif
+#ifdef x86_64xeno
+#define SysIncludeDirs   $(shell $(XENOMAI_ROOT)/bin/xeno-config --skin=native --cflags)
+#endif
+#ifndef SysIncludeDirs
+#define SysIncludeDirs
+#endif
+#endif
+
+#ifndef SysLibDirs
+#ifdef x86_64
+#define SysLibDirs       /usr/lib64
+#else
+#define SysLibDirs       /usr/lib
+#endif
+#endif
+
+#ifndef SysLdFlags
+#ifdef i486xeno
+#define SysLdFlags       -L/usr/X11/lib
+#endif
+#ifdef x86_64
+#define SysLdFlags       -L/usr/X11/lib64 -L/usr/X11/lib
+#endif
+#ifdef x86_64xeno
+#define SysLdFlags       -L/usr/X11/lib64 -L/usr/X11/lib
+#endif
+#ifndef SysLdFlags
+#define SysLdFlags       -L/sw/lib -L/usr/X11/lib -L/opt/local/lib 
+#endif
+#endif
+
+#ifndef SysLibraries
+#ifdef sparc
+#define SysLibraries     -lpthread -LPOSIX4 -lrt -lreadline -lcurses
+#endif
+#ifdef i386mac
+#define SysLibraries    -lreadline -lcurses
+#endif
+#ifdef powerpc
+#define SysLibraries     -lpthread -lreadline -lcurses
+#endif
+#ifdef x86_64mac
+#define SysLibraries    -lreadline -lcurses
+#endif
+#ifdef i486xeno
+#define SysLibraries    $(shell $(XENOMAI_ROOT)/bin/xeno-config --skin=native --ldflags) -lnative -lrtdk -lanalogy -lrtdm -lreadline -lcurses
+#endif
+#ifdef x86_64xeno
+#define SysLibraries    $(shell $(XENOMAI_ROOT)/bin/xeno-config --skin=native --ldflags) -lnative -lrtdk -lanalogy -lrtdm -lreadline -lcurses
+#endif
+#ifndef SysLibraries
+#define SysLibraries     -lpthread -lrt -lreadline -lcurses
+#endif
+#endif
+
+/*
+ *  Command defaults.
+ */
+
+#ifndef DocCmd
+#define DocCmd doxygen
+#endif
+
+#ifndef ImakeCmd
+#define ImakeCmd imake -D$(MACHTYPE)
+#endif
+
+#ifndef ArCmd
+#define ArCmd ar cq
+#endif
+
+#ifndef CcCmd
+#define CcCmd gcc
+#endif
+
+#ifndef CcppCmd
+#define CcppCmd g++
+#endif
+
+#ifndef PPCArCmd
+#define PPCArCmd arppc -r
+#endif
+
+#ifndef PPCCcCmd
+#define PPCCcCmd ccppc
+#endif
+
+#ifndef VXArCmd
+#define VXArCmd ar68k -r
+#endif
+
+#ifndef VXCcCmd
+#define VXCcCmd cc68k
+#endif
+
+#ifndef M332ArCmd
+#define M332ArCmd 332ar -r
+#endif
+
+#ifndef M332CcCmd
+#define M332CcCmd cc68k
+#endif
+
+#ifndef C40ArCmd
+#define C40ArCmd ar30 -r
+#endif
+
+#ifndef C40CcCmd
+#define C40CcCmd cl30
+#endif
+
+#ifndef CppCmd
+#define CppCmd /lib/cpp
+#endif
+
+#ifndef YaccCmd
+#define YaccCmd /usr/bin/yacc
+#endif
+
+#ifndef LexCmd
+#define LexCmd /usr/bin/lex
+#endif
+
+#ifndef InstallCmd
+#define InstallCmd install
+#endif
+
+#ifndef LdCmd
+#define LdCmd ld
+#endif
+
+#ifndef VXLdCmd
+#define VXLdCmd ld68k
+#endif
+
+#ifndef PPCLdCmd
+#define PPCLdCmd ldppc
+#endif
+
+#ifndef M332LdCmd
+#define M332LdCmd 332ld
+#endif
+
+#ifndef MakeCmd
+#define MakeCmd make
+#endif
+
+#ifndef MvCmd
+#define MvCmd mv
+#endif
+
+#ifndef CpCmd
+#define CpCmd cp
+#endif
+
+#ifndef RanlibCmd
+#define RanlibCmd ranlib
+#endif
+
+#ifndef RmCmd
+#define RmCmd rm -f
+#endif
+
+#ifndef TagsCmd
+#define TagsCmd etags
+#endif
+
+#ifndef AsCmd
+#define AsCmd as
+#endif
+
+#ifndef CatCmd
+#define CatCmd cat
+#endif
+
+#ifndef MkdirCmd
+#define MkdirCmd mkdir -p
+#endif
+
+
+/*
+ *  Options or different commands and modes.
+ */
+
+#ifndef InstDistFlags
+#define InstDistFlags -m 0664
+#endif
+
+#ifndef InstObjFlags
+#define InstObjFlags -m 0755
+#endif
+
+#ifndef InstBinFlags
+#define InstBinFlags -m 0755
+#ifdef powerpc
+#undef InstBinFlags
+#define InstBinFlags -c -m 0755
+#endif
+#ifdef i386mac
+#undef InstBinFlags
+#define InstBinFlags -c -m 0755
+#endif
+#endif
+
+#ifndef InstLibFlags
+#define InstLibFlags -m 0664
+#endif
+
+#ifndef InstManFlags
+#define InstManFlags -m 0444
+#endif
+
+#ifndef InstDatFlags
+#define InstDatFlags -m 0444
+#endif
+
+#ifndef InstHeaderFlags
+#define InstHeaderFlags -m 0444
+#endif
+
+#ifndef InstDocFlags
+#define InstDocFlags -m 0444
+#endif
+
+#ifndef RanlibInstFlags
+#define RanlibInstFlags /* As nothing */
+#endif
+
+#ifndef NormalCcFlags
+#define NormalCcFlags  -D$(MACHTYPE) -D$(LAB) -DUNIX -Wall -Wno-unused -Wno-strict-aliasing -Wno-write-strings
+#endif
+
+#ifndef AnsiCcFlags
+#define AnsiCcFlags -ansi -pedantic -Wtrigraphs
+#endif
+
+#ifndef DebugCcFlags
+#define DebugCcFlags -g
+#endif 
+
+
+#ifndef OptimizeCcFlags
+#ifdef sparc
+#define OptimizeCcFlags -O2
+#endif
+#ifdef i386mac
+#define OptimizeCcFlags -O3  -mfpmath=sse -ffast-math -fprefetch-loop-arrays -funit-at-a-time
+#endif
+#ifdef x86_64
+#define OptimizeCcFlags -O3  -mfpmath=sse -ffast-math -fprefetch-loop-arrays -funit-at-a-time -fomit-frame-pointer -fPIC
+#endif
+#ifdef powerpc
+#define OptimizeCcFlags -O3  -funit-at-a-time
+#endif
+#ifdef x86_64mac
+#define OptimizeCcFlags -O3  -mfpmath=sse -ffast-math -fprefetch-loop-arrays -funit-at-a-time -fPIC
+#endif
+#ifndef OptimizeCcFlags
+#define OptimizeCcFlags -O3  -ffast-math -funit-at-a-time
+#endif
+#endif
+
+#ifndef MatlabCcFlags
+#ifdef i586
+#define MatlabCcFlags -DMATLAB_MEX_FILE -fPIC -D_GNU_SOURCE -pthread
+#endif
+#ifdef i386
+#define MatlabCcFlags -DMATLAB_MEX_FILE -fPIC -D_GNU_SOURCE -pthread
+#endif
+#ifdef x86_64
+#define MatlabCcFlags -DMATLAB_MEX_FILE -fPIC -D_GNU_SOURCE -pthread
+#endif
+#ifdef x86_64xeno
+#define MatlabCcFlags -DMATLAB_MEX_FILE -fPIC -D_GNU_SOURCE -pthread
+#endif
+#ifdef sparc
+#define MatlabCcFlags -DMATLAB_MEX_FILE -fPIC
+#endif
+#ifdef powerpc
+#define MatlabCcFlags -DMATLAB_MEX_FILE -fno-common 
+#endif
+#ifdef i386mac
+#ifdef MatlabCcFlags
+#undef MatlabCcFlags
+#endif
+#define MatlabCcFlags -DMATLAB_MEX_FILE 
+#endif
+#ifdef x86_64mac
+#ifdef MatlabCcFlags
+#undef MatlabCcFlags
+#endif
+#define MatlabCcFlags -DMATLAB_MEX_FILE 
+#endif
+#endif
+
+#ifndef CommLibraries
+#ifdef i586
+#define CommLibraries -lnsl
+#endif
+#ifdef i386
+#define CommLibraries -lnsl
+#endif
+#ifdef x86_64
+#define CommLibraries -lnsl
+#endif
+#ifdef x86_64xeno
+#define CommLibraries -lnsl
+#endif
+#ifdef sparc
+#define CommLibraries -lsocket -lnsl -lposix4
+#endif
+#ifdef powerpc
+#define CommLibraries 
+#endif
+#ifdef i386mac
+#ifdef CommLibraries
+#undef CommLibraries
+#endif
+#define CommLibraries 
+#endif
+#ifdef x86_64mac
+#ifdef CommLibraries
+#undef CommLibraries
+#endif
+#define CommLibraries 
+#endif
+#endif
+
+#ifndef C40NormalCcFlags
+#define C40NormalCcFlags -x -v40 -mf -c -Dc40 -eo.o
+#endif
+
+#ifndef C40OptimizeFlags
+#define C40OptimizeFlags -o
+#endif
+
+#ifndef VXNormalIncludes
+#define VXNormalIncludes -I$(VX_VW_BASE)/h
+#endif
+
+#ifndef VXNormalCcFlags
+#define VXNormalCcFlags -D$(LAB) -DVX $(VX_NORMAL_INCLUDES)/h -fvolatile -W 
+#endif
+
+#ifndef M332NormalIncludes
+#define M332NormalIncludes -I$(M332PATH)/include
+#endif
+
+#ifndef M332NormalCcFlags
+#define M332NormalCcFlags -mnobitfield -freg-struct-return -nostdinc -nostdlib -Wall -Wno-unused $(M332_NORMAL_INCLUDES)
+#endif
+
+#ifndef PPCNormalIncludes
+/* Tornado 2.2 */
+#define PPCNormalIncludes -I$(WIND_BASE)/target/h  
+/* Workbench 
+#define PPCNormalIncludes -I$(WIND_BASE)/target/h -I$(WIND_BASE)/target/h/wrn/coreip
+*/
+#endif
+
+#ifndef PPCNormalCcFlags
+/* Tornado 2.2: */
+#define PPCNormalCcFlags -fno-builtin -fno-for-scope -nostdinc -D_GNU_TOOL -c -D$(LAB) -DVX $(PPC_NORMAL_INCLUDES) -Wall -Wno-unused 
+/* Workbench
+#define PPCNormalCcFlags -fno-builtin -D_GNU_TOOL -c -D$(LAB) -DVX $(PPC_NORMAL_INCLUDES) -Wall -Wno-unused -Wno-strict-aliasing
+*/
+#endif
+
+#ifndef VX68040CcFlags
+#define VX68040CcFlags -DCPU=MC68040 -m68040
+#endif
+
+#ifndef VX68020CcFlags
+#define VX68020CcFlags -mc68020 -m68881
+#endif
+
+#ifndef M332CcFlags
+#define M332CcFlags -mc68020 -DM332 
+#endif
+
+#ifndef PPC2400CcFlags
+#define PPC2400CcFlags -DCPU=PPC604  -DMV2400
+#endif
+
+#ifndef PPC2600CcFlags
+#define PPC2600CcFlags -DCPU=PPC604  -DMV2600
+#endif
+
+#ifndef PPC2700CcFlags
+#define PPC2700CcFlags -DCPU=PPC604  -DMV2700
+#endif
+
+#ifndef VXOptimizeFlags
+#define VXOptimizeFlags -O2
+#endif
+
+#ifndef PPCOptimizeFlags
+#define PPCOptimizeFlags -O2
+#endif
+
+#ifndef LintCcFlags
+#define LintCcFlags -Wall -Wimplicit -Wreturn-type -Wunused -Wswitch \
+			-Wcomment -Wshadow -Wid-clash-31 -Wpointer-arith \
+			-Wcast-qual
+#endif
+
+#ifndef LabLdFlags
+#ifdef powerpc
+#define LabLdFlags -bind_at_load -multiply_defined suppress
+#else
+#define LabLdFlags /* As nothing */
+#endif
+#endif
+
+#ifndef MatlabLdFlags
+#ifdef i586
+#define MatlabLdFlags -pthread -shared -Wl,--version-script,$(MATLAB_ROOT)/extern/lib/glnx86/mexFunction.map
+#endif
+#ifdef i386
+#define MatlabLdFlags -pthread -shared -Wl,--version-script,$(MATLAB_ROOT)/extern/lib/glnx86/mexFunction.map
+#endif
+#ifdef sparc
+#define MatlabLdFlags -lm -G -Wl,-M,$(LAB_ROOT)/../bin/mexFunction.map
+#endif
+#ifdef powerpc
+#define MatlabLdFlags -bundle -Wl,-flat_namespace -undefined suppress
+#endif
+#ifdef i386mac
+#ifdef MatlabLdFlags
+#undef MatlabLdFlags
+#endif
+#define MatlabLdFlags -bundle -Wl,-flat_namespace -undefined suppress
+#endif
+#endif
+
+#ifndef ProjLdFlags
+#define ProjLdFlags /* As nothing */
+#endif
+
+#ifndef LdCombineFlags
+#define LdCombineFlags -X -r
+#endif
+
+#ifndef LabLibraries
+#define LabLibraries /* As nothing */
+#endif
+
+#ifndef ProjLibraries
+#define ProjLibraries /* As nothing */
+#endif
+
+#ifndef OpenGLLibraries
+#ifdef powerpc
+#define OpenGLLibraries -L/opt/local/lib -L/sw/lib -lglut -lGL -lGLU -Wl,-dylib_file,/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib:/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib -lX11
+#else
+#ifdef i386mac
+#define OpenGLLibraries -lglut -lGL -lGLU -lX11
+#else
+#ifdef x86_64mac
+#define OpenGLLibraries -lglut -lGL -lGLU -lX11
+#else
+#define OpenGLLibraries -lglut -lGL -lGLU -lX11 -lXmu
+#endif
+#endif
+#endif
+#endif
+
+#ifndef MatlabLibraries
+#define MatlabLibraries -L$(MATLAB_ROOT)/bin/$(MATLAB_ARCH) -lmx -lmex -lmat -lm
+#endif
+
+#ifndef LabDefines
+#define LabDefines /* As nothing */
+#endif
+
+#ifndef ProjDefines
+#define ProjDefines /* As nothing */
+#endif
+
+#ifndef DirectoryDefines
+#define DirectoryDefines  /* As nothing */
+#endif
+
+#ifndef DependDefines
+#define DependDefines /* As nothing */
+#endif
+
+#ifndef GCCDependDefines
+#define GCCDependDefines -MD -MP -MF $*.d 
+#endif
+
+
+/*
+ *  Other defines for general use.
+ */
+
+#define FilesToCleanFind \( -name "*.CKP" -or -name "*.ln" -or -name "*.BAK" -or -name "*.bak" -or -name "*.o" -or -name "*.d" -or -name "core" -or -name "errs" -or -name ",*" -or -name "*~" -or -name "*.a" -or -name ".emacs_*" -or -name "TAGS" -or -name "make.log" -or -name "MakeOut" -or -name "*.68k" -or -name "*.ppc" -or -name "*.x40" -or -name "*.map" \)
+
+#define FilesToClean *.CKP *.ln *.BAK *.bak *.o core errs ,* *~ *.a .emacs_* TAGS make.log MakeOut *.68k *.ppc *.x40 *.map
+
+
+/******************************************************************************
+ *
+ *  These defines are used in the LAB-Imake.rules file.
+ *
+ *****************************************************************************/
+
+              DOC = DocCmd
+            IMAKE = ImakeCmd
+               AR = ArCmd
+               CC = CcCmd
+             CCPP = CcppCmd
+            C40AR = C40ArCmd
+            C40CC = C40CcCmd
+             VXAR = VXArCmd
+             VXCC = VXCcCmd
+            PPCAR = PPCArCmd
+            PPCCC = PPCCcCmd
+            M332AR = M332ArCmd
+            M332CC = M332CcCmd
+              CPP = CppCmd
+             YACC = YaccCmd
+              LEX = LexCmd
+          INSTALL = InstallCmd
+               LD = LdCmd
+             VXLD = VXLdCmd
+            PPCLD = PPCLdCmd
+           M332LD = M332LdCmd
+             MAKE = MakeCmd
+               MV = MvCmd
+               CP = CpCmd
+           RANLIB = RanlibCmd
+               RM = RmCmd
+             TAGS = TagsCmd
+               AS = AsCmd
+              CAT = CatCmd
+            MKDIR = MkdirCmd
+           DEPEND = makedepend
+
+    INSTDISTFLAGS = InstDistFlags
+     INSTOBJFLAGS = InstObjFlags
+     INSTBINFLAGS = InstBinFlags
+     INSTLIBFLAGS = InstLibFlags
+     INSTMANFLAGS = InstManFlags
+     INSTDATFLAGS = InstDatFlags
+  INSTHEADERFLAGS = InstHeaderFlags
+     INSTDOCFLAGS = InstDocFlags
+  RANLIBINSTFLAGS = RanlibInstFlags
+
+  NORMAL_CC_FLAGS = NormalCcFlags -march=native -mtune=native
+#ifdef sparc
+  NORMAL_CC_FLAGS = NormalCcFlags
+#endif
+#ifdef i386mac
+  NORMAL_CC_FLAGS = NormalCcFlags -fnested-functions -march=native -msse3
+#endif
+#ifdef x86_64
+  NORMAL_CC_FLAGS = NormalCcFlags -m64 -march=native -mtune=native -fPIC
+#endif
+#ifdef i486
+  NORMAL_CC_FLAGS = NormalCcFlags -march=native -mtune=native
+#endif
+#ifdef x86_64mac
+  NORMAL_CC_FLAGS = NormalCcFlags  -fnested-functions -m64 -mtune=native -msse3 -fPIC
+#endif
+#ifdef i486xeno
+  NORMAL_CC_FLAGS = NormalCcFlags -march=native -mtune=native
+#endif
+#ifdef x86_64xeno
+  NORMAL_CC_FLAGS = NormalCcFlags -m64 -march=native -mtune=native -fPIC
+#endif
+
+
+    ANSI_CC_FLAGS = AnsiCcFlags
+   DEBUG_CC_FLAGS = DebugCcFlags
+OPTIMIZE_CC_FLAGS = OptimizeCcFlags
+  MATLAB_CC_FLAGS = MatlabCcFlags
+    LINT_CC_FLAGS = LintCcFlags
+
+  C40_NORMAL_CC_FLAGS = C40NormalCcFlags
+   C40_OPTIMIZE_FLAGS = C40OptimizeFlags
+   VX_NORMAL_CC_FLAGS = VXNormalCcFlags
+ M332_NORMAL_CC_FLAGS = M332NormalCcFlags
+  PPC_NORMAL_CC_FLAGS = PPCNormalCcFlags
+    VX_68040_CC_FLAGS = VX68040CcFlags
+    VX_68020_CC_FLAGS = VX68020CcFlags
+        M332_CC_FLAGS = M332CcFlags
+    PPC_2400_CC_FLAGS = PPC2400CcFlags
+    PPC_2600_CC_FLAGS = PPC2600CcFlags
+    PPC_2700_CC_FLAGS = PPC2700CcFlags
+    VX_OPTIMIZE_FLAGS = VXOptimizeFlags
+   PPC_OPTIMIZE_FLAGS = PPCOptimizeFlags
+
+ M322_NORMAL_INCLUDES = M322NormalIncludes
+   VX_NORMAL_INCLUDES = VXNormalIncludes
+  PPC_NORMAL_INCLUDES = PPCNormalIncludes
+
+   LDCOMBINEFLAGS = LdCombineFlags
+#ifdef sparc
+      SYS_LDFLAGS = -z muldefs SysLdFlags $(SYS_LIBDIR)
+#else
+      SYS_LDFLAGS = SysLdFlags $(SYS_LIBDIR)
+#endif
+
+      LAB_LDFLAGS = LabLdFlags $(LAB_LIBDIR)
+   MATLAB_LDFLAGS = MatlabLdFlags $(MATLAB_LIBDIR)
+    LAB_VXLDFLAGS = LabLdFlags $(LAB_VXLIBDIR)
+     PROJ_LDFLAGS = ProjLdFlags $(PROJ_LIBDIR)
+     PROJ_VXLDFLAGS = ProjLdFlags $(PROJ_VXLIBDIR)
+
+
+      LAB_DEFINES = LabDefines
+     PROJ_DEFINES = ProjDefines
+    IMAKE_DEFINES = -TLAB_Imake.tmpl
+DIRECTORY_DEFINES = DirectoryDefines
+
+    PROJ_IMAKEDIR = $(LAB_ROOT)/config
+     LAB_IMAKEDIR = $(LAB_ROOT)/config
+
+    SYS_LIBRARIES = SysLibraries
+    LAB_LIBRARIES = LabLibraries
+   PROJ_LIBRARIES = ProjLibraries
+ OPENGL_LIBRARIES = OpenGLLibraries
+ MATLAB_LIBRARIES = MatlabLibraries
+     SYS_INCLUDES = SysIncludeDirs
+   COMM_LIBRARIES = CommLibraries
+
+      ALLINCLUDES = $(INCLUDES) $(PROJ_INCLUDES) $(LAB_INCLUDES) $(SYS_INCLUDES)
+       ALLDEFINES = $(DEFINES) $(DIRECTORY_DEFINES) $(PROJ_DEFINES) \
+			$(LAB_DEFINES) $(ALLINCLUDES) 
+       ALLLDFLAGS = $(LDFLAGS) $(PROJ_LDFLAGS) $(LAB_LDFLAGS) $(SYS_LDFLAGS)
+     ALLVXLDFLAGS = $(LDFLAGS) $(PROJ_VXLDFLAGS) $(LAB_VXLDFLAGS) $(SYS_LDFLAGS)
+     ALLLIBRARIES = $(LIBRARIES) $(PROJ_LIBRARIES) $(LAB_LIBRARIES) \
+			$(SYS_LIBRARIES)
+        CPP_FLAGS = $(ALLDEFINES)
+    DEPENDDEFINES = DependDefines
+ GCCDEPENDDEFINES = GCCDependDefines
+
+        IMAKE_CMD = $(IMAKE) -I$(PROJ_IMAKEDIR) $(IMAKE_DEFINES) $(DIRECTORY_DEFINES)
+           RM_CMD = find . FilesToCleanFind -exec rm {} \;
+
+
+/*
+ *  Determine from the system what architecture we are running on.
+ */
+
+             ARCH = `arch`
+
+
+/*
+ *  Include the generic rules for the Imake. These
+ *  rules make use of the UPPER CASE MAKE VARIABLES ONLY.
+ */
+
+#include <LAB_Imake.rules>
+
+/**/XCOMM  This is the beginning of the Imakefile produced makefile.
+/**/XCOMM  The header information below identifies the Imakefile and
+/**/XCOMM  version of this particular makefile.
+
+#include INCLUDE_IMAKEFILE
+
+
+/**/XCOMM
+/**/XCOMM  These rules are common to all makefiles and SHOULD NOT BE EDITTED.
+/**/XCOMM
+
+/*
+ * These need to be here so that rules in Imakefile occur first;  the blank
+ * all is to make sure that an empty Imakefile doesn't default to make clean.
+ */
+
+emptyrule::
+
+CleanTarget()
+MakefileTarget()
+
+header::
+	@echo "Distribution of headers complete in `pwd`."
+
+/* DependTarget() */
+
+
+#ifdef IHaveSubdirs
+/**/XCOMM
+/**/XCOMM  Rules for all makefiles that have subdirectory lists.
+/**/XCOMM
+
+InstallSubdirs($(SUBDIRS))
+/*InstallManSubdirs($(SUBDIRS))*/
+/*InstallDocSubdirs($(SUBDIRS))*/
+DocSubdirs($(SUBDIRS))
+CleanSubdirs($(SUBDIRS))
+DistcleanSubdirs($(SUBDIRS))
+/*TagsSubdirs($(SUBDIRS))*/
+MakefileSubdirs($(SUBDIRS))
+/* DependSubdirs($(SUBDIRS))*/
+MakeSubdirs($(SUBDIRS))
+HeaderSubdirs($(SUBDIRS))
+
+#else
+/**/XCOMM
+/**/XCOMM  Empty rules for directories that have no subdirectory lists.
+/**/XCOMM
+
+install::
+	@echo "Install of program/library from `pwd` complete."
+
+install.man::
+	@echo "Install manual page from `pwd` complete."
+
+install.doc::
+	@echo "Install doc page from `pwd` complete."
+
+doc::
+	@echo "Documentation in `pwd` complete."
+
+clean::
+	@echo "Clean of `pwd` complete."
+
+distclean::
+	@echo "Clean of distribution from `pwd` complete."
+
+tag::
+	@echo "Tags of `pwd` complete."
+
+Makefiles::
+	@echo "Makefiles under `pwd` are up to date."
+
+depend::
+	@echo "Dependencies in `pwd` complete."
+
+all::
+	@echo "Make all in `pwd` complete."
+
+headers::
+	@echo "Headers installed in `pwd`."
+
+#endif /* if subdirectory rules are needed */
+
+/**/XCOMM
+/**/XCOMM  Dependencies generated by makedepend.
+/**/XCOMM

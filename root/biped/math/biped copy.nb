@@ -1,0 +1,175 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      3310,        108]*)
+(*NotebookOutlinePosition[      4392,        145]*)
+(*  CellTagsIndexPosition[      4305,        139]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(\(SetDirectory["\</Volumes/vangogh/sschaal/Documents/Math/ControlTheory\
+\>"];\)\)], "Input"],
+
+Cell[BoxData[
+    \(<< RigidBodyDynamics.m\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(\(SetDirectory["\<biped\>"];\)\)], "Input"],
+
+Cell["Generate the C-code", "Text"],
+
+Cell[BoxData[
+    \(OpenGLKinematics["\<biped.dyn\>", "\<biped\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(InvDyn["\<biped.dyn\>", "\<biped\>", {0, 0, \(-gravity\)}]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(InvDynArt["\<biped.dyn\>", "\<biped\>", {0, 
+        0, \(-gravity\)}]\)], "Input"],
+
+Cell[BoxData[
+    \(LinkEndpointKinematics["\<biped.dyn\>", "\<biped\>"]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(GeometricJacobian["\<biped.dyn\>", {119, 112}, "\<biped\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(ForDynArt["\<biped.dyn\>", "\<biped\>", {0, 
+        0, \(-gravity\)}]\)], "Input",
+  AspectRatioFixed->True],
+
+Cell[BoxData[
+    \(LinkInformation["\<biped.dyn\>", "\<biped\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(GeometricJacobian["\<biped.dyn\>", {120}, "\<biped_head\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(LinkRotationMatrix["\<biped.dyn\>", {120}, "\<biped_head\>"]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(?Geom*\)\)], "Input"],
+
+Cell[BoxData[
+    \("GeometricJacobian[infile,endeffs,outfile] derives the geometric \
+Jacobian for the endeffectors. endeffs contains the list of ID number for \
+which the Jacobian is derived.\n"\)], "Print",
+  CellTags->"Info3341924342-2744620"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Macintosh",
+ScreenRectangle->{{0, 1413}, {0, 878}},
+WindowToolbars->{},
+CellGrouping->Automatic,
+WindowSize->{740, 683},
+WindowMargins->{{3, Automatic}, {Automatic, 3}},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowSelection->True,
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->"MacintoshAutomaticEncoding"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "Info3341924342-2744620"->{
+    Cell[3047, 101, 247, 4, 55, "Print",
+      CellTags->"Info3341924342-2744620"]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"Info3341924342-2744620", 4195, 132}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 113, 2, 27, "Input"],
+Cell[1870, 55, 81, 2, 27, "Input"],
+Cell[1954, 59, 63, 1, 27, "Input"],
+Cell[2020, 62, 35, 0, 32, "Text"],
+Cell[2058, 64, 79, 1, 27, "Input"],
+Cell[2140, 67, 117, 2, 27, "Input"],
+Cell[2260, 71, 103, 2, 27, "Input"],
+Cell[2366, 75, 111, 2, 27, "Input"],
+Cell[2480, 79, 92, 1, 27, "Input"],
+Cell[2575, 82, 129, 3, 27, "Input"],
+Cell[2707, 87, 78, 1, 27, "Input"],
+Cell[2788, 90, 92, 1, 27, "Input"],
+Cell[2883, 93, 93, 1, 27, "Input"],
+
+Cell[CellGroupData[{
+Cell[3001, 98, 43, 1, 27, "Input"],
+Cell[3047, 101, 247, 4, 55, "Print",
+  CellTags->"Info3341924342-2744620"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

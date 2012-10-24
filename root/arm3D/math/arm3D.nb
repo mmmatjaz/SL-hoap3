@@ -1,0 +1,137 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      3747,        128]
+NotebookOptionsPosition[      2833,         96]
+NotebookOutlinePosition[      3437,        119]
+CellTagsIndexPosition[      3394,        116]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\</Volumes/vangogh/sschaal/Documents/Math/ControlTheory\>\"", "]"}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"<<", "RigidBodyDynamics.m"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\<arm3D\>\"", "]"}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"InvDynNE", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.494467565602111*^9, 3.4944675657043657`*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"InvDynArt", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4944675842571163`*^9, 3.494467584920438*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"ParmEst", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ForDynComp", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"ForDynArt", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.494467595977573*^9, 3.494467597552671*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"LinkEndpointKinematics", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\""}], "]"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"OpenGLKinematics", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", 
+   RowBox[{"{", "104", "}"}], ",", "\"\<arm3D\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"LinkInformation", "[", 
+  RowBox[{"\"\<arm3D.dyn\>\"", ",", "\"\<arm3D\>\""}], "]"}]], "Input"]
+},
+WindowToolbars->{},
+CellGrouping->Automatic,
+WindowSize->{732, 553},
+WindowMargins->{{312, Automatic}, {135, Automatic}},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->"MacintoshAutomaticEncoding",
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 153, 5, 27, "Input"],
+Cell[724, 28, 88, 2, 27, "Input"],
+Cell[815, 32, 95, 2, 27, "Input"],
+Cell[913, 36, 301, 7, 27, "Input"],
+Cell[1217, 45, 302, 7, 27, "Input"],
+Cell[1522, 54, 207, 5, 27, "Input"],
+Cell[1732, 61, 235, 6, 27, "Input"],
+Cell[1970, 69, 300, 7, 27, "Input"],
+Cell[2273, 78, 151, 3, 27, "Input"],
+Cell[2427, 83, 120, 2, 27, "Input"],
+Cell[2550, 87, 157, 3, 27, "Input"],
+Cell[2710, 92, 119, 2, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

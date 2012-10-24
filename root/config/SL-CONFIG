@@ -1,0 +1,18 @@
+setenv LAB_ROOT /home/sl/sl-new/root
+setenv PROG_ROOT /home/sl/sl-new/user
+ 
+if ( $MACHTYPE == "i386" && `uname -a | grep -c Darwin` > 0 ) then 
+   setenv MACHTYPE i386mac 
+endif 
+
+if ( $MACHTYPE == "x86_64" && `uname -a | grep -c Darwin` > 0 ) then 
+   setenv MACHTYPE x86_64mac 
+endif 
+
+if ( `uname -a | grep -c ipipe` && `echo $MACHTYPE | grep -cv xeno` > 0 ) then 
+   setenv MACHTYPE $MACHTYPE"xeno" 
+endif 
+
+alias imake           "imake -I$LAB_ROOT/config -TLAB_Imake.tmpl -D$MACHTYPE" 
+set path=(./$MACHTYPE $PROG_ROOT/bin/$MACHTYPE $LAB_ROOT/bin/$MACHTYPE . $path) 
+

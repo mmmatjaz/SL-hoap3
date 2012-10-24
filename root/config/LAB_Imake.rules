@@ -1,0 +1,782 @@
+/**/XCOMM  $RCSfile: CED-Imake.rules,v $
+/**/XCOMM  $Revision: 1.19 $
+/**/XCOMM  $Author: bryant $, $State: Exp $, $Locker: bryant $
+/**/XCOMM  Program : All programs at the CED.
+/**/XCOMM  Project : All projects at the CED.
+/*
+ *  Note that this file is a (slightly) modified version of the
+ *  standard release Imake.rules file. It can therefor not be
+ *  copyrighted by the CED or the UofU.	
+ *
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *
+ *  Description :
+ *    This file contains all the Imake rules.
+ *
+ *****************************************************************************/
+
+/**/XCOMM  Imake rules for generating programs and libraries.
+/**/XCOMM  These rules are specific to the Center for Engineering Design
+
+/*
+ * Warning, when defining rules: make sure you don't include both a trailing
+ * backslash and double ampersand backslash or else you will get an extra
+ * backslash in the Makefile.
+ * 
+ * These macros are defined for the various templates and Imakefiles (for a 
+ * list of the applicable make variables, see the template files):
+ *
+ *    RULES FOR BUILDING PROGRAMS AND FILES.
+ *    ----- --- -------- -------- --- ------
+ *    YaccRule() - Generate a rule for the yacc compiler.
+ *    LexRule() - Generate a rule for the lex compiler.
+ *    NormalProgramRule() - Use normal CC options for building all files.
+ *    AnsiProgramRule() - Use Ansi CC option for building all files.
+ *    DebugProgramRule() - Use debug CC options for building all files.
+ *    AnsiDebugProgramRule() - Use Ansi and debug rules for building all files.
+ *    LintProgramRule() - Use all warning flags on all files.
+ *    AnsiLintProgramRule() - Use Ansi and all warning flags on all files.
+ *    OptimizeProgramRule() - Use optimize flags on all files.
+ *    AnsiOptimizeProgramRule() - Use Ansi and optimize flags on all files.
+ *    NormalFileRule (file) - Use normal flags on given file.
+ *    NormalObjRule (file) - Use normal flags on given object file.
+ *    AnsiFileRule (file) - Use Ansi flag on given file.
+ *    DebugFileRule (file) - Use debug flags on given file.
+ *    AnsiDebugFileRule (file) - Use Ansi and debug flags on file.
+ *    LintFileRule (file) - Use all warning flags on file.
+ *    AnsiLintFileRule (file) - Use Ansi and all warning flags on file.
+ *    OptimizeFileRule (file) - Use optimze flag on file.
+ *    AnsiOptimizeFileRule (file) - Use Ansi and optimize flags on file.
+ *
+ *    RULES FOR BUILDING THE FINAL OUTPUT.
+ *    ----- --- -------- --- ----- -------
+ *    ProgramTarget (program) - Build the program from SOURCES, OBJECTS.
+ *    VxWorksTarget (program) - Build a VxWorks image from SOURCES, OBJECTS.
+ *    LibraryTarget (library) - Build a library from SOURCES.
+ *    ConfigTarget (file) - Install the given file in the config directory.
+ *    HeaderTarget (file) - Install the given header file.
+ *
+ *    UTILITY RULES.
+ *    ------- ------
+ *    CleanTarget() - Generate a line to delete garbage files.
+ *    TagsTarget() - Generate a line to run TAGS.
+ *    MakefileTarget() - Generate a line to create a Makefile.
+ *
+ *    RULES FOR SUPPORTING SUBDIRECTORIES.
+ *    ----- --- ---------- ---------------
+ *    InstallSubdirs (dirs) - Run install in subdirectory list.
+ *    InstallManSubdirs (dirs) - Run install man in subdirectory list.
+ *    CleanSubdirs (dirs) - Run clean in subdirectory list.
+ *    TagsSubdirs (dirs) - Run tags in subdirectory list.
+ *    MakefileSubdirs (dirs) - Run makefile in subdirectory list.
+ *    MakeSubdirs (dirs) - Run all in subdirectory list.
+ *    DependSubdirs (dirs) - Run depend in subdirectory list.
+ *
+ *    RULES USED BY OTHER RULES.
+ *    ----- ---- -- ----- ------
+ *    AllTarget (program) - Generate a 'make all' rule for the given program.
+ *    RemoveTargetProgram (program) - Remove the program specified.
+ *    InstallProgramWithFlags (name,dest,flags) - Install with flags.
+ *    InstallProgram (name,dest) - Install the program to the given directory.
+ *    InstallLibrary (name,dest) - Install a project library.
+ *    InstallManPage (name,dest) - Install the manual page for program.
+ *    DependTarget() - Generate line for makedepend.
+ *    BuildMakefileTarget (imakefile,imakeflags) - Build a Makefile.
+ *    NamedTargetSubdirs (name,dirs,verb,flags,subname) - Recursive make rule.
+ */
+
+
+/*
+ *  The following rules are default for files and programs.  Note that
+ *  The program rules can appear anywhere in the Imake file, while the
+ *  file rules MUST appear after the initial program rule so that the
+ *  default rule for the makefile is the program and not the file
+ *  specified.
+ */
+
+
+/*
+ *  NormalProgramRule - Rule for normal programs.
+ */
+
+#ifndef NormalProgramRule
+#define	NormalProgramRule()      					@@\
+.c.o:									@@\
+	$(RM) $@							@@\
+	$(CC) $(GCCDEPENDDEFINES) -c $(CFLAGS) $(NORMAL_CC_FLAGS) $(SRCDIR)/$*.c            @@
+#endif /* NormalProgramRule */
+
+
+/*
+ *  NormalFileRule - Rule for normal files.
+ */
+
+#ifndef NormalFileRule
+#define	NormalFileRule( files )      					@@\
+$(addsuffix .o, files): %.o: $(SRCDIR)/%.c				@@\
+	$(RM) $@							@@\
+	$(CC) $(GCCDEPENDDEFINES) -c $(CFLAGS) $(NORMAL_CC_FLAGS) $(SRCDIR)/$*.c	                @@
+#endif /* NormalFileRule */
+
+
+/*
+ *  NormalObjRule - Rule for normal files targeted as objects
+ */
+
+#ifndef NormalObjRule
+#define NormalObjRule( files )  NormalObjRuleCflags( files, )
+#endif /* NormalObjRule */
+
+/*
+ *  NormalObjRuleCflags - Rule for normal files targeted as objects with extra CFLAGS
+ */
+
+#ifndef NormalObjRuleCflags
+#define NormalObjRuleCflags( files, cflags )                            @@\
+$(sort files): %.o: $(SRCDIR)/%.c                                       @@\
+	$(RM) $@                                                        @@\
+	$(info * $*.c)							@@\
+	mkdir -p $(dir $*.c)						@@\
+	$(CC) $(GCCDEPENDDEFINES) -o $*.o -c $(ALLINCLUDES) $(CFLAGS) $(NORMAL_CC_FLAGS) cflags $(PROFILING) $(SRCDIR)/$*.c @@\
+	      			     	     		    	      	@@\
+-include $(addsuffix .d, $(basename files))				@@\
+									@@
+#endif /* NormalObjRuleCflags */
+
+
+/*
+ *  NormalObjRuleCpp - Rule for normal files targeted as objects
+ */
+
+#ifndef NormalObjRuleCpp
+#define	NormalObjRuleCpp( files ) NormalObjRuleCppCflags( files,)
+#endif /* NormalObjRuleCpp */
+
+/*
+ *  NormalObjRuleCppCflags - Rule for normal files targeted as objects with extra CFLAGS
+ */
+
+#ifndef NormalObjRuleCppCflags
+#define	NormalObjRuleCppCflags( files,cflags )				@@\
+$(sort files): %.o: $(SRCDIR)/%.cpp                                     @@\
+	$(RM) $@                                                        @@\
+	$(info * $*.cpp)						@@\
+	mkdir -p $(dir $*.cpp)						@@\
+	$(CCPP) $(GCCDEPENDDEFINES) -o $*.o -Wall -Wredundant-decls -c $(ALLINCLUDES) $(CFLAGS) $(NORMAL_CC_FLAGS) cflags $(PROFILING) $(SRCDIR)/$*.cpp @@\
+	      			     	     		    	      	@@\
+-include $(addsuffix .d, $(basename files))				@@\
+									@@
+#endif /* NormalObjRuleCppCflags */
+
+/*
+ *  NormalObjRuleCppRos - Rule for normal files targeted as objects for ROS
+ */
+
+#ifndef NormalObjRuleCppRos
+#define	NormalObjRuleCppRos( files, ros_packages)			@@\
+$(sort files): %.o: $(SRCDIR)/%.cpp                                     @@\
+	$(RM) $@                                                        @@\
+	$(info * $*.cpp)						@@\
+	mkdir -p $(dir $*.cpp)						@@\
+	$(CCPP) $(GCCDEPENDDEFINES) -o $*.o -Wall -Wredundant-decls -c $(ALLINCLUDES) $(CFLAGS) $(NORMAL_CC_FLAGS) $(addprefix -I, $(shell for i in ros_packages ; do rospack cflags-only-I $$i; done)) $(PROFILING) $(SRCDIR)/$*.cpp @@\
+	      			     	     		    	      	@@\
+-include $(addsuffix .d, $(basename files))				@@\
+									@@
+#endif /* NormalObjRuleCppRos */
+
+/*
+ *  NormalObjRuleRos - Rule for normal files targeted as objects for ROS
+ */
+
+#ifndef NormalObjRuleRos
+#define	NormalObjRuleRos( files, ros_packages)			@@\
+$(sort files): %.o: $(SRCDIR)/%.c                                     @@\
+	$(RM) $@                                                        @@\
+	$(info * $*.c)						@@\
+	mkdir -p $(dir $*.c)						@@\
+	$(CC) $(GCCDEPENDDEFINES) -o $*.o -Wall -Wredundant-decls -c $(ALLINCLUDES) $(CFLAGS) $(NORMAL_CC_FLAGS) $(addprefix -I, $(shell for i in ros_packages ; do rospack cflags-only-I $$i; done)) $(PROFILING) $(SRCDIR)/$*.c @@\
+	      			     	     		    	      	@@\
+-include $(addsuffix .d, $(basename files))				@@\
+									@@
+#endif /* NormalObjRuleRos */
+
+
+/*
+ *  NormalCPPObjRule - just for compatibitly 
+ */
+
+#ifndef NormalCPPObjRule
+#define NormalCPPObjRule( files ) NormalObjRuleCpp( files ) 
+#endif /* NormalCPPObjRule */
+
+
+/*
+ *  ProgramTarget - generate rules for compiling and linking the 
+ *  program specified by $(OBJECTS) and $(SOURCES), installing the program
+ *  and its man page, and generating dependencies.  It should only be used in 
+ *  Imakefiles that describe a single program.
+ */
+
+#ifndef ProgramTarget
+#define	ProgramTarget(program)						@@\
+									@@\
+AllTarget(program)							@@\
+									@@\
+program: $(OBJECTS)							@@\
+	RemoveTargetProgram($@)						@@\
+	$(CC) $(GCCDEPENDDEFINES) -o $@ $(OBJECTS) $(ALLLDFLAGS) $(ALLLIBRARIES)		@@\
+									@@\
+InstallProgram(program,$(BINDIR))					@@\
+									@@\
+									@@\
+clean::									@@\
+	$(RM) program   						@@
+#endif /* ProgramTarget */
+
+
+#ifndef MexListTarget
+#define	MexListTarget(program,list,extralibs)				@@\
+									@@\
+AllTarget(program)							@@\
+									@@\
+program: list    							@@\
+	RemoveTargetProgram($@)						@@\
+	$(CC) $(GCCDEPENDDEFINES) -lc -o $@.$(MATLAB_SUFFIX) list $(ALLLDFLAGS) $(MATLAB_LDFLAGS) extralibs $(ALLLIBRARIES) $(MATLAB_LIBRARIES)	@@\
+									@@\
+InstallProgram(program.$(MATLAB_SUFFIX),$(BINDIR))			@@\
+									@@\
+clean::									@@\
+	$(RM) program							@@
+#endif /* ProgramListTarget */
+
+
+#ifndef ProgramListTarget
+#define	ProgramListTarget(program,list,extralibs)			@@\
+									@@\
+AllTarget(program)							@@\
+									@@\
+program: list    							@@\
+	RemoveTargetProgram($@)						@@\
+	$(CC) $(GCCDEPENDDEFINES) -o $@ list $(ALLLDFLAGS) extralibs $(ALLLIBRARIES) 		@@\
+									@@\
+InstallProgram(program,$(BINDIR))					@@\
+									@@\
+									@@\
+clean::									@@\
+	$(RM) program							@@
+#endif /* ProgramListTarget */
+
+/*
+ * ProgramListTargetCpp - same as ProgramListTarget, but links objects using g++
+ */
+
+#ifndef ProgramListTargetCpp
+#define	ProgramListTargetCpp(program,list,extralibs)			@@\
+									@@\
+AllTarget(program)							@@\
+									@@\
+program: list    							@@\
+	RemoveTargetProgram($@)						@@\
+	$(CCPP) -o $@ list $(ALLLDFLAGS) extralibs $(ALLLIBRARIES) 	@@\
+									@@\
+InstallProgram(program,$(BINDIR))					@@\
+									@@\
+clean::									@@\
+	$(RM) program							@@
+#endif /* ProgramListTargetCpp */
+
+
+/*
+ * ProgramListTargetCppRos - same as ProgramListTargetCpp, for ROS
+ */
+
+#ifndef ProgramListTargetCppRos
+#define	ProgramListTargetCppRos(program,list,extralibs,ros_packages)	@@\
+									@@\
+AllTarget(program)							@@\
+									@@\
+program: list    							@@\
+	RemoveTargetProgram($@)						@@\
+	$(CCPP) -o $@ list $(ALLLDFLAGS) extralibs $(addprefix -L, $(shell for i in ros_packages; do rospack libs-only-L $$i; done)) $(addprefix -l, $(shell for i in ros_packages; do rospack libs-only-l $$i; done)) $(shell for i in ros_packages; do rospack libs-only-other $$i; done) $(ALLLIBRARIES) 	  @@\
+									@@\
+InstallProgram(program,$(BINDIR))					@@\
+									@@\
+clean::									@@\
+	$(RM) program							@@
+#endif /* ProgramListTargetCppRos */
+
+/*
+ * CPPProgramListTarget - compatiblity definition
+ */
+
+#ifndef CPPProgramListTarget
+#define	CPPProgramListTarget(program,list,extralibs) ProgramListTargetCpp(program,list,extralibs)
+#endif
+
+/*
+ * LibraryListTarget - generate rules to create a library.
+ */
+
+#ifndef LibraryListTarget
+#define	LibraryListTarget(libname,list)					@@\
+AllTarget($(addsuffix .a, $(addprefix lib, libname)))			@@\
+									@@\
+$(addsuffix .a, $(addprefix lib, libname)): list   			@@\
+	$(RM) $@							@@\
+	$(AR) $@ list    						@@\
+	$(RANLIB) $@							@@\
+									@@\
+InstallLibrary(libname,$(LIBDIR))					@@\
+									@@
+#endif /* LibraryTarget */
+
+
+/*
+ * LibraryAddTarget - generate rules to create a rellocatable library
+ */
+
+#ifndef LibraryAddTarget
+#define	LibraryAddTarget(libname,extralibs)				@@\
+AllTarget($(addsuffix .a, $(addprefix lib, libname)))			@@\
+									@@\
+$(addsuffix .a, $(addprefix lib, libname)): $(OBJECTS)			@@\
+	$(RM) $@							@@\
+	$(LD) -r -o $@ $(OBJECTS) $(ALLLDFLAGS) extralibs  		@@\
+									@@\
+InstallAddLibrary(libname,$(LIBDIR))					@@\
+									@@
+#endif /* LibraryAddTarget */
+
+
+/*
+ * LibraryListAddTarget - generate rules to create a rellocatable library
+ */
+
+#ifndef LibraryListAddTarget
+#define	LibraryListAddTarget(libname,list,extralibs)			@@\
+AllTarget($(addsuffix .a, $(addprefix lib, libname)))			@@\
+									@@\
+$(addsuffix .a, $(addprefix lib, libname)): list			@@\
+	$(RM) $@							@@\
+	$(LD) -r -o $@ list $(ALLLDFLAGS) extralibs		 	@@\
+									@@\
+InstallAddLibrary(libname,$(LIBDIR))					@@\
+									@@
+#endif /* LibraryListAddTarget */
+
+
+/*
+ * LibraryTarget - generate rules to create a library.
+ */
+
+#ifndef LibraryTarget
+#define	LibraryTarget(libname)						@@\
+AllTarget($(addsuffix .a, $(addprefix lib, libname)))			@@\
+									@@\
+$(addsuffix .a, $(addprefix lib, libname)): $(OBJECTS)			@@\
+	$(RM) $@							@@\
+	$(AR) $@ $(OBJECTS)						@@\
+	$(RANLIB) $@							@@\
+									@@\
+InstallLibrary(libname,$(LIBDIR))					@@\
+									@@
+#endif /* LibraryTarget */
+
+
+/*
+ *  HeaderTarget - generate rules to install header files.
+ */
+
+#ifndef HeaderTarget
+#define HeaderTarget( file )						@@\
+install:: file								@@\
+	if [ ! -d $(HEADERDIR) ]; then \				@@\
+		$(MKDIR) $(HEADERDIR) ; \				@@\
+	fi								@@\
+	for i in file ;\						@@\
+	do \								@@\
+		if cmp -s $$i $(addprefix $(addprefix $(HEADERDIR), /), $$i) ; then \@@\
+			echo "Source and destination for $$i do not differ -- not installed!" ; \	@@\
+		else	\							@@\
+			$(INSTALL)  $(INSTHEADERFLAGS) $$i $(HEADERDIR) ; \	@@\
+		fi; \							@@\
+	done								@@\
+									@@\
+header:: file								@@\
+	if [ ! -d $(HEADERDIR) ]; then \				@@\
+		$(MKDIR) $(HEADERDIR) ; \				@@\
+	fi								@@\
+	for i in file ;\						@@\
+	do \								@@\
+		if cmp -s $$i $(addprefix $(addprefix $(HEADERDIR), /), $$i) ; then \@@\
+			echo "Source and destination for $$i do not differ -- not installed!" ; \	@@\
+		else	\							@@\
+			$(INSTALL)  $(INSTHEADERFLAGS) $$i $(HEADERDIR) ; \	@@\
+		fi; \							@@\
+	done								@@\
+									@@\
+distclean::								@@\
+	$(RM) $(addprefix $(HEADERDIR)/, file)				@@
+#endif /* HeaderTarget */
+
+/*
+ *  HeaderSubdirs - generate rules to install headers in subdirs.
+ */
+
+#ifndef HeaderSubdirs
+#define HeaderSubdirs(dirs) \
+headers:: header							@@\
+	@case '${MFLAGS}' in *[ik]*) set +e;; esac; \			@@\
+	for d in dirs ;\						@@\
+	do \								@@\
+		if [ -f $$d/Makefile ]; then \				@@\
+		(cd $$d ; $(MAKE) $(MFLAGS) headers) ; \		@@\
+		fi; \							@@\
+	done								@@
+#endif /* HeadersTarget */
+
+
+/*
+ *  DocTarget - generate rules to work with doxygen documentation
+ */
+
+#ifndef DocTarget
+#define DocTarget( file )                                               @@\
+doc:: 		   	    						@@\
+	if [ ! -d $(DOCUMENTATIONDIR) ]; then \				@@\
+		$(MKDIR) $(DOCUMENTATIONDIR) ; \			@@\
+	fi								@@\
+	$(DOC) file							@@\
+									@@\
+clean::									@@\
+	-$(RM) -r $(DOCUMENTATIONDIR)					@@
+#endif /* DocTarget */
+
+/*
+ *  Utility Rules.
+ */
+
+/*
+ *  CleanTarget - generate rules to remove any garbage files
+ */
+
+#ifndef CleanTarget
+#define	CleanTarget()							@@\
+clean::									@@\
+	if [ $(notdir $(PWD)) = $(MACHTYPE) ]; then \			@@\
+	   $(RM_CMD); \		   	    	       	       	  	@@\
+	elif [ $(notdir $(PWD)) = "src" ]; then \			@@\
+	   $(RM_CMD); \		   	    	       	       	  	@@\
+	else \								@@\
+	   $(RM) FilesToClean; \					@@\
+	fi    								@@
+#endif /* CleanTarget */
+
+
+/*
+ * MakefileTarget - generate rules to build a normal Makefile.
+ */
+
+#ifndef MakefileTarget
+#define MakefileTarget()						@@\
+BuildMakefileTarget(Imakefile, /**/)					@@
+#endif /* MakefileTarget */
+
+
+/*
+ *  Rules for supporting subdirectories.
+ */
+
+/*
+ *  InstallSubdirs - generate rules to recursively install programs and files.
+ */
+
+#ifndef InstallSubdirs
+#define InstallSubdirs(dirs) \
+NamedTargetSubdirs(install,dirs,"Install",/**/,install)
+#endif /* InstallSubdirs */
+
+
+/*
+ *  InstallDocSubdirs - generate rules to recursively install documentation.
+ */
+
+#ifndef InstallDocSubdirs
+#define InstallDocSubdirs(dirs) \
+NamedTargetSubdirs(install.doc,dirs,"Documentation install",/**/,install.doc)
+#endif /* InstallDocSubdirs */
+
+
+/*
+ *  CleanSubdirs - generate rules to recursively clean out garbage files.
+ */
+
+#ifndef CleanSubdirs
+#define CleanSubdirs(dirs) \
+NamedTargetSubdirs(clean,dirs,"Clean",/**/,clean)
+#endif /* CleanSubdirs */
+
+
+/*
+ *  DistcleanSubdirs - generate rules to recursively clean distributions.
+ */
+
+#ifndef DistcleanSubdirs
+#define DistcleanSubdirs(dirs) \
+NamedTargetSubdirs(distclean,dirs,"Distribution clean",/**/,distclean)
+#endif /* DistcleanSubdirs */
+
+/*
+ * DocSubdirs - generate rules to recursively create doc files.
+ */
+
+#ifndef DocSubdirs
+#define DocSubdirs(dirs) \
+NamedTargetSubdirs(doc,dirs,"Documentation in",/**/,doc)
+#endif
+
+
+/*
+ *  MakefileSubdirs - generate rules to create Makefiles.
+ */
+
+#ifndef MakefileSubdirs
+#define MakefileSubdirs(dirs)						@@\
+Makefiles::								@@\
+	@case '${MFLAGS}' in *[ik]*) set +e;; esac; \			@@\
+	for i in dirs ;\						@@\
+	do \								@@\
+		echo "Making Makefiles in `pwd`/$$i..."; \		@@\
+		if [ -f $$i/Makefile ]; then \				@@\
+			(cd $$i; $(MAKE) $(MFLAGS) PROJ_IMAKEDIR=$(PROJ_IMAKEDIR) LAB_IMAKEDIR=$(LAB_IMAKEDIR) Makefile; $(MAKE) $(MFLAGS) PROJ_IMAKEDIR=$(PROJ_IMAKEDIR) LAB_IMAKEDIR=$(LAB_IMAKEDIR) Makefiles) ; \							       @@\
+		fi; \							@@\
+	done								@@
+#endif
+
+
+/*
+ *  MakeSubdirs - Run make all in subdirectory list.
+ */
+
+#ifndef MakeSubdirs
+#define MakeSubdirs(dirs) \
+NamedTargetSubdirs(all,dirs,"Make" all,/**/,all)
+#endif /* MakeSubdirs */
+
+
+/*
+ *  MakeNamedSubdirs - Run make all in subdirectory list.
+ */
+
+#ifndef MakeNamedSubdir
+#define MakeNamedSubdir(target,dir,command) \
+NamedTargetSubdirs(target,dir,"Make" command,/**/,command)
+#endif /* MakeNamedSubdir */
+
+
+/*
+ *  DependSubdirs - generate rules to recursively compute dependencies as
+ *  part of the make depend step.
+ */
+
+#ifndef DependSubdirs
+#define DependSubdirs(dirs) \
+NamedTargetSubdirs(depend,dirs,"Make depend", /**/,depend)
+#endif /* DependSubdirs */
+
+
+/*
+ *  Rules used by other rules.
+ */
+
+/*
+ *  AllTarget - generate rules to build necessary things during make all.
+ */
+
+#ifndef AllTarget
+#define AllTarget(depends)						@@\
+all:: depends
+#endif /* AllTarget */
+
+
+/*
+ *  RemoveTargetProgram - Remove the program specified as argument.
+ */
+
+#ifndef RemoveTargetProgram
+#define RemoveTargetProgram(program) $(RM) program
+#endif
+
+
+/*
+ *  InstallProgramWithFlags - generate rules to install an executable program
+ *  using given install flags.
+ */
+
+#ifndef CopyFile
+#define CopyFile(program,dest)	 					@@\
+copy:: program								@@\
+	if [ ! -d dest ]; then \					@@\
+		$(MKDIR) dest ; \					@@\
+	fi								@@\
+	$(CP) -f	program dest ; \				@@\
+									@@\
+distclean::								@@\
+	$(RM) $(addprefix $(addprefix dest, /), $(notdir program))	@@
+#endif /* CopyFile */
+
+
+/*
+ *  InstallProgramWithFlags - generate rules to install an executable program
+ *  using given install flags.
+ */
+
+#ifndef InstallProgramWithFlags
+#define InstallProgramWithFlags(program,dest,flags)			@@\
+install:: program							@@\
+	if [ ! -d dest ]; then \					@@\
+		$(MKDIR) dest ; \					@@\
+	fi								@@\
+	if cmp -s  program $(addprefix $(addprefix dest, /), program) ; then \@@\
+		echo "Source and destination for program do not differ -- not installed!" ; \	@@\
+	else	\							@@\
+		$(INSTALL)  $(INSTBINFLAGS) flags program dest ; \	@@\
+	fi								@@\
+									@@\
+distclean::								@@\
+	$(RM) $(addprefix $(addprefix dest, /), $(notdir program))	@@
+#endif /* InstallProgramWithFlags */
+
+
+/*
+ *  KeepUpToDateCopy - maintains a copy of a file and ensures it is 
+ *  up-to-date with the help of compare
+ */
+
+#ifndef KeepUpToDateCopy
+#define KeepUpToDateCopy(file,src,dest)					@@\
+all::									@@\
+	if [ -f $(addprefix $(addprefix src,/), file) ] && [ -d dest ]; then \		@@\
+	   if ! cmp -s  $(addprefix $(addprefix src,/), file) $(addprefix $(addprefix dest,/), file); then \@@\
+		($(INSTALL)  $(INSTBINFLAGS) $(addprefix $(addprefix src,/), file) dest ; \		@@\
+		echo file " was updated!") ; \			    	@@\
+	   fi;	\							@@\
+	else \								@@\
+  	   echo "Warning: Cannot keep "file" update to date in "dest; \		@@\
+	fi								@@\
+									@@
+#endif /* KeepUpToDateCopy */
+
+
+/*
+ *  InstallProgram - generate rules to install an executable program.
+ */
+
+#ifndef InstallProgram
+#define	InstallProgram(program,dest)					@@\
+InstallProgramWithFlags(program,dest, /**/)				@@
+#endif /* InstallProgram */
+
+
+/*
+ *  InstallLibrary - generate rules to install the indicated library.
+ */
+
+#ifndef InstallLibrary
+#define	InstallLibrary(libname,dest)					@@\
+install:: $(addsuffix .a, $(addprefix lib, libname))			@@\
+	if [ ! -d dest ]; then \					@@\
+		$(MKDIR) dest ; \					@@\
+	fi								@@\
+	$(INSTALL)  $(INSTLIBFLAGS) $(addsuffix .a, $(addprefix lib, libname)) dest	@@\
+	$(RANLIB) $(RANLIBINSTFLAGS) $(addsuffix .a, $(addprefix dest/lib, libname))	@@\
+									@@\
+distclean::								@@\
+	$(RM) $(addsuffix .a, $(addprefix $(addsuffix /lib, dest), libname))		@@
+#endif /* InstallLibrary */
+
+
+/*
+ *  InstallAddLibrary - generate rules to install the indicated library.
+ */
+
+#ifndef InstallAddLibrary
+#define	InstallAddLibrary(libname,dest)					@@\
+install:: $(addsuffix .a, $(addprefix lib, libname))			@@\
+	if [ ! -d dest ]; then \					@@\
+		$(MKDIR) dest ; \					@@\
+	fi								@@\
+	$(INSTALL)  $(INSTLIBFLAGS) $(addsuffix .a, $(addprefix lib, libname)) dest	@@\
+									@@\
+distclean::								@@\
+	$(RM) $(addsuffix .a, $(addprefix $(addsuffix /lib, dest), libname))		@@
+#endif /* InstallAddLibrary */
+
+
+/*
+ *  DependTarget - generate rules to compute dependencies for all files listed
+ *  in $(SOURCES).
+ */
+
+#ifndef DependTarget
+#define	DependTarget()
+#endif /* DependTarget */
+
+
+/*
+ *  BuildMakefileTarget - generate rules to build a Makefile from an Imakefile
+ *  and any special imake flags.  This is generally done automatically by the
+ *  template or by any special Imakefiles.
+ */
+
+#ifndef BuildMakefileTarget
+#define	BuildMakefileTarget(imakefile,imakeflags)			@@\
+									@@\
+Makefile:: Imakefile $(LAB_IMAKEDIR)/LAB.cf $(LAB_IMAKEDIR)/LAB_Imake.tmpl $(LAB_IMAKEDIR)/LAB_Imake.rules @@\
+	-@if [ -f Makefile ]; then \					@@\
+		$(RM) Makefile.bak; $(MV) Makefile Makefile.bak; \	@@\
+	else \	      		    	  	   		 	@@\
+	exit 0; \		    	  	   		 	@@\
+	fi	     							@@\
+	$(IMAKE_CMD) imakeflags						@@\
+	@echo "Makefile in `pwd` has been updated."			@@
+#endif /* BuildMakefileTarget */
+
+
+/*
+ *  NamedTargetSubdirs - recursively make a series of steps
+ */
+
+#ifndef NamedTargetSubdirs
+#define NamedTargetSubdirs(name,dirs,verb,flags,subname)		@@\
+name::									@@\
+	@case '${MFLAGS}' in *[ik]*) set +e;; esac; \			@@\
+	for i in dirs ; \						@@\
+	do \								@@\
+		if [ ! "$$i" = "../$(SPARC)" ]; then \			@@\
+		( if [ ! -d $$i ]; then \    	     			@@\
+		     ( $(MKDIR) $$i; \					@@\
+		     echo "Created " $$i; \    				@@\
+		     cd $$i;            \				@@\
+		     if [ `uname -a | grep -c ipipe` = 1 ]; then \	@@\
+		       if [ -f ../makefiles/imakefile.xeno ]; then \	@@\
+		         ln -s ../makefiles/imakefile.xeno Imakefile;\	@@\
+		       else \  				   		@@\
+		         ln -s "../makefiles/imakefile.unix" Imakefile;\@@\
+		       fi; \   				   		@@\
+		     else \  				 		@@\
+		       ln -s "../makefiles/imakefile.unix" Imakefile;\	@@\
+		     fi; \   				 		@@\
+		     $(IMAKE_CMD) imakeflags );\			@@\
+		  else \						@@\
+		     cd $$i;\						@@\
+		  fi; \ 						@@\
+		  echo verb "in `pwd` begun..."; \			@@\
+		   $(MAKE) $(MFLAGS) flags subname); \		        @@\
+		else \							@@\
+		     echo " --- Skipping sparc directory ---"; \	@@\
+		fi \							@@\
+	done								@@
+#endif
+
+ 

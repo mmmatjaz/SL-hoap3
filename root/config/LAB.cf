@@ -1,0 +1,195 @@
+/* generate the MACHTYPE names for conditional statements */
+
+/* sparc */
+#if sparc
+#define MACHFLAG
+#undef sparc
+#endif
+
+SPARC = sparc
+
+#ifdef MACHFLAG
+#define sparc 1
+#undef MACHFLAG
+#endif
+
+/* powerpc */
+#if powerpc
+#define MACHFLAG
+#undef powerpc
+#endif
+
+POWERPC = powerpc
+
+#ifdef MACHFLAG
+#define powerpc 1
+#undef MACHFLAG
+#endif
+
+/* i386 */
+#if i386
+#define MACHFLAG
+#undef i386
+#endif
+
+I386 = i386
+
+#ifdef MACHFLAG
+#define i386 1
+#undef MACHFLAG
+#endif
+
+/* i586 */
+#if i586
+#define MACHFLAG
+#undef i586
+#endif
+
+I586 = i586
+
+#ifdef MACHFLAG
+#define i586 1
+#undef MACHFLAG
+#endif
+
+/* i386mac */
+#if i386mac
+#define MACHFLAG
+#undef i386mac
+#endif
+
+I386MAC = i386mac
+
+#ifdef MACHFLAG
+#define i386mac 1
+#undef MACHFLAG
+#endif
+
+/* x86_64 */
+#if x86_64
+#define MACHFLAG
+#undef x86_64
+#endif
+
+X86_64 = x86_64
+
+#ifdef MACHFLAG
+#define x86_64 1
+#undef MACHFLAG
+#endif
+
+/* x86_64mac */
+#if x86_64mac
+#define MACHFLAG
+#undef x86_64mac
+#undef i386
+#undef i386mac
+#endif
+
+X86_64 = x86_64mac
+
+#ifdef MACHFLAG
+#define x86_64mac 1
+#undef MACHFLAG
+#endif
+
+/* i486xeno */
+#if i486xeno
+#define MACHFLAG
+#undef i486xeno
+#undef i486
+#endif
+
+I486XENO = i486xeno
+
+#ifdef MACHFLAG
+#define i486xeno 1
+#define __XENO__
+#undef MACHFLAG
+#endif
+
+/* x86_64xeno */
+#if x86_64xeno
+#define MACHFLAG
+#undef x86_64xeno
+#undef x86_64
+#endif
+
+X86_64XENO = x86_64xeno
+
+#ifdef MACHFLAG
+#define x86_64xeno 1
+#define __XENO__
+#undef MACHFLAG
+#endif
+
+
+
+/* declaration of all variables and important directories */
+
+MY_BINDIR     =  $(PROG_ROOT)/bin
+MY_INCLUDES   =  $(PROG_ROOT)/include
+MY_LIBDIR     =  $(PROG_ROOT)/lib
+
+MYBINDIR      =  $(MY_BINDIR)
+MYINCLUDEPATH =  $(MY_INCLUDES)
+MYLIBDIR      =  $(MY_LIBDIR)
+
+DOCUMENTATIONDIR = doc
+
+LAB             =   CLMC   /* use CYH for ATR */
+LAB_BINDIR      =   $(LAB_ROOT)/bin
+LAB_INCLUDES    =  -I$(LAB_ROOT)/include
+LAB_LIBDIR      =  -L$(LAB_ROOT)/lib/$(MACHTYPE)
+
+CLGROOT         =   $(LAB_ROOT)
+CLGBINDIR       =   $(LAB_BINDIR)
+CLGINCLUDEPATH  =   $(LAB_INCLUDES)
+CLGLIBDIR       =   $(LAB_LIBDIR)
+ 
+VXPROCS         =   ../2700  ../2400
+
+#ifdef powerpc
+MATLAB_SUFFIX   =  mexmac
+MATLAB_ARCH     =  mac
+#endif
+
+#ifdef i386
+MATLAB_SUFFIX   =  mexglx
+MATLAB_ARCH     =  glnx86
+#endif
+
+#ifdef i586
+MATLAB_SUFFIX   =  mexglx
+MATLAB_ARCH     =  glnx86
+#endif
+
+#ifdef sparc
+MATLAB_SUFFIX   =  mexsol
+MATLAB_ARCH     =  sol2
+#endif
+
+MATLAB_ROOT     =   /usr/local/matlab
+MATLAB_INCLUDES =  -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include 
+MATLAB_LIBDIR   =  -L$(MATLAB_ROOT)/bin/$(MATLAB_ARCH)
+
+
+/* which computer can cross compile? */
+CROSSMACHTYPE   =   $(SPARC)
+
+/* which compute can run the little dog compilation */
+LDOGHOST        =  argus
+
+/* path to xenomai root directory */
+XENOMAI_ROOT    = /usr/xenomai
+
+/* which computers can run the Sarcos robots */
+SARCOS_MASTER_HOST = xenomai
+SARCOS_SLAVE_HOST  = xenomai
+SARCOS_PRIMUS_HOST = xenomai
+
+/* which computers can run the ARM robot */
+ARM_HOST = mandy
+
+/*which computers can run Hermes */
+HERMES_HOST = hermes
