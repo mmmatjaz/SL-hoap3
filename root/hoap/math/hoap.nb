@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      5164,        161]
-NotebookOptionsPosition[      4117,        124]
-NotebookOutlinePosition[      4743,        148]
-CellTagsIndexPosition[      4700,        145]
+NotebookDataLength[      5261,        163]
+NotebookOptionsPosition[      4213,        126]
+NotebookOutlinePosition[      4839,        150]
+CellTagsIndexPosition[      4796,        147]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -69,10 +69,13 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"GeometricJacobian", "[", 
   RowBox[{"\"\<hoap.dyn\>\"", ",", 
-   RowBox[{"{", "21", "}"}], ",", "\"\<hoap\>\""}], "]"}]], "Input",
+   RowBox[{"{", 
+    RowBox[{"600", ",", "1600", ",", "2500", ",", "2700"}], "}"}], ",", 
+   "\"\<hoap\>\""}], "]"}]], "Input",
  CellChangeTimes->{{3.5596244329160433`*^9, 3.559624432921826*^9}, {
    3.559636510049341*^9, 3.559636513282792*^9}, 3.559638710035881*^9, 
-   3.559638745371014*^9, 3.559638976992874*^9, 3.559639341276926*^9}],
+   3.559638745371014*^9, 3.559638976992874*^9, 3.559639341276926*^9, {
+   3.560162940577297*^9, 3.560162970840088*^9}}],
 
 Cell[BoxData[
  RowBox[{"ForDynArt", "[", 
@@ -98,13 +101,12 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{
   StyleBox[
-   RowBox[{"Set", "::", "partw"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Part \[NoBreak]\\!\\(21\\)\[NoBreak] of \
-\[NoBreak]\\!\\({0, 0, state$21$$thdd}\\)\[NoBreak] does not exist. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
-ButtonNote -> \\\"Set::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+   RowBox[{"Set", "::", "partw"}], "MessageName"], ":", 
+  " ", "\<\"Part \[NoBreak]\\!\\(21\\)\[NoBreak] of \[NoBreak]\\!\\({0, 0, \
+state$21$$thdd}\\)\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Set::partw\\\"]\\)\"\>"}]], "Message", "MSG",
  CellChangeTimes->{{3.5596393350493813`*^9, 3.559639346582782*^9}, 
    3.5596394094622383`*^9}]
 }, Open  ]],
@@ -125,7 +127,7 @@ Cell[BoxData[
 WindowToolbars->{},
 CellGrouping->Automatic,
 WindowSize->{775, 853},
-WindowMargins->{{-1587, Automatic}, {29, Automatic}},
+WindowMargins->{{-1597, Automatic}, {19, Automatic}},
 PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
 ShowSelection->True,
 ShowCellLabel->True,
@@ -155,14 +157,14 @@ Cell[1030, 39, 184, 3, 30, "Input"],
 Cell[1217, 44, 347, 8, 30, "Input"],
 Cell[1567, 54, 275, 6, 30, "Input"],
 Cell[1845, 62, 215, 4, 30, "Input"],
-Cell[2063, 68, 364, 6, 30, "Input"],
-Cell[2430, 76, 347, 8, 30, "Input"],
+Cell[2063, 68, 473, 9, 30, "Input"],
+Cell[2539, 79, 347, 8, 30, "Input"],
 Cell[CellGroupData[{
-Cell[2802, 88, 299, 7, 30, "Input"],
-Cell[3104, 97, 538, 11, 24, "Message"]
+Cell[2911, 91, 299, 7, 30, "Input"],
+Cell[3213, 100, 525, 10, 24, "Message"]
 }, Open  ]],
-Cell[3657, 111, 183, 3, 30, "Input"],
-Cell[3843, 116, 270, 6, 30, "Input"]
+Cell[3753, 113, 183, 3, 30, "Input"],
+Cell[3939, 118, 270, 6, 30, "Input"]
 }
 ]
 *)
