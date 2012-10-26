@@ -261,7 +261,8 @@ myDrawGLElement(int num, double length, int flag)
   GLfloat  black[4]={(float)0.,(float)0.,(float)0.0,(float)1.0};
   GLfloat  white[4]={(float)1.,(float)1.,(float)1.0,(float)1.0};
   GLfloat  yellow[4]={(float)1.0,(float)0.8,(float)0.7,(float)1.0};
-	
+
+  //flag=0;
   if (flag==1) {
     glTranslated(0.0,0.0,length); 
 
@@ -292,7 +293,7 @@ myDrawGLElement(int num, double length, int flag)
     glTranslated(0.0,0.0,-length);
   }
 	
-
+  //num=-20;
   switch (num) {
 
   case 15: /* the torso */
