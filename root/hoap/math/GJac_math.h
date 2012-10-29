@@ -1,1 +1,0 @@
-hoap_GJac_math.h
