@@ -1,0 +1,52 @@
+SL_NULL_JOINT 0.0
+
+B_TR    0.0
+B_TAA  -1.0
+B_TFE  -17.0
+
+R_SAA      0.0
+R_SFE    -30.0
+R_HR       7.0
+R_EB     -25.0
+R_WR     -30.0
+R_WAA      0.0
+R_WFE    -30.0
+
+
+L_SAA      2.0
+L_SFE     25.0
+L_HR      -5.0
+L_EB     -25.0
+L_WR      -2.0
+L_WFE    -20.0
+L_WAA     10.0
+
+
+R_HAA    0.0
+R_HFE   -4.0
+R_TR    -0.0
+R_KFE    0.0
+R_AR     0.0
+R_AFE   -6.0
+R_AAA   -11.0
+
+L_HAA    0.0
+L_HFE   -2.0
+L_TR     0.0
+L_KFE   -5.0
+L_AR   -19.0
+L_AFE  -14.0
+L_AAA  -0.0
+
+H_N -4.0
+H_L -8.0
+H_T 0.0
+
+R_EP 0.0
+R_ET 0.0
+L_EP 0.0
+L_ET 0.0
+
+
+
+

@@ -1,0 +1,50 @@
+BASE 0.0
+
+L_SFE   0.0
+L_SAA -10.0
+L_HR    0.0
+L_EB   90.0
+L_WR    0.0
+L_WFE   0.0
+L_WAA   0.0
+
+R_SFE   0.0
+R_SAA -10.0
+R_HR    0.0
+R_EB   90.0
+R_WR    0.0
+R_WAA   0.0
+R_WFE   0.0
+
+L_HFE  10.0
+L_HAA   0.0
+L_HFR   0.0
+L_KFE  20.0
+L_AR    0.0
+L_AFE  10.0
+L_AAA   0.0
+
+R_HFE  10.0
+R_HAA   0.0
+R_HFR   0.0
+R_KFE  20.0
+R_AR    0.0
+R_AFE   0.0
+R_AAA   0.0
+
+B_TR    0.0
+B_TAA   0.0
+B_TFE  15.0
+
+B_HN  0.0
+B_HT  0.0
+H_HR  0.0
+
+R_EP 0.0
+R_ET 0.0
+L_EP 0.0
+L_ET 0.0
+
+
+
+

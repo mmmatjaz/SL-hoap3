@@ -1,1 +1,0 @@
-hoap_ForDynArt_declare.h

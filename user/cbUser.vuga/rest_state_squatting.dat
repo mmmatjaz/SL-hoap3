@@ -1,0 +1,39 @@
+L_SFE  60
+L_SAA -20
+L_HR    0
+L_EB   60
+L_WR    0
+L_WFE   0
+L_WAA   0
+
+R_SFE  60
+R_SAA -20
+R_HR    0
+R_EB   60
+R_WR    0
+R_WFE   0
+R_WAA   0
+
+L_HFE  10
+L_HAA   0
+L_HFR   0
+L_KFE  20
+L_AR    0
+L_AFE  10
+L_AAA   0
+
+R_HFE  10
+R_HAA   0
+R_HFR   0
+R_KFE  20
+R_AR    0
+R_AFE  10
+R_AAA   0
+
+B_TFE   5
+B_TAA   0
+B_TR    0
+
+B_HN   0
+B_HT   0
+B_HR   0

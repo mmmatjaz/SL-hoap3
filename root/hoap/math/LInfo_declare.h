@@ -1,1 +1,0 @@
-hoap_LInfo_declare.h

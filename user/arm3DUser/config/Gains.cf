@@ -1,0 +1,25 @@
+/* this file contains gains and max control for each DOF
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, gain_th, gain_thd, gain_int, max_control  */
+
+  SFE  40 6     0.01  100
+  EB   30 2     0.01  100
+  WFE  10 0.2   0.01  100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

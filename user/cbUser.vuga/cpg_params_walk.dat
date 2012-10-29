@@ -1,0 +1,23 @@
+max_cycle 8
+
+scale_time  5.0
+torso_bend  0.0
+ankle_bend  0.0
+
+K_c 7.0
+K_c_pit 3.5
+natural_freq 6.3594
+
+AMP_HAA  1.0
+AMP_AAA -1.0
+AMP_HFE -10.0
+AMP_KFE -20.0
+AMP_AFE -10.0
+
+amp_l_add_hip   -0.0
+amp_l_add_ankle  0.0
+
+hip_gain_bias 200.0
+knee_gain_bias 200.0
+ankle_gain_bias 400.0
+

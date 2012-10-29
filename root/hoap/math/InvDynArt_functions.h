@@ -1,1 +1,0 @@
-hoap_InvDynArt_functions.h

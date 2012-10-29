@@ -1,0 +1,44 @@
+/* this file contains gains and max control for each DOF
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, gain_th, gain_thd, gain_int, vel_p_gain, vel_i_gain, torque_p_gain, torque_i_gain, max_control  */
+
+	L_SFE	150	10	0	100	0	0	0
+	L_SAA	150	15	0	0	0	0	0
+	L_HR	300	20	0	50	0	0	0
+	L_EB	200	10	0	100	0	0	0
+	L_WR	100	10	0	50	0	0	0
+	L_WFE	50	0	0	0	0	0	0
+	L_WAA	50	0	0	0	0	0	0
+	R_SFE	150	10	0	100	0	0	0
+	R_SAA	50	0	0	0	0	0	0
+	R_HR	200	10	0	50	0	0	0
+	R_EB	200	10	0	100	0	0	0
+	R_WR	100	10	0	50	0	0	0
+	R_WFE	50	0	0	0	0	0	0
+	R_WAA	50	0	0	0	0	0	0
+	L_HFE	300	0	0	300	0	0	0
+	L_HAA	150	0	0	100	0	0	0
+	L_HFR	200	0	0	300	0	0	0
+	L_KFE	425	0	0	300	0	0	0
+	L_AR	300	3	0	300	0	0	0
+	L_AFE	500	0	0	300	0	0	0
+	L_AAA	500	0	0	300	0	0	0
+	R_HFE	300	0	0	300	0	0	0
+	R_HAA	150	0	0	100	0	0	0
+	R_HFR	200	0	0	300	0	0	0
+	R_KFE	425	0	0	300	0	0	0
+	R_AR	300	3	0	300	0	0	0
+	R_AFE	500	0	0	300	0	0	0
+	R_AAA	500	0	0	300	0	0	0
+	B_TR	250	0	0	0	0	0	0
+	B_TAA	250	0	0	0	0	0	0
+	B_TFE	250	0	0	0	0	0	0
+	B_HN	-100	0	0	0	0	0	0
+	B_HT	100	0	0	0	0	0	0
+	B_HR	100	0	0	0	0	0	0
+	R_EP	300	0	0	0	0	0	0
+	R_ET	300	0	0	0	0	0	0
+	L_EP	300	0	0	0	0	0	0
+	L_ET	300	0	0	0	0	0	0

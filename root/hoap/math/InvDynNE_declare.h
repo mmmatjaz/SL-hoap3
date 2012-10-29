@@ -1,1 +1,0 @@
-hoap_InvDynNE_declare.h

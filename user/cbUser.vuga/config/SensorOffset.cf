@@ -1,0 +1,60 @@
+/* this file contains the specification for position offsets and min/max
+   position values (min and max AFTER offset was subtracted. Additionally,
+   the file allows to set a default posture for the robot. 
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format:
+     keyword	min	max	default	rest	weight	offset  */
+
+     L_SFE	-0.35	1.75	0.0	0.00	3	0.0
+     L_SAA	-1.75	0	-0.2	-0.2	9	0.0
+     L_HR	-0.79	0.79	0.0	0.00	3	0.0
+     L_EB	0	2.09	1.57	1.57	3	0.0
+     L_WR	-0.79	0.79	0.0	0.00	10	0.0
+     L_WFE	-0.39	0.39	0.0	0.00	20	1.3920
+     L_WAA	-0.78	0.78	0.0	0.00	9	1.4418
+
+     R_SFE	-0.35	1.75	0.0	0.00	3	0.0
+     R_SAA	-1.75	0	-0.2	-0.2	9	0.0
+     R_HR	-0.79	0.79	0.0	0.00	3	0.0
+     R_EB	0	2.09	1.57	1.57	3	0.0
+     R_WR	-0.79	0.79	0.0	0.00	10	0.0
+     R_WFE	-0.39	0.39	0.0	0.00	20	1.3920
+     R_WAA	-0.78	0.78	0.0	0.00	9	1.4418
+
+     L_HFE	-0.52	1.57	0.12	0.00	0.1	0.0
+     L_HAA	-0.52	0.26	0.0	0.00	0.1	0.0 
+     L_HFR	-0.44	0.44	0.0	0.00	0.1	0.0
+     L_KFE	0	2.09	0.35	0.00	0.1	0.0
+     L_AR	-0.26	0.26	0.0	0.00	0.1	0.0
+     L_AFE	-0.52	0.52	0.2	0.00	0.1	0.0
+     L_AAA	-0.26	0.26	0.0	0.00	0.1	0.0 
+
+     R_HFE	-0.52	1.57	0.12	0.00	0.1	0.0
+     R_HAA	-0.52	0.26	0.0	0.00	0.1	0.0
+     R_HFR	-0.44	0.44	0.0	0.00	0.1	0.0
+     R_KFE	0	2.09	0.35	0.00	0.1	0.0
+     R_AR	-0.26	0.26	0.0	0.00	0.1	0.0
+     R_AFE	-0.52	0.52	0.2	0.00	0.1	0.0
+     R_AAA	-0.26	0.26	0.0	0.00	0.1	0.0
+ 
+     B_TAA	-0.48	0.48	0.0	0.00	600	0.0
+     B_TR	-0.31	0.31	0.0	0.00	500	0.0
+     B_TFE	-0.17	0.61	0.1	0.00	500	0.0
+
+     B_HN	-0.44	0.44	0.0	0.00	5.0	0.0
+     B_HT	-0.22	0.22	0.0	0.00	10.0	0.0
+     B_HR	-0.79	0.79	0.0	0.00	5.0	0.0
+ 
+     R_EP	-0.65	0.65	0.0	0.00	1.0	0.0
+     R_ET	-0.65	0.65	0.0	0.00	10.0	0.0
+     L_EP	-0.65	0.65	0.0	0.00	1.0	0.0
+     L_ET	-0.65	0.65	0.0	0.00	10.0	0.0
+
+
+
+
+
+
+

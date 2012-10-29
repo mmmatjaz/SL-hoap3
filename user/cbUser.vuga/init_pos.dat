@@ -1,0 +1,16 @@
+xstance 0.08
+ystance 0.00
+
+xbias -0.0
+ybias -0.02
+zbias -0.76
+
+l_rol -0
+l_pit 11
+l_yaw 0
+
+r_rol -4
+r_pit 8
+r_yaw 0
+
+
