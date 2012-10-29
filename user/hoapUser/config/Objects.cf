@@ -1,0 +1,16 @@
+/* this file contains a list of object specifications that can be added to the
+   graphics scence. Each object must contain blank or tab delimited parameters in
+   the following sequence:
+
+	name  (max 20 characters)
+        object type (e.g., CUBE=1, SPHERE=2, see SL_openGL.h)
+        rgb color values (3 values)
+        pos_x pos_y pos_z
+        rot_x rot_y_rot_z
+        scale_x scale_y scale_z
+        contact_model  (e.g., DAMPED_SPRING_FRICTION=1)
+        appropriate number of object parameters (N_OBJ_PARMS: see SL_openGL.h)
+        appropriate number of contact parameters (N_OBJ_PARMS: see SL_openGL.h)
+
+*/        
+

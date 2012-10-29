@@ -1,0 +1,67 @@
+/* this file contains the specification such that all linear actuators
+   and encoders can be represented as torque and rad values.
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, 
+           linear sensor (1/0), 
+           linear actuator (1/0),
+           linear load cell (1/0), 
+           moment arm (length from joint rot axis to end of load cell (d)), 
+           length from attachement of linear actuator to joint axis (c)
+	   (every linear value is in meters), 
+           polarity of position sensor (1/-1),
+           polarity of load (1/-1)
+
+		for the torque sensing (added by ludo) - rad and m
+		length of the load cell (a)
+		length of main link (b)
+		angle between d and c when at position 0
+*/
+
+
+  L_SFE  0 1 1 0.0255	0.0256	1	1	0.0413	0.0589 	2.6235
+  L_SAA  0 1 1 0.0254	0.0256	1	1	0.0413	0.0589 	4.0164
+  L_HR   0 1 0 0	0		1	1	0	0	0
+  L_EB   0 1 1 0.0413 	0.0318 	1	1	0.0413	0.0589	2.3083
+  L_WR   0 0 0 0	0		1	1	0	0	0
+  L_WFE  0 1 1 0.0222	0.1248	1	1	0	0		1.3920
+  L_WAA  0 1 1 0.0181	0.1407	1	1	0	0		1.4418	
+
+  R_SFE  0 1 1 0.0255	0.0256	1	1	0.0413	0.0589	2.6235
+  R_SAA  0 1 1 0.0254	0.0256	1	1	0.0413	0.0589	4.0164
+  R_HR   0 0 0 0	0		1	1	0		0		0
+  R_EB   0 1 1 0.0413 	0.0318 	1	1	0.0413	0.0589	2.3083
+  R_WR   0 0 0 0	0		1	1	0		0		0 
+  R_WFE  0 1 1 0.0222	0.1248	1	1	0		0		1.3920
+  R_WAA  0 1 1 0.0181	0.1407	1	1	0		0		1.4418
+
+  L_HFE  0 1 1 0.05		0.0512 	1	1	0.0826	0.1143	3.1447
+  L_HAA  0 1 1 0.0420 	0.1901	1	1	0		0		2.3135
+  L_HFR  0 0 0 0	0		1	1	0		0		0
+  L_KFE  0 1 1 0.0825	0.0818 	1	1	0.0826	0.1143	1.8286
+  L_AR   0 1 1 0.0679	0.0696	1	1	0		0		1.7247
+  L_AFE  0 1 1 0.0521	0.2685 	1	1	0		0		1.3885
+  L_AAA  0 1 1 0.0456	0.1711 	1	1	0		0		1.4642
+
+  R_HFE  0 1 1 0.05		0.0512 	1	1	0.0826	0.1143	3.1447
+  R_HAA  0 1 1 0.0419	0.1906 	1	1	0		0		1.777
+  R_HFR  0 0 0 0	0		1	1	0		0		0
+  R_KFE  0 1 1 0.0825	0.0818 	1	1	0.0826	0.1143  1.8286
+  R_AR   0 1 1 0.0679	0.0696 	1	1	0		0		1.7247
+  R_AFE  0 1 1 0.0521	0.2685 	1	1	0		0		1.3885
+  R_AAA  0 1 1 0.0456	0.1711 	1	1	0		0		1.4642
+
+  B_TAA  0 1 1 0.1198	0.1309	1	1	0		0		1.6487
+  B_TFE  0 1 1 0.0713	0.1736	1	1	0		0		1.2925
+  B_TR   0 1 1 0.2065	0.0622	1	1	0		0		1.6098
+
+  B_HN   0 0 0 0		0		1	1	0		0		0
+  B_HT   0 0 0 0		0		1	1	0		0		0
+  B_HR   0 0 0 0		0		1	1	0		0		0
+
+  L_EP   0 0 0 0		0		1	1	0		0		0
+  L_ET   0 0 0 0		0		1	1	0		0		0
+  R_EP   0 0 0 0		0		1	1	0		0		0
+  R_ET   0 0 0 0		0		1	1	0		0		0
+

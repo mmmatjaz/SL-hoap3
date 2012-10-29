@@ -1,0 +1,15 @@
+j_delta 5.0
+
+explore 0
+dist_amp 1.0
+dist_freq 0.2
+
+module_num 1
+
+cycle 5
+period 3
+y_amplitude 0.10
+z_amplitude 0.12
+
+btfe_amp 15
+btr_amp 0

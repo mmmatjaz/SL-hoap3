@@ -1,0 +1,11 @@
+/* keyword  #sines offset  amplitude  phase freq */
+
+R_SFE       1   0.3     0.1        0.0   1.0
+R_SAA       1  -0.4     0.1        0.0   1.0
+R_HR        1   0.0     0.1        0.0   1.0
+R_EB        1   1.57    0.1        0.0   1.0
+R_WR        1   0.0     0.1        0.0   1.0
+R_WFE       1   0.0     0.1        0.0   1.0
+R_WAA       1   0.0     0.1        0.0   1.0
+
+

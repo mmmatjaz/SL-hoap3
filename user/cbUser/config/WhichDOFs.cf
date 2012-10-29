@@ -1,0 +1,62 @@
+/* this file contains a list of DOFs that are computed by each processor
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, <list of joint names for a processor> */
+
+task_servo    
+              L_SFE  L_SAA  L_HR  L_EB  L_WR  L_WFE L_WAA
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE R_WAA
+              L_HFE  L_HAA  L_HFR L_KFE L_AR  L_AFE L_AAA
+              R_HFE  R_HAA  R_HFR R_KFE R_AR  R_AFE R_AAA	
+              B_TR   B_TAA  B_TFE
+              B_HN   B_HT   B_HR	
+              L_EP   L_ET   
+              R_EP   R_ET	
+task_sim_servo    
+              L_SFE  L_SAA  L_HR  L_EB  L_WR  L_WFE L_WAA
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE R_WAA
+              L_HFE  L_HAA  L_HFR L_KFE L_AR  L_AFE L_AAA
+              R_HFE  R_HAA  R_HFR R_KFE R_AR  R_AFE R_AAA	
+              B_TR   B_TAA  B_TFE
+              B_HN   B_HT   B_HR	
+              L_EP   L_ET   
+              R_EP   R_ET	
+motor_servo
+              L_SFE  L_SAA  L_HR  L_EB  L_WR  L_WFE L_WAA
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE R_WAA
+              L_HFE  L_HAA  L_HFR L_KFE L_AR  L_AFE L_AAA
+              R_HFE  R_HAA  R_HFR R_KFE R_AR  R_AFE R_AAA	
+              B_TR   B_TAA  B_TFE
+              B_HN   B_HT   B_HR	
+              L_EP   L_ET   
+              R_EP   R_ET	
+motor_sim_servo
+              L_SFE  L_SAA  L_HR  L_EB  L_WR  L_WFE L_WAA
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE R_WAA
+              L_HFE  L_HAA  L_HFR L_KFE L_AR  L_AFE L_AAA
+              R_HFE  R_HAA  R_HFR R_KFE R_AR  R_AFE R_AAA	
+              B_TR   B_TAA  B_TFE
+              B_HN   B_HT   B_HR	
+              L_EP   L_ET   
+              R_EP   R_ET	
+vision_servo
+vision_sim_servo
+invdyn_servo
+              L_SFE  L_SAA  L_HR  L_EB  L_WR  L_WFE L_WAA
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE R_WAA
+              L_HFE  L_HAA  L_HFR L_KFE L_AR  L_AFE L_AAA
+              R_HFE  R_HAA  R_HFR R_KFE R_AR  R_AFE R_AAA	
+              B_TR   B_TAA  B_TFE
+              B_HN   B_HT   B_HR	
+              L_EP   L_ET   
+              R_EP   R_ET	
+invdyn_sim_servo
+              L_SFE  L_SAA  L_HR  L_EB  L_WR  L_WFE L_WAA
+              R_SFE  R_SAA  R_HR  R_EB  R_WR  R_WFE R_WAA
+              L_HFE  L_HAA  L_HFR L_KFE L_AR  L_AFE L_AAA
+              R_HFE  R_HAA  R_HFR R_KFE R_AR  R_AFE R_AAA	
+              B_TR   B_TAA  B_TFE
+              B_HN   B_HT   B_HR	
+              L_EP   L_ET   
+              R_EP   R_ET	
