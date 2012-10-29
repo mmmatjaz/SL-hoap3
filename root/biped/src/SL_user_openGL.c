@@ -297,25 +297,10 @@ myDrawGLElement(int num, double length, int flag)
 
   case 15: /* the torso */
 	
-    glScaled(torso_width,2*torso_width/3.,torso_width/2.);
-    glTranslated(0.0,-0.11,0.10);
-    glColor4fv(yellow);
-    if (solid)
-      glutSolidSphere(0.5,16,16);
-    else
-      glutWireSphere(0.5,16,16);
-    break;
 	
   case 120: /* the head */
 
-    glScaled(.2,head_width/2.8,head_width/1.2);
-    glTranslated(0.0,0.0,0.5);
-    glColor4fv(yellow);
-    if (solid)
-      glutSolidSphere(0.5,15,15);
-    else
-      glutWireSphere(0.5,15,15); 
-    break;
+
 	
  case 108: /* dummies of feet */
  case 109:

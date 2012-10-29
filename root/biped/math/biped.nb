@@ -10,21 +10,37 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      4179,        144]
-NotebookOptionsPosition[      3137,        108]
-NotebookOutlinePosition[      3760,        132]
-CellTagsIndexPosition[      3717,        129]
-WindowFrame->Normal
-ContainsDynamic->False*)
+NotebookDataLength[      9750,        345]
+NotebookOptionsPosition[      7648,        266]
+NotebookOutlinePosition[      8271,        290]
+CellTagsIndexPosition[      8228,        287]
+WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[
  RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\</home/sl/usc/rigidbodydyn\>\"", "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{3.560340244166811*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDirectory", "::", "cdir"}], "MessageName"], 
   RowBox[{
-  "SetDirectory", "[", 
-   "\"\</Volumes/vangogh/sschaal/Documents/Math/ControlTheory\>\"", "]"}], 
-  ";"}]], "Input"],
+  ":", " "}], "\<\"Cannot set current directory to \
+\[NoBreak]\\!\\(\\\"/Volumes/vangogh/sschaal/Documents/Math/ControlTheory\\\"\
+\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/cdir\\\", ButtonNote -> \
+\\\"SetDirectory::cdir\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.560340224764695*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"<<", "RigidBodyDynamics.m"}]], "Input",
@@ -32,13 +48,57 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"SetDirectory", "[", "\"\<biped\>\"", "]"}], ";"}]], "Input"],
+  StyleBox[
+   RowBox[{"Get", "::", "noopen"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \[NoBreak]\\!\\(\\\"RigidBodyDynamics.m\\\"\\)\
+\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/noopen\\\", ButtonNote -> \
+\\\"Get::noopen\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.560340224912075*^9}],
+
+Cell[BoxData["$Failed"], "Output",
+ CellChangeTimes->{3.560340224932438*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", "\"\</home/sl/sl-new/root/biped/math\>\"", "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.560340251714513*^9, 3.560340256208212*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDirectory", "::", "cdir"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot set current directory to \
+\[NoBreak]\\!\\(\\\"biped\\\"\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/cdir\\\", ButtonNote -> \
+\\\"SetDirectory::cdir\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.560340224937726*^9}]
+}, Open  ]],
 
 Cell["Generate the C-code", "Text"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"OpenGLKinematics", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"OpenGLKinematics", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.5603402249460363`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"InvDynNE", "[", 
@@ -50,6 +110,17 @@ Cell[BoxData[
  AspectRatioFixed->True],
 
 Cell[BoxData[
+ RowBox[{"InvDynNE", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225012391*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"InvDynArt", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
    RowBox[{"{", 
@@ -57,9 +128,28 @@ Cell[BoxData[
      RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input"],
 
 Cell[BoxData[
+ RowBox[{"InvDynArt", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225021508*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"LinkEndpointKinematics", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\""}], "]"}]], "Input",
  AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"LinkEndpointKinematics", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225029994*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"GeometricJacobian", "[", 
@@ -67,6 +157,17 @@ Cell[BoxData[
    RowBox[{"{", 
     RowBox[{"119", ",", "112"}], "}"}], ",", "\"\<biped\>\""}], 
   "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"119", ",", "112"}], "}"}], ",", "\<\"biped\"\>"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.560340225038575*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ForDynArt", "[", 
@@ -78,6 +179,17 @@ Cell[BoxData[
  AspectRatioFixed->True],
 
 Cell[BoxData[
+ RowBox[{"ForDynArt", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.5603402250896606`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"ForDynComp", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\"", ",", 
    RowBox[{"{", 
@@ -86,8 +198,27 @@ Cell[BoxData[
  AspectRatioFixed->True],
 
 Cell[BoxData[
+ RowBox[{"ForDynComp", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.5603402251401377`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"LinkInformation", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", "\"\<biped\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"LinkInformation", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225180974*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"ParmEst", "[", 
@@ -97,19 +228,46 @@ Cell[BoxData[
      RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input"],
 
 Cell[BoxData[
+ RowBox[{"ParmEst", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", "\<\"biped\"\>", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225189068*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"GeometricJacobian", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", 
    RowBox[{"{", "120", "}"}], ",", "\"\<biped_head\>\""}], "]"}]], "Input"],
 
 Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", 
+   RowBox[{"{", "120", "}"}], ",", "\<\"biped_head\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225196631*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
  RowBox[{"LinkRotationMatrix", "[", 
   RowBox[{"\"\<biped.dyn\>\"", ",", 
-   RowBox[{"{", "120", "}"}], ",", "\"\<biped_head\>\""}], "]"}]], "Input"]
+   RowBox[{"{", "120", "}"}], ",", "\"\<biped_head\>\""}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"LinkRotationMatrix", "[", 
+  RowBox[{"\<\"biped.dyn\"\>", ",", 
+   RowBox[{"{", "120", "}"}], ",", "\<\"biped_head\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.560340225204115*^9}]
+}, Open  ]]
 },
 WindowToolbars->{},
 CellGrouping->Automatic,
 WindowSize->{775, 853},
-WindowMargins->{{14, Automatic}, {Automatic, 72}},
+WindowMargins->{{Automatic, 57}, {Automatic, 55}},
 PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
 ShowSelection->True,
 ShowCellLabel->True,
@@ -117,7 +275,7 @@ ShowCellTags->False,
 RenderingOptions->{"ObjectDithering"->True,
 "RasterDithering"->False},
 CharacterEncoding->"MacintoshAutomaticEncoding",
-FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (June 19, 2007)",
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (October 10, 2011)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -131,21 +289,64 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[568, 21, 153, 5, 27, "Input"],
-Cell[724, 28, 88, 2, 27, "Input"],
-Cell[815, 32, 95, 2, 27, "Input"],
-Cell[913, 36, 35, 0, 26, "Text"],
-Cell[951, 38, 120, 2, 27, "Input"],
-Cell[1074, 42, 299, 7, 27, "Input"],
-Cell[1376, 51, 209, 5, 27, "Input"],
-Cell[1588, 58, 151, 3, 27, "Input"],
-Cell[1742, 63, 187, 5, 27, "Input"],
-Cell[1932, 70, 300, 7, 27, "Input"],
-Cell[2235, 79, 235, 6, 27, "Input"],
-Cell[2473, 87, 119, 2, 27, "Input"],
-Cell[2595, 91, 207, 5, 27, "Input"],
-Cell[2805, 98, 162, 3, 27, "Input"],
-Cell[2970, 103, 163, 3, 27, "Input"]
+Cell[CellGroupData[{
+Cell[567, 22, 160, 4, 30, "Input"],
+Cell[730, 28, 517, 11, 43, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1284, 44, 88, 2, 30, "Input"],
+Cell[1375, 48, 449, 10, 24, "Message"],
+Cell[1827, 60, 76, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1940, 66, 193, 5, 30, "Input"],
+Cell[2136, 73, 467, 10, 24, "Message"]
+}, Open  ]],
+Cell[2618, 86, 35, 0, 29, "Text"],
+Cell[CellGroupData[{
+Cell[2678, 90, 120, 2, 30, "Input"],
+Cell[2801, 94, 165, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3003, 102, 299, 7, 30, "Input"],
+Cell[3305, 111, 251, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3593, 122, 209, 5, 30, "Input"],
+Cell[3805, 129, 252, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4094, 140, 151, 3, 30, "Input"],
+Cell[4248, 145, 169, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4454, 153, 187, 5, 30, "Input"],
+Cell[4644, 160, 230, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4911, 171, 300, 7, 30, "Input"],
+Cell[5214, 180, 254, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5505, 191, 235, 6, 30, "Input"],
+Cell[5743, 199, 255, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6035, 210, 119, 2, 30, "Input"],
+Cell[6157, 214, 162, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6356, 222, 207, 5, 30, "Input"],
+Cell[6566, 229, 250, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6853, 240, 162, 3, 30, "Input"],
+Cell[7018, 245, 205, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7260, 254, 163, 3, 30, "Input"],
+Cell[7426, 259, 206, 4, 30, "Output"]
+}, Open  ]]
 }
 ]
 *)

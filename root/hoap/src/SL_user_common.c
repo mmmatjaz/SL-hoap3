@@ -102,10 +102,10 @@ char misc_sensor_names[][20]= {
 int		link2endeffmap[] = {
 		0,
 		//LULCEK
-		RIGHT_FOOT,
-		RIGHT_HAND,
-		LEFT_FOOT,
-		LEFT_HAND
+		L08,
+		L15,
+		L21,
+		L30
 };
 
 

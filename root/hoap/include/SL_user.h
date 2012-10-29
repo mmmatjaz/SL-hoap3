@@ -19,7 +19,7 @@
 /*! the robot name */
 #define ROBOT_NAME "hoap"
 
-#define KIN_SCALE		3
+#define KIN_SCALE		1
 #define ARMLINK1	 	0.111*KIN_SCALE
 #define ARMLINK2	 	0.111*KIN_SCALE
 #define ARMLINK3	 	0.171*KIN_SCALE
@@ -153,7 +153,7 @@ enum MiscSensors {
 
 /*! N_DOFS + fake DOFS, needed for parameter estimation; 
    fake DOFS come from creating endeffector information */
-#define N_DOFS_EST (N_DOFS+1)
+#define N_DOFS_EST (N_DOFS+0)//+1
 
 /*! N_DOFS to be excluded from parameter estimation (e.g., eye joints);
    these DOFS must be the last DOFS in the arrays */
