@@ -148,57 +148,9 @@
 { (* RL foot xy *)
 {jointID,{ID=601}},
 {jointAxis,{0,0,0}},
-{translation,{0,0,0}},
+{translation,{-LEGLINK4,0,0}},
 {rotationMatrix,{0,Pi/2,Pi}},
 {successors,{600}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
-}
-{ (* RL fl *)
-{jointID,{ID=602}},
-{jointAxis,{0,0,0}},
-{translation,{FOOTLLENGLONG,FOOTWIDLONG,-LEGLINK4}},
-{rotationMatrix,{0,0,0}},
-{successors,{}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
-}
-{ (* RL fr *)
-{jointID,{ID=603}},
-{jointAxis,{0,0,0}},
-{translation,{FOOTLLENGLONG,-FOOTWIDSHORT,-LEGLINK4}},
-{rotationMatrix,{0,0,0}},
-{successors,{}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
-}
-{ (* RL rr *)
-{jointID,{ID=604}},
-{jointAxis,{0,0,0}},
-{translation,{-FOOTLENGSHORT,-FOOTWIDSHORT,-LEGLINK4}},
-{rotationMatrix,{0,0,0}},
-{successors,{}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
-}
-{ (* RL rl *)
-{jointID,{ID=605}},
-{jointAxis,{0,0,0}},
-{translation,{-FOOTLENGSHORT,FOOTWIDLONG,-LEGLINK4}},
-{rotationMatrix,{0,0,0}},
-{successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
 {massCenterMass,{0,0,0}}, 
 {mass,{0}}, 
@@ -214,6 +166,54 @@
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
 {massCenterMass,{eff$1$$mcm[[1]],eff$1$$mcm[[2]],eff$1$$mcm[[3]]}}, 
 {mass,{eff$1$$m}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* RL fl *)
+{jointID,{ID=602}},
+{jointAxis,{0,0,0}},
+{translation,{-LEGLINK4,-FOOTWIDLONG,FOOTLLENGLONG}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* RL fr *)
+{jointID,{ID=603}},
+{jointAxis,{0,0,0}},
+{translation,{-LEGLINK4,FOOTWIDSHORT,FOOTLLENGLONG}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* RL rr *)
+{jointID,{ID=604}},
+{jointAxis,{0,0,0}},
+{translation,{-LEGLINK4,FOOTWIDSHORT,-FOOTLENGSHORT}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* RL rl *)
+{jointID,{ID=605}},
+{jointAxis,{0,0,0}},
+{translation,{-LEGLINK4,-FOOTWIDLONG,-FOOTLENGSHORT}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
 {jointVariables,{0,0,0,0,0}},
 {extForce,{0,0,0,0,0,0}}
 }
@@ -272,11 +272,11 @@
 {translation,{0,ARMLINK3,0}},
 {rotationMatrix,{-Pi/2,0,-Pi/2}},
 {successors,{26,2501}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
 }
 {  (* RA_J6s - servo gripper*)
 {jointID,{ID=26}},
@@ -284,11 +284,11 @@
 {translation,{GRIPJOFFX,0,GRIPJOFFZ}},
 {rotationMatrix,{Pi/2,Pi/2,0}},
 {successors,{2601}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
 }
 { (* palm *)
 {jointID,{ID=2501}},
@@ -317,7 +317,7 @@
 { (* finger *)
 {jointID,{ID=2601}},
 {jointAxis,{0,0,0}},
-{translation,{FINGER,0,0}},
+{translation,{0*FINGER,0,0}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -426,7 +426,7 @@
 { (* LL fl *)
 {jointID,{ID=1602}},
 {jointAxis,{0,0,0}},
-{translation,{FOOTLLENGLONG,FOOTWIDLONG,-LEGLINK4}},
+{translation,{-LEGLINK4,FOOTWIDLONG,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -438,7 +438,7 @@
 { (* LL fr *)
 {jointID,{ID=1603}},
 {jointAxis,{0,0,0}},
-{translation,{FOOTLLENGLONG,-FOOTWIDSHORT,-LEGLINK4}},
+{translation,{-LEGLINK4,-FOOTWIDSHORT,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -450,7 +450,7 @@
 { (* LL rr *)
 {jointID,{ID=1604}},
 {jointAxis,{0,0,0}},
-{translation,{-FOOTLENGSHORT,-FOOTWIDSHORT,-LEGLINK4}},
+{translation,{-LEGLINK4,-FOOTWIDSHORT,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -462,7 +462,7 @@
 { (* LL rl *)
 {jointID,{ID=1605}},
 {jointAxis,{0,0,0}},
-{translation,{-FOOTLENGSHORT,FOOTWIDLONG,-LEGLINK4}},
+{translation,{-LEGLINK4,FOOTWIDLONG,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -547,7 +547,7 @@
 { (* palm *)
 {jointID,{ID=2701}},
 {jointAxis,{0,0,0}},
-{translation,{-PALMOFFSETX,0,PALM}},
+{translation,{PALMOFFSETX,0,PALM}},
 {rotationMatrix,{0,0,0}},
 {successors,{2700}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},

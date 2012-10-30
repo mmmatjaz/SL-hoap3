@@ -19,7 +19,7 @@
 /*! the robot name */
 #define ROBOT_NAME "hoap"
 
-#define KIN_SCALE		1
+#define KIN_SCALE		1.0
 #define ARMLINK1	 	0.111*KIN_SCALE
 #define ARMLINK2	 	0.111*KIN_SCALE
 #define ARMLINK3	 	0.171*KIN_SCALE
@@ -102,9 +102,7 @@ enum ColorBlobs {
 
 /*! define the DOFs of this robot */
 enum RobotDOFs {
-	BASE=0,
-
-	RL_J1,
+	RL_J1 = 1,
   	RL_J2,
   	RL_J3,
   	RL_J4,

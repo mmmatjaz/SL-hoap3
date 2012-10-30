@@ -11,6 +11,12 @@ cstate9th=Cos(state[9].th);
 sstate10th=Sin(state[10].th);
 cstate10th=Cos(state[10].th);
 
+sstate25th=Sin(state[25].th);
+cstate25th=Cos(state[25].th);
+
+sstate26th=Sin(state[26].th);
+cstate26th=Cos(state[26].th);
+
 sstate17th=Sin(state[17].th);
 cstate17th=Cos(state[17].th);
 
@@ -419,8 +425,8 @@ Xinv[5][6][5]=cstate10th;
 Xinv[5][6][6]=0;
 
 
-Xinv[6][1][1]=0;
-Xinv[6][1][2]=1;
+Xinv[6][1][1]=sstate25th;
+Xinv[6][1][2]=cstate25th;
 Xinv[6][1][3]=0;
 Xinv[6][1][4]=0;
 Xinv[6][1][5]=0;
@@ -433,18 +439,18 @@ Xinv[6][2][4]=0;
 Xinv[6][2][5]=0;
 Xinv[6][2][6]=0;
 
-Xinv[6][3][1]=1;
-Xinv[6][3][2]=0;
+Xinv[6][3][1]=cstate25th;
+Xinv[6][3][2]=-sstate25th;
 Xinv[6][3][3]=0;
 Xinv[6][3][4]=0;
 Xinv[6][3][5]=0;
 Xinv[6][3][6]=0;
 
-Xinv[6][4][1]=ARMLINK3;
-Xinv[6][4][2]=0;
+Xinv[6][4][1]=ARMLINK3*cstate25th;
+Xinv[6][4][2]=-(ARMLINK3*sstate25th);
 Xinv[6][4][3]=0;
-Xinv[6][4][4]=0;
-Xinv[6][4][5]=1;
+Xinv[6][4][4]=sstate25th;
+Xinv[6][4][5]=cstate25th;
 Xinv[6][4][6]=0;
 
 Xinv[6][5][1]=0;
@@ -454,11 +460,11 @@ Xinv[6][5][4]=0;
 Xinv[6][5][5]=0;
 Xinv[6][5][6]=1;
 
-Xinv[6][6][1]=0;
-Xinv[6][6][2]=-ARMLINK3;
+Xinv[6][6][1]=-(ARMLINK3*sstate25th);
+Xinv[6][6][2]=-(ARMLINK3*cstate25th);
 Xinv[6][6][3]=0;
-Xinv[6][6][4]=1;
-Xinv[6][6][5]=0;
+Xinv[6][6][4]=cstate25th;
+Xinv[6][6][5]=-sstate25th;
 Xinv[6][6][6]=0;
 
 
@@ -469,39 +475,39 @@ Xinv[7][1][4]=0;
 Xinv[7][1][5]=0;
 Xinv[7][1][6]=0;
 
-Xinv[7][2][1]=1;
-Xinv[7][2][2]=0;
+Xinv[7][2][1]=cstate26th;
+Xinv[7][2][2]=-sstate26th;
 Xinv[7][2][3]=0;
 Xinv[7][2][4]=0;
 Xinv[7][2][5]=0;
 Xinv[7][2][6]=0;
 
-Xinv[7][3][1]=0;
-Xinv[7][3][2]=1;
+Xinv[7][3][1]=sstate26th;
+Xinv[7][3][2]=cstate26th;
 Xinv[7][3][3]=0;
 Xinv[7][3][4]=0;
 Xinv[7][3][5]=0;
 Xinv[7][3][6]=0;
 
-Xinv[7][4][1]=-GRIPJOFFZ;
-Xinv[7][4][2]=0;
+Xinv[7][4][1]=-(cstate26th*GRIPJOFFZ);
+Xinv[7][4][2]=GRIPJOFFZ*sstate26th;
 Xinv[7][4][3]=0;
 Xinv[7][4][4]=0;
 Xinv[7][4][5]=0;
 Xinv[7][4][6]=1;
 
-Xinv[7][5][1]=0;
-Xinv[7][5][2]=-GRIPJOFFX;
+Xinv[7][5][1]=-(GRIPJOFFX*sstate26th);
+Xinv[7][5][2]=-(cstate26th*GRIPJOFFX);
 Xinv[7][5][3]=GRIPJOFFZ;
-Xinv[7][5][4]=1;
-Xinv[7][5][5]=0;
+Xinv[7][5][4]=cstate26th;
+Xinv[7][5][5]=-sstate26th;
 Xinv[7][5][6]=0;
 
-Xinv[7][6][1]=GRIPJOFFX;
-Xinv[7][6][2]=0;
+Xinv[7][6][1]=cstate26th*GRIPJOFFX;
+Xinv[7][6][2]=-(GRIPJOFFX*sstate26th);
 Xinv[7][6][3]=0;
-Xinv[7][6][4]=0;
-Xinv[7][6][5]=1;
+Xinv[7][6][4]=sstate26th;
+Xinv[7][6][5]=cstate26th;
 Xinv[7][6][6]=0;
 
 
@@ -535,13 +541,13 @@ Xinv[8][4][6]=0;
 
 Xinv[8][5][1]=0;
 Xinv[8][5][2]=0;
-Xinv[8][5][3]=-FINGER;
+Xinv[8][5][3]=0;
 Xinv[8][5][4]=0;
 Xinv[8][5][5]=1;
 Xinv[8][5][6]=0;
 
 Xinv[8][6][1]=0;
-Xinv[8][6][2]=FINGER;
+Xinv[8][6][2]=0;
 Xinv[8][6][3]=0;
 Xinv[8][6][4]=0;
 Xinv[8][6][5]=0;
@@ -965,13 +971,13 @@ Xinv[18][4][6]=0;
 
 Xinv[18][5][1]=PALM;
 Xinv[18][5][2]=0;
-Xinv[18][5][3]=PALMOFFSETX;
+Xinv[18][5][3]=-PALMOFFSETX;
 Xinv[18][5][4]=0;
 Xinv[18][5][5]=1;
 Xinv[18][5][6]=0;
 
 Xinv[18][6][1]=0;
-Xinv[18][6][2]=-PALMOFFSETX;
+Xinv[18][6][2]=PALMOFFSETX;
 Xinv[18][6][3]=0;
 Xinv[18][6][4]=0;
 Xinv[18][6][5]=0;
@@ -1479,7 +1485,7 @@ Xinv[30][4][4]=0;
 Xinv[30][4][5]=0;
 Xinv[30][4][6]=1;
 
-Xinv[30][5][1]=0;
+Xinv[30][5][1]=LEGLINK4;
 Xinv[30][5][2]=0;
 Xinv[30][5][3]=0;
 Xinv[30][5][4]=0;
@@ -1487,7 +1493,7 @@ Xinv[30][5][5]=-1;
 Xinv[30][5][6]=0;
 
 Xinv[30][6][1]=0;
-Xinv[30][6][2]=0;
+Xinv[30][6][2]=LEGLINK4;
 Xinv[30][6][3]=0;
 Xinv[30][6][4]=1;
 Xinv[30][6][5]=0;
@@ -1559,21 +1565,21 @@ Xinv[32][3][5]=0;
 Xinv[32][3][6]=0;
 
 Xinv[32][4][1]=0;
-Xinv[32][4][2]=LEGLINK4;
-Xinv[32][4][3]=FOOTWIDLONG;
+Xinv[32][4][2]=-FOOTLLENGLONG;
+Xinv[32][4][3]=-FOOTWIDLONG;
 Xinv[32][4][4]=1;
 Xinv[32][4][5]=0;
 Xinv[32][4][6]=0;
 
-Xinv[32][5][1]=-LEGLINK4;
+Xinv[32][5][1]=FOOTLLENGLONG;
 Xinv[32][5][2]=0;
-Xinv[32][5][3]=-FOOTLLENGLONG;
+Xinv[32][5][3]=LEGLINK4;
 Xinv[32][5][4]=0;
 Xinv[32][5][5]=1;
 Xinv[32][5][6]=0;
 
-Xinv[32][6][1]=-FOOTWIDLONG;
-Xinv[32][6][2]=FOOTLLENGLONG;
+Xinv[32][6][1]=FOOTWIDLONG;
+Xinv[32][6][2]=-LEGLINK4;
 Xinv[32][6][3]=0;
 Xinv[32][6][4]=0;
 Xinv[32][6][5]=0;
@@ -1602,21 +1608,21 @@ Xinv[33][3][5]=0;
 Xinv[33][3][6]=0;
 
 Xinv[33][4][1]=0;
-Xinv[33][4][2]=LEGLINK4;
-Xinv[33][4][3]=-FOOTWIDSHORT;
+Xinv[33][4][2]=-FOOTLLENGLONG;
+Xinv[33][4][3]=FOOTWIDSHORT;
 Xinv[33][4][4]=1;
 Xinv[33][4][5]=0;
 Xinv[33][4][6]=0;
 
-Xinv[33][5][1]=-LEGLINK4;
+Xinv[33][5][1]=FOOTLLENGLONG;
 Xinv[33][5][2]=0;
-Xinv[33][5][3]=-FOOTLLENGLONG;
+Xinv[33][5][3]=LEGLINK4;
 Xinv[33][5][4]=0;
 Xinv[33][5][5]=1;
 Xinv[33][5][6]=0;
 
-Xinv[33][6][1]=FOOTWIDSHORT;
-Xinv[33][6][2]=FOOTLLENGLONG;
+Xinv[33][6][1]=-FOOTWIDSHORT;
+Xinv[33][6][2]=-LEGLINK4;
 Xinv[33][6][3]=0;
 Xinv[33][6][4]=0;
 Xinv[33][6][5]=0;
@@ -1645,21 +1651,21 @@ Xinv[34][3][5]=0;
 Xinv[34][3][6]=0;
 
 Xinv[34][4][1]=0;
-Xinv[34][4][2]=LEGLINK4;
-Xinv[34][4][3]=-FOOTWIDSHORT;
+Xinv[34][4][2]=FOOTLENGSHORT;
+Xinv[34][4][3]=FOOTWIDSHORT;
 Xinv[34][4][4]=1;
 Xinv[34][4][5]=0;
 Xinv[34][4][6]=0;
 
-Xinv[34][5][1]=-LEGLINK4;
+Xinv[34][5][1]=-FOOTLENGSHORT;
 Xinv[34][5][2]=0;
-Xinv[34][5][3]=FOOTLENGSHORT;
+Xinv[34][5][3]=LEGLINK4;
 Xinv[34][5][4]=0;
 Xinv[34][5][5]=1;
 Xinv[34][5][6]=0;
 
-Xinv[34][6][1]=FOOTWIDSHORT;
-Xinv[34][6][2]=-FOOTLENGSHORT;
+Xinv[34][6][1]=-FOOTWIDSHORT;
+Xinv[34][6][2]=-LEGLINK4;
 Xinv[34][6][3]=0;
 Xinv[34][6][4]=0;
 Xinv[34][6][5]=0;
@@ -1688,21 +1694,21 @@ Xinv[35][3][5]=0;
 Xinv[35][3][6]=0;
 
 Xinv[35][4][1]=0;
-Xinv[35][4][2]=LEGLINK4;
-Xinv[35][4][3]=FOOTWIDLONG;
+Xinv[35][4][2]=FOOTLENGSHORT;
+Xinv[35][4][3]=-FOOTWIDLONG;
 Xinv[35][4][4]=1;
 Xinv[35][4][5]=0;
 Xinv[35][4][6]=0;
 
-Xinv[35][5][1]=-LEGLINK4;
+Xinv[35][5][1]=-FOOTLENGSHORT;
 Xinv[35][5][2]=0;
-Xinv[35][5][3]=FOOTLENGSHORT;
+Xinv[35][5][3]=LEGLINK4;
 Xinv[35][5][4]=0;
 Xinv[35][5][5]=1;
 Xinv[35][5][6]=0;
 
-Xinv[35][6][1]=-FOOTWIDLONG;
-Xinv[35][6][2]=-FOOTLENGSHORT;
+Xinv[35][6][1]=FOOTWIDLONG;
+Xinv[35][6][2]=-LEGLINK4;
 Xinv[35][6][3]=0;
 Xinv[35][6][4]=0;
 Xinv[35][6][5]=0;
@@ -2075,21 +2081,21 @@ Xinv[44][3][5]=0;
 Xinv[44][3][6]=0;
 
 Xinv[44][4][1]=0;
-Xinv[44][4][2]=LEGLINK4;
+Xinv[44][4][2]=-FOOTLLENGLONG;
 Xinv[44][4][3]=FOOTWIDLONG;
 Xinv[44][4][4]=1;
 Xinv[44][4][5]=0;
 Xinv[44][4][6]=0;
 
-Xinv[44][5][1]=-LEGLINK4;
+Xinv[44][5][1]=FOOTLLENGLONG;
 Xinv[44][5][2]=0;
-Xinv[44][5][3]=-FOOTLLENGLONG;
+Xinv[44][5][3]=LEGLINK4;
 Xinv[44][5][4]=0;
 Xinv[44][5][5]=1;
 Xinv[44][5][6]=0;
 
 Xinv[44][6][1]=-FOOTWIDLONG;
-Xinv[44][6][2]=FOOTLLENGLONG;
+Xinv[44][6][2]=-LEGLINK4;
 Xinv[44][6][3]=0;
 Xinv[44][6][4]=0;
 Xinv[44][6][5]=0;
@@ -2118,21 +2124,21 @@ Xinv[45][3][5]=0;
 Xinv[45][3][6]=0;
 
 Xinv[45][4][1]=0;
-Xinv[45][4][2]=LEGLINK4;
+Xinv[45][4][2]=-FOOTLLENGLONG;
 Xinv[45][4][3]=-FOOTWIDSHORT;
 Xinv[45][4][4]=1;
 Xinv[45][4][5]=0;
 Xinv[45][4][6]=0;
 
-Xinv[45][5][1]=-LEGLINK4;
+Xinv[45][5][1]=FOOTLLENGLONG;
 Xinv[45][5][2]=0;
-Xinv[45][5][3]=-FOOTLLENGLONG;
+Xinv[45][5][3]=LEGLINK4;
 Xinv[45][5][4]=0;
 Xinv[45][5][5]=1;
 Xinv[45][5][6]=0;
 
 Xinv[45][6][1]=FOOTWIDSHORT;
-Xinv[45][6][2]=FOOTLLENGLONG;
+Xinv[45][6][2]=-LEGLINK4;
 Xinv[45][6][3]=0;
 Xinv[45][6][4]=0;
 Xinv[45][6][5]=0;
@@ -2161,21 +2167,21 @@ Xinv[46][3][5]=0;
 Xinv[46][3][6]=0;
 
 Xinv[46][4][1]=0;
-Xinv[46][4][2]=LEGLINK4;
+Xinv[46][4][2]=FOOTLENGSHORT;
 Xinv[46][4][3]=-FOOTWIDSHORT;
 Xinv[46][4][4]=1;
 Xinv[46][4][5]=0;
 Xinv[46][4][6]=0;
 
-Xinv[46][5][1]=-LEGLINK4;
+Xinv[46][5][1]=-FOOTLENGSHORT;
 Xinv[46][5][2]=0;
-Xinv[46][5][3]=FOOTLENGSHORT;
+Xinv[46][5][3]=LEGLINK4;
 Xinv[46][5][4]=0;
 Xinv[46][5][5]=1;
 Xinv[46][5][6]=0;
 
 Xinv[46][6][1]=FOOTWIDSHORT;
-Xinv[46][6][2]=-FOOTLENGSHORT;
+Xinv[46][6][2]=-LEGLINK4;
 Xinv[46][6][3]=0;
 Xinv[46][6][4]=0;
 Xinv[46][6][5]=0;
@@ -2204,21 +2210,21 @@ Xinv[47][3][5]=0;
 Xinv[47][3][6]=0;
 
 Xinv[47][4][1]=0;
-Xinv[47][4][2]=LEGLINK4;
+Xinv[47][4][2]=FOOTLENGSHORT;
 Xinv[47][4][3]=FOOTWIDLONG;
 Xinv[47][4][4]=1;
 Xinv[47][4][5]=0;
 Xinv[47][4][6]=0;
 
-Xinv[47][5][1]=-LEGLINK4;
+Xinv[47][5][1]=-FOOTLENGSHORT;
 Xinv[47][5][2]=0;
-Xinv[47][5][3]=FOOTLENGSHORT;
+Xinv[47][5][3]=LEGLINK4;
 Xinv[47][5][4]=0;
 Xinv[47][5][5]=1;
 Xinv[47][5][6]=0;
 
 Xinv[47][6][1]=-FOOTWIDLONG;
-Xinv[47][6][2]=-FOOTLENGSHORT;
+Xinv[47][6][2]=-LEGLINK4;
 Xinv[47][6][3]=0;
 Xinv[47][6][4]=0;
 Xinv[47][6][5]=0;
@@ -2600,26 +2606,26 @@ v5[4]=cstate10th*v4[4] + sstate10th*v4[6];
 v5[5]=-(sstate10th*v4[4]) + cstate10th*v4[6];
 v5[6]=-v4[5];
 
-v6[1]=v5[3];
-v6[2]=v5[1];
-v6[3]=v5[2];
-v6[4]=ARMLINK3*v5[1] + v5[6];
-v6[5]=-(ARMLINK3*v5[3]) + v5[4];
+v6[1]=sstate25th*v5[1] + cstate25th*v5[3];
+v6[2]=cstate25th*v5[1] - sstate25th*v5[3];
+v6[3]=state[25].thd + v5[2];
+v6[4]=ARMLINK3*cstate25th*v5[1] - ARMLINK3*sstate25th*v5[3] + sstate25th*v5[4] + cstate25th*v5[6];
+v6[5]=-(ARMLINK3*sstate25th*v5[1]) - ARMLINK3*cstate25th*v5[3] + cstate25th*v5[4] - sstate25th*v5[6];
 v6[6]=v5[5];
 
-v7[1]=v6[2];
-v7[2]=v6[3];
-v7[3]=v6[1];
-v7[4]=-(GRIPJOFFZ*v6[1]) + GRIPJOFFX*v6[3] + v6[5];
-v7[5]=-(GRIPJOFFX*v6[2]) + v6[6];
+v7[1]=cstate26th*v6[2] + sstate26th*v6[3];
+v7[2]=-(sstate26th*v6[2]) + cstate26th*v6[3];
+v7[3]=state[26].thd + v6[1];
+v7[4]=-(cstate26th*GRIPJOFFZ*v6[1]) - GRIPJOFFX*sstate26th*v6[2] + cstate26th*GRIPJOFFX*v6[3] + cstate26th*v6[5] + sstate26th*v6[6];
+v7[5]=GRIPJOFFZ*sstate26th*v6[1] - cstate26th*GRIPJOFFX*v6[2] - GRIPJOFFX*sstate26th*v6[3] - sstate26th*v6[5] + cstate26th*v6[6];
 v7[6]=GRIPJOFFZ*v6[2] + v6[4];
 
 v8[1]=v7[1];
 v8[2]=v7[2];
 v8[3]=v7[3];
 v8[4]=v7[4];
-v8[5]=FINGER*v7[3] + v7[5];
-v8[6]=-(FINGER*v7[2]) + v7[6];
+v8[5]=v7[5];
+v8[6]=v7[6];
 
 v9[1]=v6[1];
 v9[2]=v6[2];
@@ -2688,8 +2694,8 @@ v18[1]=v15[1];
 v18[2]=v15[2];
 v18[3]=v15[3];
 v18[4]=PALM*v15[2] + v15[4];
-v18[5]=-(PALM*v15[1]) - PALMOFFSETX*v15[3] + v15[5];
-v18[6]=PALMOFFSETX*v15[2] + v15[6];
+v18[5]=-(PALM*v15[1]) + PALMOFFSETX*v15[3] + v15[5];
+v18[6]=-(PALMOFFSETX*v15[2]) + v15[6];
 
 v19[1]=rceff4a2*rceff4a3*v18[1] + (rceff4a3*rseff4a1*rseff4a2 + rceff4a1*rseff4a3)*v18[2] + (-(rceff4a1*rceff4a3*rseff4a2) + rseff4a1*rseff4a3)*v18[3];
 v19[2]=-(rceff4a2*rseff4a3*v18[1]) + (rceff4a1*rceff4a3 - rseff4a1*rseff4a2*rseff4a3)*v18[2] + (rceff4a3*rseff4a1 + rceff4a1*rseff4a2*rseff4a3)*v18[3];
@@ -2771,8 +2777,8 @@ v29[6]=v28[5];
 v30[1]=v29[3];
 v30[2]=-v29[2];
 v30[3]=v29[1];
-v30[4]=v29[6];
-v30[5]=-v29[5];
+v30[4]=LEGLINK4*v29[2] + v29[6];
+v30[5]=LEGLINK4*v29[3] - v29[5];
 v30[6]=v29[4];
 
 v31[1]=rceff1a2*rceff1a3*v30[1] + (rceff1a3*rseff1a1*rseff1a2 + rceff1a1*rseff1a3)*v30[2] + (-(rceff1a1*rceff1a3*rseff1a2) + rseff1a1*rseff1a3)*v30[3];
@@ -2785,30 +2791,30 @@ v31[6]=(rceff1a1*rceff1a2*eff[1].x[2] + rceff1a2*rseff1a1*eff[1].x[3])*v30[1] + 
 v32[1]=v29[1];
 v32[2]=v29[2];
 v32[3]=v29[3];
-v32[4]=-(LEGLINK4*v29[2]) - FOOTWIDLONG*v29[3] + v29[4];
-v32[5]=LEGLINK4*v29[1] + FOOTLLENGLONG*v29[3] + v29[5];
-v32[6]=FOOTWIDLONG*v29[1] - FOOTLLENGLONG*v29[2] + v29[6];
+v32[4]=FOOTLLENGLONG*v29[2] + FOOTWIDLONG*v29[3] + v29[4];
+v32[5]=-(FOOTLLENGLONG*v29[1]) - LEGLINK4*v29[3] + v29[5];
+v32[6]=-(FOOTWIDLONG*v29[1]) + LEGLINK4*v29[2] + v29[6];
 
 v33[1]=v29[1];
 v33[2]=v29[2];
 v33[3]=v29[3];
-v33[4]=-(LEGLINK4*v29[2]) + FOOTWIDSHORT*v29[3] + v29[4];
-v33[5]=LEGLINK4*v29[1] + FOOTLLENGLONG*v29[3] + v29[5];
-v33[6]=-(FOOTWIDSHORT*v29[1]) - FOOTLLENGLONG*v29[2] + v29[6];
+v33[4]=FOOTLLENGLONG*v29[2] - FOOTWIDSHORT*v29[3] + v29[4];
+v33[5]=-(FOOTLLENGLONG*v29[1]) - LEGLINK4*v29[3] + v29[5];
+v33[6]=FOOTWIDSHORT*v29[1] + LEGLINK4*v29[2] + v29[6];
 
 v34[1]=v29[1];
 v34[2]=v29[2];
 v34[3]=v29[3];
-v34[4]=-(LEGLINK4*v29[2]) + FOOTWIDSHORT*v29[3] + v29[4];
-v34[5]=LEGLINK4*v29[1] - FOOTLENGSHORT*v29[3] + v29[5];
-v34[6]=-(FOOTWIDSHORT*v29[1]) + FOOTLENGSHORT*v29[2] + v29[6];
+v34[4]=-(FOOTLENGSHORT*v29[2]) - FOOTWIDSHORT*v29[3] + v29[4];
+v34[5]=FOOTLENGSHORT*v29[1] - LEGLINK4*v29[3] + v29[5];
+v34[6]=FOOTWIDSHORT*v29[1] + LEGLINK4*v29[2] + v29[6];
 
 v35[1]=v29[1];
 v35[2]=v29[2];
 v35[3]=v29[3];
-v35[4]=-(LEGLINK4*v29[2]) - FOOTWIDLONG*v29[3] + v29[4];
-v35[5]=LEGLINK4*v29[1] - FOOTLENGSHORT*v29[3] + v29[5];
-v35[6]=FOOTWIDLONG*v29[1] + FOOTLENGSHORT*v29[2] + v29[6];
+v35[4]=-(FOOTLENGSHORT*v29[2]) + FOOTWIDLONG*v29[3] + v29[4];
+v35[5]=FOOTLENGSHORT*v29[1] - LEGLINK4*v29[3] + v29[5];
+v35[6]=-(FOOTWIDLONG*v29[1]) + LEGLINK4*v29[2] + v29[6];
 
 v36[1]=-(sstate11th*v23[1]) - cstate11th*v23[3];
 v36[2]=-(cstate11th*v23[1]) + sstate11th*v23[3];
@@ -2869,30 +2875,30 @@ v43[6]=(rceff3a1*rceff3a2*eff[3].x[2] + rceff3a2*rseff3a1*eff[3].x[3])*v42[1] + 
 v44[1]=v41[1];
 v44[2]=v41[2];
 v44[3]=v41[3];
-v44[4]=-(LEGLINK4*v41[2]) - FOOTWIDLONG*v41[3] + v41[4];
-v44[5]=LEGLINK4*v41[1] + FOOTLLENGLONG*v41[3] + v41[5];
-v44[6]=FOOTWIDLONG*v41[1] - FOOTLLENGLONG*v41[2] + v41[6];
+v44[4]=FOOTLLENGLONG*v41[2] - FOOTWIDLONG*v41[3] + v41[4];
+v44[5]=-(FOOTLLENGLONG*v41[1]) - LEGLINK4*v41[3] + v41[5];
+v44[6]=FOOTWIDLONG*v41[1] + LEGLINK4*v41[2] + v41[6];
 
 v45[1]=v41[1];
 v45[2]=v41[2];
 v45[3]=v41[3];
-v45[4]=-(LEGLINK4*v41[2]) + FOOTWIDSHORT*v41[3] + v41[4];
-v45[5]=LEGLINK4*v41[1] + FOOTLLENGLONG*v41[3] + v41[5];
-v45[6]=-(FOOTWIDSHORT*v41[1]) - FOOTLLENGLONG*v41[2] + v41[6];
+v45[4]=FOOTLLENGLONG*v41[2] + FOOTWIDSHORT*v41[3] + v41[4];
+v45[5]=-(FOOTLLENGLONG*v41[1]) - LEGLINK4*v41[3] + v41[5];
+v45[6]=-(FOOTWIDSHORT*v41[1]) + LEGLINK4*v41[2] + v41[6];
 
 v46[1]=v41[1];
 v46[2]=v41[2];
 v46[3]=v41[3];
-v46[4]=-(LEGLINK4*v41[2]) + FOOTWIDSHORT*v41[3] + v41[4];
-v46[5]=LEGLINK4*v41[1] - FOOTLENGSHORT*v41[3] + v41[5];
-v46[6]=-(FOOTWIDSHORT*v41[1]) + FOOTLENGSHORT*v41[2] + v41[6];
+v46[4]=-(FOOTLENGSHORT*v41[2]) + FOOTWIDSHORT*v41[3] + v41[4];
+v46[5]=FOOTLENGSHORT*v41[1] - LEGLINK4*v41[3] + v41[5];
+v46[6]=-(FOOTWIDSHORT*v41[1]) + LEGLINK4*v41[2] + v41[6];
 
 v47[1]=v41[1];
 v47[2]=v41[2];
 v47[3]=v41[3];
-v47[4]=-(LEGLINK4*v41[2]) - FOOTWIDLONG*v41[3] + v41[4];
-v47[5]=LEGLINK4*v41[1] - FOOTLENGSHORT*v41[3] + v41[5];
-v47[6]=FOOTWIDLONG*v41[1] + FOOTLENGSHORT*v41[2] + v41[6];
+v47[4]=-(FOOTLENGSHORT*v41[2]) - FOOTWIDLONG*v41[3] + v41[4];
+v47[5]=FOOTLENGSHORT*v41[1] - LEGLINK4*v41[3] + v41[5];
+v47[6]=FOOTWIDLONG*v41[1] + LEGLINK4*v41[2] + v41[6];
 
 
 /* acceleration vectors */
@@ -2938,26 +2944,26 @@ a5[4]=cstate10th*a4[4] + sstate10th*a4[6] + state[10].thd*v5[5];
 a5[5]=-(sstate10th*a4[4]) + cstate10th*a4[6] - state[10].thd*v5[4];
 a5[6]=-a4[5];
 
-a6[1]=a5[3];
-a6[2]=a5[1];
-a6[3]=a5[2];
-a6[4]=ARMLINK3*a5[1] + a5[6];
-a6[5]=-(ARMLINK3*a5[3]) + a5[4];
+a6[1]=sstate25th*a5[1] + cstate25th*a5[3] + state[25].thd*v6[2];
+a6[2]=cstate25th*a5[1] - sstate25th*a5[3] - state[25].thd*v6[1];
+a6[3]=state[25].thdd + a5[2];
+a6[4]=ARMLINK3*cstate25th*a5[1] - ARMLINK3*sstate25th*a5[3] + sstate25th*a5[4] + cstate25th*a5[6] + state[25].thd*v6[5];
+a6[5]=-(ARMLINK3*sstate25th*a5[1]) - ARMLINK3*cstate25th*a5[3] + cstate25th*a5[4] - sstate25th*a5[6] - state[25].thd*v6[4];
 a6[6]=a5[5];
 
-a7[1]=a6[2];
-a7[2]=a6[3];
-a7[3]=a6[1];
-a7[4]=-(GRIPJOFFZ*a6[1]) + GRIPJOFFX*a6[3] + a6[5];
-a7[5]=-(GRIPJOFFX*a6[2]) + a6[6];
+a7[1]=cstate26th*a6[2] + sstate26th*a6[3] + state[26].thd*v7[2];
+a7[2]=-(sstate26th*a6[2]) + cstate26th*a6[3] - state[26].thd*v7[1];
+a7[3]=state[26].thdd + a6[1];
+a7[4]=-(cstate26th*GRIPJOFFZ*a6[1]) - GRIPJOFFX*sstate26th*a6[2] + cstate26th*GRIPJOFFX*a6[3] + cstate26th*a6[5] + sstate26th*a6[6] + state[26].thd*v7[5];
+a7[5]=GRIPJOFFZ*sstate26th*a6[1] - cstate26th*GRIPJOFFX*a6[2] - GRIPJOFFX*sstate26th*a6[3] - sstate26th*a6[5] + cstate26th*a6[6] - state[26].thd*v7[4];
 a7[6]=GRIPJOFFZ*a6[2] + a6[4];
 
 a8[1]=a7[1];
 a8[2]=a7[2];
 a8[3]=a7[3];
 a8[4]=a7[4];
-a8[5]=FINGER*a7[3] + a7[5];
-a8[6]=-(FINGER*a7[2]) + a7[6];
+a8[5]=a7[5];
+a8[6]=a7[6];
 
 a9[1]=a6[1];
 a9[2]=a6[2];
@@ -3026,8 +3032,8 @@ a18[1]=a15[1];
 a18[2]=a15[2];
 a18[3]=a15[3];
 a18[4]=PALM*a15[2] + a15[4];
-a18[5]=-(PALM*a15[1]) - PALMOFFSETX*a15[3] + a15[5];
-a18[6]=PALMOFFSETX*a15[2] + a15[6];
+a18[5]=-(PALM*a15[1]) + PALMOFFSETX*a15[3] + a15[5];
+a18[6]=-(PALMOFFSETX*a15[2]) + a15[6];
 
 a19[1]=rceff4a2*rceff4a3*a18[1] + (rceff4a3*rseff4a1*rseff4a2 + rceff4a1*rseff4a3)*a18[2] + (-(rceff4a1*rceff4a3*rseff4a2) + rseff4a1*rseff4a3)*a18[3];
 a19[2]=-(rceff4a2*rseff4a3*a18[1]) + (rceff4a1*rceff4a3 - rseff4a1*rseff4a2*rseff4a3)*a18[2] + (rceff4a3*rseff4a1 + rceff4a1*rseff4a2*rseff4a3)*a18[3];
@@ -3109,8 +3115,8 @@ a29[6]=a28[5];
 a30[1]=a29[3];
 a30[2]=-a29[2];
 a30[3]=a29[1];
-a30[4]=a29[6];
-a30[5]=-a29[5];
+a30[4]=LEGLINK4*a29[2] + a29[6];
+a30[5]=LEGLINK4*a29[3] - a29[5];
 a30[6]=a29[4];
 
 a31[1]=rceff1a2*rceff1a3*a30[1] + (rceff1a3*rseff1a1*rseff1a2 + rceff1a1*rseff1a3)*a30[2] + (-(rceff1a1*rceff1a3*rseff1a2) + rseff1a1*rseff1a3)*a30[3];
@@ -3123,30 +3129,30 @@ a31[6]=rseff1a2*a30[4] - rceff1a2*rseff1a1*a30[5] + rceff1a1*rceff1a2*a30[6] + a
 a32[1]=a29[1];
 a32[2]=a29[2];
 a32[3]=a29[3];
-a32[4]=-(LEGLINK4*a29[2]) - FOOTWIDLONG*a29[3] + a29[4];
-a32[5]=LEGLINK4*a29[1] + FOOTLLENGLONG*a29[3] + a29[5];
-a32[6]=FOOTWIDLONG*a29[1] - FOOTLLENGLONG*a29[2] + a29[6];
+a32[4]=FOOTLLENGLONG*a29[2] + FOOTWIDLONG*a29[3] + a29[4];
+a32[5]=-(FOOTLLENGLONG*a29[1]) - LEGLINK4*a29[3] + a29[5];
+a32[6]=-(FOOTWIDLONG*a29[1]) + LEGLINK4*a29[2] + a29[6];
 
 a33[1]=a29[1];
 a33[2]=a29[2];
 a33[3]=a29[3];
-a33[4]=-(LEGLINK4*a29[2]) + FOOTWIDSHORT*a29[3] + a29[4];
-a33[5]=LEGLINK4*a29[1] + FOOTLLENGLONG*a29[3] + a29[5];
-a33[6]=-(FOOTWIDSHORT*a29[1]) - FOOTLLENGLONG*a29[2] + a29[6];
+a33[4]=FOOTLLENGLONG*a29[2] - FOOTWIDSHORT*a29[3] + a29[4];
+a33[5]=-(FOOTLLENGLONG*a29[1]) - LEGLINK4*a29[3] + a29[5];
+a33[6]=FOOTWIDSHORT*a29[1] + LEGLINK4*a29[2] + a29[6];
 
 a34[1]=a29[1];
 a34[2]=a29[2];
 a34[3]=a29[3];
-a34[4]=-(LEGLINK4*a29[2]) + FOOTWIDSHORT*a29[3] + a29[4];
-a34[5]=LEGLINK4*a29[1] - FOOTLENGSHORT*a29[3] + a29[5];
-a34[6]=-(FOOTWIDSHORT*a29[1]) + FOOTLENGSHORT*a29[2] + a29[6];
+a34[4]=-(FOOTLENGSHORT*a29[2]) - FOOTWIDSHORT*a29[3] + a29[4];
+a34[5]=FOOTLENGSHORT*a29[1] - LEGLINK4*a29[3] + a29[5];
+a34[6]=FOOTWIDSHORT*a29[1] + LEGLINK4*a29[2] + a29[6];
 
 a35[1]=a29[1];
 a35[2]=a29[2];
 a35[3]=a29[3];
-a35[4]=-(LEGLINK4*a29[2]) - FOOTWIDLONG*a29[3] + a29[4];
-a35[5]=LEGLINK4*a29[1] - FOOTLENGSHORT*a29[3] + a29[5];
-a35[6]=FOOTWIDLONG*a29[1] + FOOTLENGSHORT*a29[2] + a29[6];
+a35[4]=-(FOOTLENGSHORT*a29[2]) + FOOTWIDLONG*a29[3] + a29[4];
+a35[5]=FOOTLENGSHORT*a29[1] - LEGLINK4*a29[3] + a29[5];
+a35[6]=-(FOOTWIDLONG*a29[1]) + LEGLINK4*a29[2] + a29[6];
 
 a36[1]=-(sstate11th*a23[1]) - cstate11th*a23[3] + state[11].thd*v36[2];
 a36[2]=-(cstate11th*a23[1]) + sstate11th*a23[3] - state[11].thd*v36[1];
@@ -3207,30 +3213,30 @@ a43[6]=rseff3a2*a42[4] - rceff3a2*rseff3a1*a42[5] + rceff3a1*rceff3a2*a42[6] + a
 a44[1]=a41[1];
 a44[2]=a41[2];
 a44[3]=a41[3];
-a44[4]=-(LEGLINK4*a41[2]) - FOOTWIDLONG*a41[3] + a41[4];
-a44[5]=LEGLINK4*a41[1] + FOOTLLENGLONG*a41[3] + a41[5];
-a44[6]=FOOTWIDLONG*a41[1] - FOOTLLENGLONG*a41[2] + a41[6];
+a44[4]=FOOTLLENGLONG*a41[2] - FOOTWIDLONG*a41[3] + a41[4];
+a44[5]=-(FOOTLLENGLONG*a41[1]) - LEGLINK4*a41[3] + a41[5];
+a44[6]=FOOTWIDLONG*a41[1] + LEGLINK4*a41[2] + a41[6];
 
 a45[1]=a41[1];
 a45[2]=a41[2];
 a45[3]=a41[3];
-a45[4]=-(LEGLINK4*a41[2]) + FOOTWIDSHORT*a41[3] + a41[4];
-a45[5]=LEGLINK4*a41[1] + FOOTLLENGLONG*a41[3] + a41[5];
-a45[6]=-(FOOTWIDSHORT*a41[1]) - FOOTLLENGLONG*a41[2] + a41[6];
+a45[4]=FOOTLLENGLONG*a41[2] + FOOTWIDSHORT*a41[3] + a41[4];
+a45[5]=-(FOOTLLENGLONG*a41[1]) - LEGLINK4*a41[3] + a41[5];
+a45[6]=-(FOOTWIDSHORT*a41[1]) + LEGLINK4*a41[2] + a41[6];
 
 a46[1]=a41[1];
 a46[2]=a41[2];
 a46[3]=a41[3];
-a46[4]=-(LEGLINK4*a41[2]) + FOOTWIDSHORT*a41[3] + a41[4];
-a46[5]=LEGLINK4*a41[1] - FOOTLENGSHORT*a41[3] + a41[5];
-a46[6]=-(FOOTWIDSHORT*a41[1]) + FOOTLENGSHORT*a41[2] + a41[6];
+a46[4]=-(FOOTLENGSHORT*a41[2]) + FOOTWIDSHORT*a41[3] + a41[4];
+a46[5]=FOOTLENGSHORT*a41[1] - LEGLINK4*a41[3] + a41[5];
+a46[6]=-(FOOTWIDSHORT*a41[1]) + LEGLINK4*a41[2] + a41[6];
 
 a47[1]=a41[1];
 a47[2]=a41[2];
 a47[3]=a41[3];
-a47[4]=-(LEGLINK4*a41[2]) - FOOTWIDLONG*a41[3] + a41[4];
-a47[5]=LEGLINK4*a41[1] - FOOTLENGSHORT*a41[3] + a41[5];
-a47[6]=FOOTWIDLONG*a41[1] + FOOTLENGSHORT*a41[2] + a41[6];
+a47[4]=-(FOOTLENGSHORT*a41[2]) - FOOTWIDLONG*a41[3] + a41[4];
+a47[5]=FOOTLENGSHORT*a41[1] - LEGLINK4*a41[3] + a41[5];
+a47[6]=FOOTWIDLONG*a41[1] + LEGLINK4*a41[2] + a41[6];
 
 
 /* kinematic matrices */
@@ -7760,6 +7766,8 @@ Y[2]=state[7].u;
 Y[3]=state[8].u;
 Y[4]=state[9].u;
 Y[5]=state[10].u;
+Y[6]=state[25].u;
+Y[7]=state[26].u;
 Y[11]=state[17].u;
 Y[12]=state[18].u;
 Y[13]=state[19].u;

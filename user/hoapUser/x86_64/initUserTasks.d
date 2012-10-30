@@ -1,6 +1,5 @@
-initUserTasks.o: ../src/initUserTasks.c \
- /home/sl/sl-new/root/hoap/include/SL.h \
- /home/sl/sl-new/root/hoap/include/utility.h /usr/include/stdio.h \
+initUserTasks.o: ../src/initUserTasks.c /home/sl/sl-new/root/include/SL.h \
+ /home/sl/sl-new/root/include/utility.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -29,13 +28,13 @@ initUserTasks.o: ../src/initUserTasks.c \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
  /home/sl/sl-new/root/hoap/include/SL_user.h \
- /home/sl/sl-new/root/hoap/include/SL_integrate.h \
- /home/sl/sl-new/root/hoap/include/SL_common.h \
- /home/sl/sl-new/root/hoap/include/SL_task_servo.h
+ /home/sl/sl-new/root/include/SL_integrate.h \
+ /home/sl/sl-new/root/include/SL_common.h \
+ /home/sl/sl-new/root/include/SL_task_servo.h
 
-/home/sl/sl-new/root/hoap/include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-/home/sl/sl-new/root/hoap/include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
 /usr/include/stdio.h:
 
@@ -109,8 +108,8 @@ initUserTasks.o: ../src/initUserTasks.c \
 
 /home/sl/sl-new/root/hoap/include/SL_user.h:
 
-/home/sl/sl-new/root/hoap/include/SL_integrate.h:
+/home/sl/sl-new/root/include/SL_integrate.h:
 
-/home/sl/sl-new/root/hoap/include/SL_common.h:
+/home/sl/sl-new/root/include/SL_common.h:
 
-/home/sl/sl-new/root/hoap/include/SL_task_servo.h:
+/home/sl/sl-new/root/include/SL_task_servo.h:

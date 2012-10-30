@@ -70,6 +70,12 @@ char cart_names[][20]= {
 
 char blob_names[][20]= {
   {"dummy"},
+  {"BLOB1"},
+  {"BLOB2"},
+  {"BLOB3"},
+  {"BLOB4"},
+  {"BLOB5"},
+  {"BLOB6"}
 };
 
 char link_names[][20]= {

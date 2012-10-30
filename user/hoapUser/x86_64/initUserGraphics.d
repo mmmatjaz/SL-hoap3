@@ -1,7 +1,7 @@
 initUserGraphics.o: ../src/initUserGraphics.c \
- /home/sl/sl-new/root/hoap/include/SL.h \
- /home/sl/sl-new/root/hoap/include/utility.h /usr/include/stdio.h \
- /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
+ /home/sl/sl-new/root/include/SL.h /home/sl/sl-new/root/include/utility.h \
+ /usr/include/stdio.h /usr/include/features.h \
+ /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -29,17 +29,17 @@ initUserGraphics.o: ../src/initUserGraphics.c \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
  /home/sl/sl-new/root/hoap/include/SL_user.h \
- /home/sl/sl-new/root/hoap/include/SL_man.h /usr/include/GL/glut.h \
+ /home/sl/sl-new/root/include/SL_man.h /usr/include/GL/glut.h \
  /usr/include/GL/freeglut_std.h /usr/include/GL/gl.h \
  /usr/include/GL/glext.h /usr/include/inttypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/GL/glu.h \
- /home/sl/sl-new/root/hoap/include/SL_openGL.h \
- /home/sl/sl-new/root/hoap/include/SL_userGraphics.h
+ /home/sl/sl-new/root/include/SL_openGL.h \
+ /home/sl/sl-new/root/include/SL_userGraphics.h
 
-/home/sl/sl-new/root/hoap/include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-/home/sl/sl-new/root/hoap/include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
 /usr/include/stdio.h:
 
@@ -113,7 +113,7 @@ initUserGraphics.o: ../src/initUserGraphics.c \
 
 /home/sl/sl-new/root/hoap/include/SL_user.h:
 
-/home/sl/sl-new/root/hoap/include/SL_man.h:
+/home/sl/sl-new/root/include/SL_man.h:
 
 /usr/include/GL/glut.h:
 
@@ -133,6 +133,6 @@ initUserGraphics.o: ../src/initUserGraphics.c \
 
 /usr/include/GL/glu.h:
 
-/home/sl/sl-new/root/hoap/include/SL_openGL.h:
+/home/sl/sl-new/root/include/SL_openGL.h:
 
-/home/sl/sl-new/root/hoap/include/SL_userGraphics.h:
+/home/sl/sl-new/root/include/SL_userGraphics.h:

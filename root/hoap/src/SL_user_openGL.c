@@ -205,10 +205,19 @@ display(void)
 
   if (firsttime) {
     firsttime = FALSE;
+
+    for (i=0;i<N_DOFS;i++)
+    	{
+    		state[i].th=0.0;
+    		state[i].thd=0.0;
+    		state[i].thdd=0.0;
+    	}
     double w;
     if (read_parameter_pool_double(config_files[PARAMETERPOOL],"contact_force_scale",&w))
       fscale = w;
   }
+
+
 
 #include "OpenGL.h"
 
@@ -238,13 +247,10 @@ display(void)
 
 
  ******************************************************************************/
-static void  
-myDrawGLElement(int num, double length, int flag)
+static void myDrawGLElement(int num, double length, int flag)
 
 {
-//////////////////////////////////		
-	//flag=42;
-//////////////////////////////////
+  static int firsttime = TRUE;
   double width=0.03;
   double head_width = 0.3;
   double hand_width = 0.07;
@@ -258,94 +264,41 @@ myDrawGLElement(int num, double length, int flag)
   GLfloat  green[4]={(float)0.1,(float)0.5,(float)0.5,(float)1.0};
   GLfloat  red[4]={(float)1.0,(float)0.25,(float)0.25,(float)1.0};
   GLfloat  blue[4]={(float)0.1,(float)0.1,(float)1.0,(float)1.0};
-  GLfloat  black[4]={(float)0.,(float)0.,(float)0.0,(float)1.0};
+  GLfloat  black[4]={(float)0.3,(float)0.3,(float)0.3,(float)1.0};
   GLfloat  white[4]={(float)1.,(float)1.,(float)1.0,(float)1.0};
   GLfloat  yellow[4]={(float)1.0,(float)0.8,(float)0.7,(float)1.0};
 
-  //flag=0;
+  //printf("\n num %d | len %f | flag %d", num, length, flag);
+int      isphere = 10;
+
+	flag=1;
   if (flag==1) {
     glTranslated(0.0,0.0,length); 
 
     if (num==999) {/* the base coordinate system */
       glColor4fv(blue);
-    } else if (num == 36 || num == 38) {
-      glColor4fv(white);
     } else {
       glColor4fv(green);
     }
 
-    if (num == 36 || num == 38) {
-      if (solid)
-		glutSolidSphere(1.5*width,10,10);
-      else
-		glutWireSphere(1.5*width,10,10);
-    } else if (num == 40 || num == 41) {
-      if (solid)
-        glutSolidSphere(0.5*width,10,10);
-      else
-        glutWireSphere(0.5*width,10,10);
-    } else {
-      if (solid)
-		glutSolidSphere(1.2*width,5,5);
-      else
-		glutWireSphere(1.2*width,5,5);
-    }
+    if (solid)
+      glutSolidSphere(0.5*width,isphere,isphere);
+    else
+      glutWireSphere(0.5*width,isphere,isphere);
+
     glTranslated(0.0,0.0,-length);
   }
-	
-  //num=-20;
+
+
   switch (num) {
-
-  case 15: /* the torso */
-	
-    glScaled(torso_width,2*torso_width/3.,torso_width/2.);
-    glTranslated(0.0,-0.11,0.10);
-    glColor4fv(yellow);
-    if (solid)
-      glutSolidSphere(0.5,16,16);
-    else
-      glutWireSphere(0.5,16,16);
-    break;
-	
-  case 120: /* the head */
-
-    glScaled(.2,head_width/2.8,head_width/1.2);
-    glTranslated(0.0,0.0,0.5);
-    glColor4fv(yellow);
-    if (solid)
-      glutSolidSphere(0.5,15,15);
-    else
-      glutWireSphere(0.5,15,15); 
-    break;
-	
- case 108: /* dummies of feet */
- case 109:
- case 110:
- case 111:
- case 115:
- case 116:
- case 117:
- case 118:
-	
-    glScaled(width/2.,width/2.,length);
-    glTranslated(0.0,0.0,0.5);
-    glColor4fv(gray);
-    if (solid)
-      glutSolidCube(1.0);
-    else
-      glutWireCube(1.0);
-			
-    break;
-
   default:
-	
-    glScaled(width,width,length);
-    glTranslated(0.0,0.0,0.5);
+
+    glScaled(width/2.,width/2.,length);
     glColor4fv(gray);
     if (solid)
-      glutSolidCube(1.0);
+      glutSolidCylinder(1.0/2.0,1.0,isphere,1);
     else
-      glutWireCube(1.0);
+      glutWireCylinder(1.0/2.0,1.0,isphere,1);
 			
   }
 }

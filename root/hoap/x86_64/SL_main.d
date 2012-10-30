@@ -1,6 +1,6 @@
-SL_main.o: ../src/SL_main.c ../include/SL_system_headers.h \
- /usr/include/pthread.h /usr/include/features.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h \
+SL_main.o: ../src/SL_main.c \
+ /home/sl/sl-new/root/include/SL_system_headers.h /usr/include/pthread.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -55,7 +55,8 @@ SL_main.o: ../src/SL_main.c ../include/SL_system_headers.h \
  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- ../include/SL_vx_wrappers.h /usr/include/x86_64-linux-gnu/sys/wait.h \
+ /home/sl/sl-new/root/include/SL_vx_wrappers.h \
+ /usr/include/x86_64-linux-gnu/sys/wait.h \
  /usr/include/x86_64-linux-gnu/sys/resource.h \
  /usr/include/x86_64-linux-gnu/bits/resource.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
@@ -63,12 +64,16 @@ SL_main.o: ../src/SL_main.c ../include/SL_system_headers.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
  /usr/include/x86_64-linux-gnu/bits/unistd.h /usr/include/X11/Xlib.h \
  /usr/include/X11/X.h /usr/include/X11/Xfuncproto.h \
- /usr/include/X11/Xosdefs.h ../include/SL.h ../include/utility.h \
- ../include/SL_common.h ../include/SL_unix_common.h \
- ../include/SL_rt_mutex.h ../include/SL_shared_memory.h \
- ../include/utility.h ../include/SL_user_main_core.h
+ /usr/include/X11/Xosdefs.h /home/sl/sl-new/root/include/SL.h \
+ /home/sl/sl-new/root/include/utility.h \
+ /home/sl/sl-new/root/include/SL_common.h \
+ /home/sl/sl-new/root/include/SL_unix_common.h \
+ /home/sl/sl-new/root/include/SL_rt_mutex.h \
+ /home/sl/sl-new/root/include/SL_shared_memory.h \
+ /home/sl/sl-new/root/include/utility.h \
+ /home/sl/sl-new/root/include/SL_user_main_core.h
 
-../include/SL_system_headers.h:
+/home/sl/sl-new/root/include/SL_system_headers.h:
 
 /usr/include/pthread.h:
 
@@ -212,7 +217,7 @@ SL_main.o: ../src/SL_main.c ../include/SL_system_headers.h \
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-../include/SL_vx_wrappers.h:
+/home/sl/sl-new/root/include/SL_vx_wrappers.h:
 
 /usr/include/x86_64-linux-gnu/sys/wait.h:
 
@@ -240,18 +245,18 @@ SL_main.o: ../src/SL_main.c ../include/SL_system_headers.h \
 
 /usr/include/X11/Xosdefs.h:
 
-../include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
-../include/SL_common.h:
+/home/sl/sl-new/root/include/SL_common.h:
 
-../include/SL_unix_common.h:
+/home/sl/sl-new/root/include/SL_unix_common.h:
 
-../include/SL_rt_mutex.h:
+/home/sl/sl-new/root/include/SL_rt_mutex.h:
 
-../include/SL_shared_memory.h:
+/home/sl/sl-new/root/include/SL_shared_memory.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
-../include/SL_user_main_core.h:
+/home/sl/sl-new/root/include/SL_user_main_core.h:

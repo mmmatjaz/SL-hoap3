@@ -1,6 +1,6 @@
-SL_user_motor.o: ../src/SL_user_motor.c ../include/SL_system_headers.h \
- /usr/include/pthread.h /usr/include/features.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h \
+SL_user_motor.o: ../src/SL_user_motor.c \
+ /home/sl/sl-new/root/include/SL_system_headers.h /usr/include/pthread.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -55,10 +55,11 @@ SL_user_motor.o: ../src/SL_user_motor.c ../include/SL_system_headers.h \
  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- ../include/SL_vx_wrappers.h ../include/SL.h ../include/utility.h \
- ../include/SL_motor_servo.h
+ /home/sl/sl-new/root/include/SL_vx_wrappers.h \
+ /home/sl/sl-new/root/include/SL.h /home/sl/sl-new/root/include/utility.h \
+ /home/sl/sl-new/root/include/SL_motor_servo.h
 
-../include/SL_system_headers.h:
+/home/sl/sl-new/root/include/SL_system_headers.h:
 
 /usr/include/pthread.h:
 
@@ -202,10 +203,10 @@ SL_user_motor.o: ../src/SL_user_motor.c ../include/SL_system_headers.h \
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-../include/SL_vx_wrappers.h:
+/home/sl/sl-new/root/include/SL_vx_wrappers.h:
 
-../include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
-../include/SL_motor_servo.h:
+/home/sl/sl-new/root/include/SL_motor_servo.h:

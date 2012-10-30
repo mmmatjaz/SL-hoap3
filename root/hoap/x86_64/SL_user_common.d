@@ -1,5 +1,6 @@
-SL_user_common.o: ../src/SL_user_common.c ../include/SL.h \
- ../include/utility.h /usr/include/stdio.h /usr/include/features.h \
+SL_user_common.o: ../src/SL_user_common.c \
+ /home/sl/sl-new/root/include/SL.h /home/sl/sl-new/root/include/utility.h \
+ /usr/include/stdio.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -27,12 +28,12 @@ SL_user_common.o: ../src/SL_user_common.c ../include/SL.h \
  /usr/include/x86_64-linux-gnu/sys/sysmacros.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h ../include/SL_user.h \
- ../include/SL_common.h ../include/SL_user_common.h \
- ../math/Floating_Base.h
+ /home/sl/sl-new/root/include/SL_common.h \
+ /home/sl/sl-new/root/include/SL_user_common.h ../math/Floating_Base.h
 
-../include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
 /usr/include/stdio.h:
 
@@ -106,8 +107,8 @@ SL_user_common.o: ../src/SL_user_common.c ../include/SL.h \
 
 ../include/SL_user.h:
 
-../include/SL_common.h:
+/home/sl/sl-new/root/include/SL_common.h:
 
-../include/SL_user_common.h:
+/home/sl/sl-new/root/include/SL_user_common.h:
 
 ../math/Floating_Base.h:

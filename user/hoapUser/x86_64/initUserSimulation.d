@@ -1,7 +1,6 @@
 initUserSimulation.o: ../src/initUserSimulation.c \
- /home/sl/sl-new/root/hoap/include/SL_system_headers.h \
- /usr/include/pthread.h /usr/include/features.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h \
+ /home/sl/sl-new/root/include/SL_system_headers.h /usr/include/pthread.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -56,14 +55,13 @@ initUserSimulation.o: ../src/initUserSimulation.c \
  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /home/sl/sl-new/root/hoap/include/SL_vx_wrappers.h \
- /home/sl/sl-new/root/hoap/include/SL.h \
- /home/sl/sl-new/root/hoap/include/utility.h \
+ /home/sl/sl-new/root/include/SL_vx_wrappers.h \
+ /home/sl/sl-new/root/include/SL.h /home/sl/sl-new/root/include/utility.h \
  /home/sl/sl-new/root/hoap/include/SL_user.h \
- /home/sl/sl-new/root/hoap/include/SL_man.h \
- /home/sl/sl-new/root/hoap/include/SL_userSimulation.h
+ /home/sl/sl-new/root/include/SL_man.h \
+ /home/sl/sl-new/root/include/SL_userSimulation.h
 
-/home/sl/sl-new/root/hoap/include/SL_system_headers.h:
+/home/sl/sl-new/root/include/SL_system_headers.h:
 
 /usr/include/pthread.h:
 
@@ -207,14 +205,14 @@ initUserSimulation.o: ../src/initUserSimulation.c \
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-/home/sl/sl-new/root/hoap/include/SL_vx_wrappers.h:
+/home/sl/sl-new/root/include/SL_vx_wrappers.h:
 
-/home/sl/sl-new/root/hoap/include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-/home/sl/sl-new/root/hoap/include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
 /home/sl/sl-new/root/hoap/include/SL_user.h:
 
-/home/sl/sl-new/root/hoap/include/SL_man.h:
+/home/sl/sl-new/root/include/SL_man.h:
 
-/home/sl/sl-new/root/hoap/include/SL_userSimulation.h:
+/home/sl/sl-new/root/include/SL_userSimulation.h:

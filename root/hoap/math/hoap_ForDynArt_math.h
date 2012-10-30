@@ -11,6 +11,12 @@ cstate9th=Cos(state[9].th);
 sstate10th=Sin(state[10].th);
 cstate10th=Cos(state[10].th);
 
+sstate25th=Sin(state[25].th);
+cstate25th=Cos(state[25].th);
+
+sstate26th=Sin(state[26].th);
+cstate26th=Cos(state[26].th);
+
 sstate17th=Sin(state[17].th);
 cstate17th=Cos(state[17].th);
 
@@ -306,26 +312,30 @@ a5[4]=c5[4] + a4[4]*S54[1][1] + a4[6]*S54[1][3];
 a5[5]=c5[5] + a4[4]*S54[2][1] + a4[6]*S54[2][3];
 a5[6]=-a4[5];
 
-a6[1]=a5[3];
-a6[2]=a5[1];
-a6[3]=a5[2];
-a6[4]=ARMLINK3*a5[1] + a5[6];
-a6[5]=-(ARMLINK3*a5[3]) + a5[4];
+state[25].thdd=(-(a5[5]*h6[3]) - a5[2]*h6[6] + u[6] - a5[4]*(h6[1]*S65[1][1] + h6[2]*S65[2][1]) - a5[6]*(h6[1]*S65[1][3] + h6[2]*S65[2][3]) - a5[1]*(h6[4]*S65[1][1] + ARMLINK3*h6[1]*S65[1][3] + h6[5]*S65[2][1] + ARMLINK3*h6[2]*S65[2][3]) - a5[3]*(-(ARMLINK3*h6[1]*S65[1][1]) + h6[4]*S65[1][3] - ARMLINK3*h6[2]*S65[2][1] + h6[5]*S65[2][3]))/d[6];
+
+a6[1]=c6[1] + a5[1]*S65[1][1] + a5[3]*S65[1][3];
+a6[2]=c6[2] + a5[1]*S65[2][1] + a5[3]*S65[2][3];
+a6[3]=state[25].thdd + a5[2];
+a6[4]=c6[4] - ARMLINK3*a5[3]*S65[1][1] + a5[4]*S65[1][1] + ARMLINK3*a5[1]*S65[1][3] + a5[6]*S65[1][3];
+a6[5]=c6[5] - ARMLINK3*a5[3]*S65[2][1] + a5[4]*S65[2][1] + ARMLINK3*a5[1]*S65[2][3] + a5[6]*S65[2][3];
 a6[6]=a5[5];
 
-a7[1]=a6[2];
-a7[2]=a6[3];
-a7[3]=a6[1];
-a7[4]=-(GRIPJOFFZ*a6[1]) + GRIPJOFFX*a6[3] + a6[5];
-a7[5]=-(GRIPJOFFX*a6[2]) + a6[6];
+state[26].thdd=(u[7] - a6[5]*(h7[1]*S76[1][2] + h7[2]*S76[2][2]) - a6[1]*(h7[6] - GRIPJOFFZ*h7[1]*S76[1][2] - GRIPJOFFZ*h7[2]*S76[2][2]) - a6[6]*(h7[1]*S76[1][3] + h7[2]*S76[2][3]) - a6[2]*(h7[4]*S76[1][2] - GRIPJOFFX*h7[1]*S76[1][3] + h7[5]*S76[2][2] - GRIPJOFFX*h7[2]*S76[2][3]) - a6[3]*(GRIPJOFFX*h7[1]*S76[1][2] + h7[4]*S76[1][3] + GRIPJOFFX*h7[2]*S76[2][2] + h7[5]*S76[2][3]))/d[7];
+
+a7[1]=c7[1] + a6[2]*S76[1][2] + a6[3]*S76[1][3];
+a7[2]=c7[2] + a6[2]*S76[2][2] + a6[3]*S76[2][3];
+a7[3]=state[26].thdd + a6[1];
+a7[4]=c7[4] - GRIPJOFFZ*a6[1]*S76[1][2] + GRIPJOFFX*a6[3]*S76[1][2] + a6[5]*S76[1][2] - GRIPJOFFX*a6[2]*S76[1][3] + a6[6]*S76[1][3];
+a7[5]=c7[5] - GRIPJOFFZ*a6[1]*S76[2][2] + GRIPJOFFX*a6[3]*S76[2][2] + a6[5]*S76[2][2] - GRIPJOFFX*a6[2]*S76[2][3] + a6[6]*S76[2][3];
 a7[6]=GRIPJOFFZ*a6[2] + a6[4];
 
 a8[1]=a7[1];
 a8[2]=a7[2];
 a8[3]=a7[3];
 a8[4]=a7[4];
-a8[5]=FINGER*a7[3] + a7[5];
-a8[6]=-(FINGER*a7[2]) + a7[6];
+a8[5]=a7[5];
+a8[6]=a7[6];
 
 a9[1]=a6[1];
 a9[2]=a6[2];
@@ -405,8 +415,8 @@ a18[1]=a15[1];
 a18[2]=a15[2];
 a18[3]=a15[3];
 a18[4]=PALM*a15[2] + a15[4];
-a18[5]=-(PALM*a15[1]) - PALMOFFSETX*a15[3] + a15[5];
-a18[6]=PALMOFFSETX*a15[2] + a15[6];
+a18[5]=-(PALM*a15[1]) + PALMOFFSETX*a15[3] + a15[5];
+a18[6]=-(PALMOFFSETX*a15[2]) + a15[6];
 
 a19[1]=a18[1]*S1918[1][1] + a18[2]*S1918[1][2] + a18[3]*S1918[1][3];
 a19[2]=a18[1]*S1918[2][1] + a18[2]*S1918[2][2] + a18[3]*S1918[2][3];
@@ -504,8 +514,8 @@ a29[6]=a28[5];
 a30[1]=a29[3];
 a30[2]=-a29[2];
 a30[3]=a29[1];
-a30[4]=a29[6];
-a30[5]=-a29[5];
+a30[4]=LEGLINK4*a29[2] + a29[6];
+a30[5]=LEGLINK4*a29[3] - a29[5];
 a30[6]=a29[4];
 
 a31[1]=a30[1]*S3130[1][1] + a30[2]*S3130[1][2] + a30[3]*S3130[1][3];
@@ -518,30 +528,30 @@ a31[6]=a30[4]*S3130[3][1] + a30[5]*S3130[3][2] + a30[3]*(-(eff[1].x[2]*S3130[3][
 a32[1]=a29[1];
 a32[2]=a29[2];
 a32[3]=a29[3];
-a32[4]=-(LEGLINK4*a29[2]) - FOOTWIDLONG*a29[3] + a29[4];
-a32[5]=LEGLINK4*a29[1] + FOOTLLENGLONG*a29[3] + a29[5];
-a32[6]=FOOTWIDLONG*a29[1] - FOOTLLENGLONG*a29[2] + a29[6];
+a32[4]=FOOTLLENGLONG*a29[2] + FOOTWIDLONG*a29[3] + a29[4];
+a32[5]=-(FOOTLLENGLONG*a29[1]) - LEGLINK4*a29[3] + a29[5];
+a32[6]=-(FOOTWIDLONG*a29[1]) + LEGLINK4*a29[2] + a29[6];
 
 a33[1]=a29[1];
 a33[2]=a29[2];
 a33[3]=a29[3];
-a33[4]=-(LEGLINK4*a29[2]) + FOOTWIDSHORT*a29[3] + a29[4];
-a33[5]=LEGLINK4*a29[1] + FOOTLLENGLONG*a29[3] + a29[5];
-a33[6]=-(FOOTWIDSHORT*a29[1]) - FOOTLLENGLONG*a29[2] + a29[6];
+a33[4]=FOOTLLENGLONG*a29[2] - FOOTWIDSHORT*a29[3] + a29[4];
+a33[5]=-(FOOTLLENGLONG*a29[1]) - LEGLINK4*a29[3] + a29[5];
+a33[6]=FOOTWIDSHORT*a29[1] + LEGLINK4*a29[2] + a29[6];
 
 a34[1]=a29[1];
 a34[2]=a29[2];
 a34[3]=a29[3];
-a34[4]=-(LEGLINK4*a29[2]) + FOOTWIDSHORT*a29[3] + a29[4];
-a34[5]=LEGLINK4*a29[1] - FOOTLENGSHORT*a29[3] + a29[5];
-a34[6]=-(FOOTWIDSHORT*a29[1]) + FOOTLENGSHORT*a29[2] + a29[6];
+a34[4]=-(FOOTLENGSHORT*a29[2]) - FOOTWIDSHORT*a29[3] + a29[4];
+a34[5]=FOOTLENGSHORT*a29[1] - LEGLINK4*a29[3] + a29[5];
+a34[6]=FOOTWIDSHORT*a29[1] + LEGLINK4*a29[2] + a29[6];
 
 a35[1]=a29[1];
 a35[2]=a29[2];
 a35[3]=a29[3];
-a35[4]=-(LEGLINK4*a29[2]) - FOOTWIDLONG*a29[3] + a29[4];
-a35[5]=LEGLINK4*a29[1] - FOOTLENGSHORT*a29[3] + a29[5];
-a35[6]=FOOTWIDLONG*a29[1] + FOOTLENGSHORT*a29[2] + a29[6];
+a35[4]=-(FOOTLENGSHORT*a29[2]) + FOOTWIDLONG*a29[3] + a29[4];
+a35[5]=FOOTLENGSHORT*a29[1] - LEGLINK4*a29[3] + a29[5];
+a35[6]=-(FOOTWIDLONG*a29[1]) + LEGLINK4*a29[2] + a29[6];
 
 state[11].thdd=(-(a23[5]*h36[3]) + u[36] - a23[4]*(h36[1]*S3623[1][1] + h36[2]*S3623[2][1]) - a23[1]*(LEGLINK1*h36[3] + h36[4]*S3623[1][1] - WAISTLINK1*h36[1]*S3623[1][3] + h36[5]*S3623[2][1] - WAISTLINK1*h36[2]*S3623[2][3]) - a23[3]*(-(WAISTLINK2*h36[3]) + WAISTLINK1*h36[1]*S3623[1][1] + h36[4]*S3623[1][3] + WAISTLINK1*h36[2]*S3623[2][1] + h36[5]*S3623[2][3]) - a23[2]*(h36[6] + h36[1]*(-(LEGLINK1*S3623[1][1]) + WAISTLINK2*S3623[1][3]) + h36[2]*(-(LEGLINK1*S3623[2][1]) + WAISTLINK2*S3623[2][3])))/d[36];
 
@@ -614,28 +624,28 @@ a43[6]=a42[4]*S4342[3][1] + a42[5]*S4342[3][2] + a42[3]*(-(eff[3].x[2]*S4342[3][
 a44[1]=a41[1];
 a44[2]=a41[2];
 a44[3]=a41[3];
-a44[4]=-(LEGLINK4*a41[2]) - FOOTWIDLONG*a41[3] + a41[4];
-a44[5]=LEGLINK4*a41[1] + FOOTLLENGLONG*a41[3] + a41[5];
-a44[6]=FOOTWIDLONG*a41[1] - FOOTLLENGLONG*a41[2] + a41[6];
+a44[4]=FOOTLLENGLONG*a41[2] - FOOTWIDLONG*a41[3] + a41[4];
+a44[5]=-(FOOTLLENGLONG*a41[1]) - LEGLINK4*a41[3] + a41[5];
+a44[6]=FOOTWIDLONG*a41[1] + LEGLINK4*a41[2] + a41[6];
 
 a45[1]=a41[1];
 a45[2]=a41[2];
 a45[3]=a41[3];
-a45[4]=-(LEGLINK4*a41[2]) + FOOTWIDSHORT*a41[3] + a41[4];
-a45[5]=LEGLINK4*a41[1] + FOOTLLENGLONG*a41[3] + a41[5];
-a45[6]=-(FOOTWIDSHORT*a41[1]) - FOOTLLENGLONG*a41[2] + a41[6];
+a45[4]=FOOTLLENGLONG*a41[2] + FOOTWIDSHORT*a41[3] + a41[4];
+a45[5]=-(FOOTLLENGLONG*a41[1]) - LEGLINK4*a41[3] + a41[5];
+a45[6]=-(FOOTWIDSHORT*a41[1]) + LEGLINK4*a41[2] + a41[6];
 
 a46[1]=a41[1];
 a46[2]=a41[2];
 a46[3]=a41[3];
-a46[4]=-(LEGLINK4*a41[2]) + FOOTWIDSHORT*a41[3] + a41[4];
-a46[5]=LEGLINK4*a41[1] - FOOTLENGSHORT*a41[3] + a41[5];
-a46[6]=-(FOOTWIDSHORT*a41[1]) + FOOTLENGSHORT*a41[2] + a41[6];
+a46[4]=-(FOOTLENGSHORT*a41[2]) + FOOTWIDSHORT*a41[3] + a41[4];
+a46[5]=FOOTLENGSHORT*a41[1] - LEGLINK4*a41[3] + a41[5];
+a46[6]=-(FOOTWIDSHORT*a41[1]) + LEGLINK4*a41[2] + a41[6];
 
 a47[1]=a41[1];
 a47[2]=a41[2];
 a47[3]=a41[3];
-a47[4]=-(LEGLINK4*a41[2]) - FOOTWIDLONG*a41[3] + a41[4];
-a47[5]=LEGLINK4*a41[1] - FOOTLENGSHORT*a41[3] + a41[5];
-a47[6]=FOOTWIDLONG*a41[1] + FOOTLENGSHORT*a41[2] + a41[6];
+a47[4]=-(FOOTLENGSHORT*a41[2]) - FOOTWIDLONG*a41[3] + a41[4];
+a47[5]=FOOTLENGSHORT*a41[1] - LEGLINK4*a41[3] + a41[5];
+a47[6]=FOOTWIDLONG*a41[1] + LEGLINK4*a41[2] + a41[6];
 

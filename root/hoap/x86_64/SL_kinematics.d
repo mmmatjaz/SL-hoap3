@@ -1,5 +1,6 @@
-SL_kinematics.o: ../src/SL_kinematics.c ../include/SL_kinematics_body.h \
- ../include/SL_system_headers.h /usr/include/pthread.h \
+SL_kinematics.o: ../src/SL_kinematics.c \
+ /home/sl/sl-new/root/include/SL_kinematics_body.h \
+ /home/sl/sl-new/root/include/SL_system_headers.h /usr/include/pthread.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -55,16 +56,19 @@ SL_kinematics.o: ../src/SL_kinematics.c ../include/SL_kinematics_body.h \
  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- ../include/SL_vx_wrappers.h ../include/SL.h ../include/utility.h \
- ../include/SL_user.h ../include/SL_common.h ../include/mdefs.h \
- ../include/SL_kinematics.h ../include/utility_macros.h \
- ../math/Prismatic_Joints.h ../math/LInfo_declare.h ../math/LInfo_math.h \
- ../math/GJac_declare.h ../math/GJac_math.h \
- ../math/Contact_GJac_declare.h ../math/Contact_GJac_math.h
+ /home/sl/sl-new/root/include/SL_vx_wrappers.h \
+ /home/sl/sl-new/root/include/SL.h /home/sl/sl-new/root/include/utility.h \
+ ../include/SL_user.h /home/sl/sl-new/root/include/SL_common.h \
+ /home/sl/sl-new/root/include/mdefs.h \
+ /home/sl/sl-new/root/include/SL_kinematics.h \
+ /home/sl/sl-new/root/include/utility_macros.h ../math/Prismatic_Joints.h \
+ ../math/LInfo_declare.h ../math/LInfo_math.h ../math/GJac_declare.h \
+ ../math/GJac_math.h ../math/Contact_GJac_declare.h \
+ ../math/Contact_GJac_math.h
 
-../include/SL_kinematics_body.h:
+/home/sl/sl-new/root/include/SL_kinematics_body.h:
 
-../include/SL_system_headers.h:
+/home/sl/sl-new/root/include/SL_system_headers.h:
 
 /usr/include/pthread.h:
 
@@ -208,21 +212,21 @@ SL_kinematics.o: ../src/SL_kinematics.c ../include/SL_kinematics_body.h \
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-../include/SL_vx_wrappers.h:
+/home/sl/sl-new/root/include/SL_vx_wrappers.h:
 
-../include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
 ../include/SL_user.h:
 
-../include/SL_common.h:
+/home/sl/sl-new/root/include/SL_common.h:
 
-../include/mdefs.h:
+/home/sl/sl-new/root/include/mdefs.h:
 
-../include/SL_kinematics.h:
+/home/sl/sl-new/root/include/SL_kinematics.h:
 
-../include/utility_macros.h:
+/home/sl/sl-new/root/include/utility_macros.h:
 
 ../math/Prismatic_Joints.h:
 

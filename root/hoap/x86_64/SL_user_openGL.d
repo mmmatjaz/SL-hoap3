@@ -1,6 +1,6 @@
-SL_user_openGL.o: ../src/SL_user_openGL.c ../include/SL_system_headers.h \
- /usr/include/pthread.h /usr/include/features.h \
- /usr/include/x86_64-linux-gnu/bits/predefs.h \
+SL_user_openGL.o: ../src/SL_user_openGL.c \
+ /home/sl/sl-new/root/include/SL_system_headers.h /usr/include/pthread.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
@@ -55,28 +55,35 @@ SL_user_openGL.o: ../src/SL_user_openGL.c ../include/SL_system_headers.h \
  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- ../include/SL_vx_wrappers.h /usr/include/GL/glut.h \
+ /home/sl/sl-new/root/include/SL_vx_wrappers.h /usr/include/GL/glut.h \
  /usr/include/GL/freeglut_std.h /usr/include/GL/gl.h \
  /usr/include/GL/glext.h /usr/include/inttypes.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/GL/glu.h \
  /usr/include/X11/Xlib.h /usr/include/X11/X.h \
  /usr/include/X11/Xfuncproto.h /usr/include/X11/Xosdefs.h \
- ../include/utility.h ../include/SL.h ../include/utility.h \
- ../include/SL_openGL.h ../include/SL_user.h ../include/SL_common.h \
- ../include/SL_unix_common.h /usr/include/unistd.h \
+ /home/sl/sl-new/root/include/utility.h /home/sl/sl-new/root/include/SL.h \
+ /home/sl/sl-new/root/include/utility.h \
+ /home/sl/sl-new/root/include/SL_openGL.h ../include/SL_user.h \
+ /home/sl/sl-new/root/include/SL_common.h \
+ /home/sl/sl-new/root/include/SL_unix_common.h /usr/include/unistd.h \
  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h /usr/include/getopt.h \
- /usr/include/x86_64-linux-gnu/bits/unistd.h ../include/SL_rt_mutex.h \
- ../include/SL_objects.h ../include/SL_objects_defines.h \
- ../include/SL_openGL_servo.h ../include/SL_collect_data.h \
- ../include/mdefs.h ../include/SL_kinematics.h \
- ../include/SL_shared_memory.h ../include/SL_userGraphics.h \
- ../math/LEKin_contact.h ../math/OpenGL.h \
- ../include/SL_user_display_core.h ../include/SL_user_idle_core.h
+ /usr/include/x86_64-linux-gnu/bits/unistd.h \
+ /home/sl/sl-new/root/include/SL_rt_mutex.h \
+ /home/sl/sl-new/root/include/SL_objects.h \
+ /home/sl/sl-new/root/include/SL_objects_defines.h \
+ /home/sl/sl-new/root/include/SL_openGL_servo.h \
+ /home/sl/sl-new/root/include/SL_collect_data.h \
+ /home/sl/sl-new/root/include/mdefs.h \
+ /home/sl/sl-new/root/include/SL_kinematics.h \
+ /home/sl/sl-new/root/include/SL_shared_memory.h \
+ /home/sl/sl-new/root/include/SL_userGraphics.h ../math/LEKin_contact.h \
+ ../math/OpenGL.h /home/sl/sl-new/root/include/SL_user_display_core.h \
+ /home/sl/sl-new/root/include/SL_user_idle_core.h
 
-../include/SL_system_headers.h:
+/home/sl/sl-new/root/include/SL_system_headers.h:
 
 /usr/include/pthread.h:
 
@@ -220,7 +227,7 @@ SL_user_openGL.o: ../src/SL_user_openGL.c ../include/SL_system_headers.h \
 
 /usr/include/x86_64-linux-gnu/bits/sigthread.h:
 
-../include/SL_vx_wrappers.h:
+/home/sl/sl-new/root/include/SL_vx_wrappers.h:
 
 /usr/include/GL/glut.h:
 
@@ -248,19 +255,19 @@ SL_user_openGL.o: ../src/SL_user_openGL.c ../include/SL_system_headers.h \
 
 /usr/include/X11/Xosdefs.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
-../include/SL.h:
+/home/sl/sl-new/root/include/SL.h:
 
-../include/utility.h:
+/home/sl/sl-new/root/include/utility.h:
 
-../include/SL_openGL.h:
+/home/sl/sl-new/root/include/SL_openGL.h:
 
 ../include/SL_user.h:
 
-../include/SL_common.h:
+/home/sl/sl-new/root/include/SL_common.h:
 
-../include/SL_unix_common.h:
+/home/sl/sl-new/root/include/SL_unix_common.h:
 
 /usr/include/unistd.h:
 
@@ -274,28 +281,28 @@ SL_user_openGL.o: ../src/SL_user_openGL.c ../include/SL_system_headers.h \
 
 /usr/include/x86_64-linux-gnu/bits/unistd.h:
 
-../include/SL_rt_mutex.h:
+/home/sl/sl-new/root/include/SL_rt_mutex.h:
 
-../include/SL_objects.h:
+/home/sl/sl-new/root/include/SL_objects.h:
 
-../include/SL_objects_defines.h:
+/home/sl/sl-new/root/include/SL_objects_defines.h:
 
-../include/SL_openGL_servo.h:
+/home/sl/sl-new/root/include/SL_openGL_servo.h:
 
-../include/SL_collect_data.h:
+/home/sl/sl-new/root/include/SL_collect_data.h:
 
-../include/mdefs.h:
+/home/sl/sl-new/root/include/mdefs.h:
 
-../include/SL_kinematics.h:
+/home/sl/sl-new/root/include/SL_kinematics.h:
 
-../include/SL_shared_memory.h:
+/home/sl/sl-new/root/include/SL_shared_memory.h:
 
-../include/SL_userGraphics.h:
+/home/sl/sl-new/root/include/SL_userGraphics.h:
 
 ../math/LEKin_contact.h:
 
 ../math/OpenGL.h:
 
-../include/SL_user_display_core.h:
+/home/sl/sl-new/root/include/SL_user_display_core.h:
 
-../include/SL_user_idle_core.h:
+/home/sl/sl-new/root/include/SL_user_idle_core.h:

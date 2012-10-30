@@ -14,3 +14,12 @@
 
 */        
 
+
+floor 1 		/* name and ID of object type */
+0.5 0.5 0.5          	/* rgb */
+0.0 0.0 -1.65  		/* pos */
+0.0 0.0 0.0  		/* orient */
+40.0 40.0 1.0  		/* scale */
+1  			/* contact model */
+10         		/* object parameters */
+1000 50 1000 50 0.8 0.8	/* contact parameters */
