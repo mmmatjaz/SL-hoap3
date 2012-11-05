@@ -250,6 +250,7 @@ display(void)
 static void myDrawGLElement(int num, double length, int flag)
 
 {
+	//printf("\nuser open gl");
   static int firsttime = TRUE;
   double width=0.03;
   double head_width = 0.3;

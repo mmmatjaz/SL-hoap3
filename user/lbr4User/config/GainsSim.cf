@@ -1,0 +1,14 @@
+/* this file contains gains and max control for each DOF
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, gain_th, gain_thd, gain_int, max_control  */
+
+//  gains tuned for made-up inertial parameters
+R_A1   200.00  20.00  0.01  176.00
+R_A2   300.00  40.00  0.01  176.00
+R_E1   100.00 10.00  0.01  100.00
+R_A3   150.00 20.00  0.01  100.00
+R_A4   50.00  5.00  0.01  100.00
+R_A5   20.00  2.00  0.01  38.00
+R_A6   20.00  1.00  0.01  38.00

@@ -1,0 +1,15 @@
+/* this file contains the filter specifications for all sensory data.
+   For each DOF, cutoff frequency in % of the Nyquist frequency for a
+   second order butterworth filter are given */
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, cutoff th, cutoff thd, cutoff thdd, cutoff load  */
+
+  R_A1   10 10 10 10
+  R_A2   10 10 10 10
+  R_E1   10 10 10 10
+  R_A3   10 10 10 10
+  R_A4   10 10 10 10
+  R_A5   10 10 10 10
+  R_A6   10 10 10 10

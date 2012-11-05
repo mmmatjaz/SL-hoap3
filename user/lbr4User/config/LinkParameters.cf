@@ -1,0 +1,15 @@
+/* this file contains the specification for the dynamic parameters of
+   all links */
+
+/* format: 
+keyword, mass, cmx, cmy, cmz, i11, i12, i13, i22, i23, i33, vis coul stiff cons */
+
+/* Approximate parameters from CAD */
+
+R_A1     3.0  0.0 0.0 0.3         0.005 0 0  0.005 0 0.005  0.1  0 0 0
+R_A2     3.0  0.0 0.0 0.3         0.005 0 0  0.005 0 0.005  0.1  0 0 0
+R_E1     3.0  0.0 0.0 0.3         0.005 0 0  0.005 0 0.005  0.1  0 0 0
+R_A3     3.0  0.0 0.0 0.3         0.005 0 0  0.005 0 0.005  0.1  0 0 0
+R_A4     3.0  0.0 0.0 0.3         0.005 0 0  0.005 0 0.005  0.1  0 0 0
+R_A5     1.0  0.0 0.0 0.3         0.005 0 0  0.005 0 0.005  0.1  0 0 0
+R_A6     1.0  0.0 0.0 0.1         0.005 0 0  0.005 0 0.005  0.1  0 0 0

@@ -79,7 +79,7 @@ char blob_names[][20]= {
 };
 
 char link_names[][20]= {
-  {"L00"},
+  {"BASE"},
   {"L01"},{"L02"},{"L03"},
   {"LO4"},
   {"L05"},
@@ -108,10 +108,10 @@ char misc_sensor_names[][20]= {
 int		link2endeffmap[] = {
 		0,
 		//LULCEK
-		L08,
-		L15,
 		L21,
-		L30
+		L07,
+		L30,
+		L14
 };
 
 

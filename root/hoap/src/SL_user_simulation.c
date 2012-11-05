@@ -59,6 +59,7 @@ init_user_simulation(void)
 {
   
   int i,j,n;
+  printf("\n start here");
 
   // initalize objects in the environment
   readObjects(config_files[OBJECTS]);
@@ -101,6 +102,7 @@ int
 run_user_simulation(void)
 
 {
+	//printf("a to je kej");
   int i;
 
   return TRUE;

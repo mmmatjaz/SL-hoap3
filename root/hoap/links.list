@@ -1,0 +1,41 @@
+/* link 0: {basec$0$$x[[1]], basec$0$$x[[2]], basec$0$$x[[3]]} */
+
+/* link 1: {0, 0, BODYLINK1} */
+/* link 2: {0, -ARMLINK1, 0} */
+/* link 3: {0, -ARMLINK2, 0} */
+/* link 4: {0, ARMLINK3, 0} */
+/* link 5: {GRIPJOFFX, 0, GRIPJOFFZ} */
+/* link 6: {-PALMOFFSETX, 0, PALM} */
+/* link 7: {eff$2$$x[[1]], eff$2$$x[[2]], eff$2$$x[[3]]} */
+
+/* link 8: {0, ARMLINK1, 0} */
+/* link 9: {0, -ARMLINK2, 0} */
+/* link 10: {0, ARMLINK3, 0} */
+/* link 11: {-GRIPJOFFX, 0, GRIPJOFFZ} */
+/* link 12: {FINGER, 0, 0} */
+/* link 13: {PALMOFFSETX, 0, PALM} */
+/* link 14: {eff$4$$x[[1]], eff$4$$x[[2]], eff$4$$x[[3]]} */
+
+/* link 15: {HEADLINK2, 0, HEADLINK1} */
+
+/* link 16: {BODYLINK2, 0, 0} */
+
+/* link 17: {-WAISTLINK2, -WAISTLINK1, LEGLINK1} */
+/* link 18: {-LEGLINK2, 0, 0} */
+/* link 19: {-LEGLINK3, 0, 0} */
+/* link 20: {-LEGLINK4, 0, 0} */
+/* link 21: {eff$1$$x[[1]], eff$1$$x[[2]], eff$1$$x[[3]]} */
+/* link 22: {-LEGLINK4, -FOOTWIDLONG, FOOTLLENGLONG} */
+/* link 23: {-LEGLINK4, FOOTWIDSHORT, FOOTLLENGLONG} */
+/* link 24: {-LEGLINK4, FOOTWIDSHORT, -FOOTLENGSHORT} */
+/* link 25: {-LEGLINK4, -FOOTWIDLONG, -FOOTLENGSHORT} */
+
+/* link 26: {-WAISTLINK2, -WAISTLINK1, -LEGLINK1} */
+/* link 27: {-LEGLINK2, 0, 0} */
+/* link 28: {-LEGLINK3, 0, 0.} */
+/* link 29: {-LEGLINK4, 0, 0} */
+/* link 30: {eff$3$$x[[1]], eff$3$$x[[2]], eff$3$$x[[3]]} */
+/* link 31: {-LEGLINK4, FOOTWIDLONG, FOOTLLENGLONG} */
+/* link 32: {-LEGLINK4, -FOOTWIDSHORT, FOOTLLENGLONG} */
+/* link 33: {-LEGLINK4, -FOOTWIDSHORT, -FOOTLENGSHORT} */
+/* link 34: {-LEGLINK4, FOOTWIDLONG, -FOOTLENGSHORT} */

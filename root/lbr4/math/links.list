@@ -1,0 +1,34 @@
+/* link 0: {basec$0$$x[[1]], basec$0$$x[[2]], basec$0$$x[[3]]} */
+/* link 1: {0, 0, BA1} */
+/* link 2: {0, 0, A1A2} */
+/* link 3: {-A2E1, 0, 0} */
+/* link 4: {0, 0, E1A3} */
+/* link 5: {A3A4, 0, 0} */
+/* link 6: {0, 0, A4A5} */
+/* link 7: {-A5A6, 0, 0} */
+/* link 8: {eff$1$$x[[1]], eff$1$$x[[2]], eff$1$$x[[3]]} */
+
+char link_names[][20]= { // base + 8 links
+  {"R_BASE"},
+  {"R_A1_LINK"},
+  {"R_A2_LINK"},
+  {"R_E1_LINK"},
+  {"R_A3_LINK"},
+  {"R_A4_LINK"},
+  {"R_A5_LINK"},
+  {"R_A6_LINK"},
+  {"R_FLANGE"}
+};
+
+enum RobotLinks {
+  R_A1_LINK = 1,
+  R_A2_LINK,
+  R_E1_LINK,
+  R_A3_LINK,
+  R_A4_LINK,
+  R_A5_LINK,
+  R_A6_LINK,
+  R_FLANGE,
+  
+  N_ROBOT_LINKS
+};

@@ -1,0 +1,153 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      4573,        144]
+NotebookOptionsPosition[      3618,        111]
+NotebookOutlinePosition[      4222,        134]
+CellTagsIndexPosition[      4179,        131]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "\"\</home/sl/usc/rigidbodydyn\>\"", "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{3.560505196020321*^9}],
+
+Cell[BoxData[
+ RowBox[{"<<", "RigidBodyDynamics.m"}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", "\"\</home/sl/sl-new/root/lbr4/math\>\"", "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{
+  3.5483665769714537`*^9, 3.560505144910335*^9, {3.5605052088111687`*^9, 
+   3.56050521301725*^9}}],
+
+Cell[BoxData[
+ RowBox[{"InvDynNE", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.494468409706417*^9, 3.4944684098074217`*^9}, {
+  3.548366577007745*^9, 3.5483665770361843`*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"InvDynArt", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5483665770706882`*^9, 3.548366577105336*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ParmEst", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5483665771368713`*^9, 3.548366577172202*^9}}],
+
+Cell[BoxData[
+ RowBox[{"ForDynArt", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4944684175517683`*^9, 3.494468417959557*^9}, {
+  3.5483665772082567`*^9, 3.548366577235998*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"ForDynComp", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\"", ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"-", "gravity"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.548366577270249*^9, 3.54836657730694*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"LinkEndpointKinematics", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.548366577336236*^9, 3.548366577372787*^9}},
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"OpenGLKinematics", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.5483665774042683`*^9, 3.548366577436838*^9}}],
+
+Cell[BoxData[
+ RowBox[{"GeometricJacobian", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", 
+   RowBox[{"{", "108", "}"}], ",", "\"\<lbr4\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.548366577472628*^9, 3.5483665775030727`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"InertiaMatrix", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.548366577539706*^9, 3.548366577570058*^9}}],
+
+Cell[BoxData[
+ RowBox[{"LinkInformation", "[", 
+  RowBox[{"\"\<lbr4.dyn\>\"", ",", "\"\<lbr4\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.5483665776069727`*^9, 3.5483665776398697`*^9}}]
+},
+WindowToolbars->{},
+CellGrouping->Automatic,
+WindowSize->{820, 586},
+WindowMargins->{{303, Automatic}, {Automatic, 121}},
+PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
+ShowCellLabel->True,
+ShowCellTags->False,
+RenderingOptions->{"ObjectDithering"->True,
+"RasterDithering"->False},
+CharacterEncoding->"MacintoshAutomaticEncoding",
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (October 10, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 160, 4, 30, "Input"],
+Cell[708, 26, 88, 2, 30, "Input"],
+Cell[799, 30, 246, 7, 30, "Input"],
+Cell[1048, 39, 350, 8, 30, "Input"],
+Cell[1401, 49, 275, 6, 30, "Input"],
+Cell[1679, 57, 273, 6, 30, "Input"],
+Cell[1955, 65, 351, 8, 30, "Input"],
+Cell[2309, 75, 298, 7, 30, "Input"],
+Cell[2610, 84, 215, 4, 30, "Input"],
+Cell[2828, 90, 186, 3, 30, "Input"],
+Cell[3017, 95, 223, 4, 30, "Input"],
+Cell[3243, 101, 181, 3, 30, "Input"],
+Cell[3427, 106, 187, 3, 30, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

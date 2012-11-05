@@ -189,7 +189,7 @@ DIRECTORY_DEFINES =
 #  The header information below identifies the Imakefile and
 #  version of this particular makefile.
 
-INCLUDES               = -I../src                          -I../include                          -I../math 			 -I$(MY_INCLUDES) 			 -I$(SARCOSDTSHOME)/include 			 -I$(LAB_ROOT)/include/DextArm 			 -I/usr/X11/include                          -I/usr/local/glut/include
+INCLUDES               = -I../src                          -I../include                          -I../math 			 -I$(MY_INCLUDES) 			 -I/usr/X11/include                          -I/usr/local/glut/include
 
 CFLAGS                 = $(OPTIMIZE_CC_FLAGS) $(INCLUDES) -D$(MACHTYPE)
 SRCDIR                 = ../src

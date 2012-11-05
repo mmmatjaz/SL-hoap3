@@ -1,0 +1,21 @@
+/* this file contains the specification for position offsets and min/max
+   position values (min and max AFTER offset was subtracted. Additionally,
+   the file allows to set a default posture for the robot. 
+   Note: the file is parsed according to keywords, after the keyword,
+         the values need to come in the correct sequence */
+
+/* format: keyword, min , max,    default, rest, weight, offset  */
+
+     R_A1  -2.96000  2.96000  0.000000  0.000000  1.000000   0.000000
+     R_A2  -2.09000  2.09000  0.000000  0.000000  1.000000   0.000000
+     R_E1  -2.96000  2.96000  0.000000  0.000000  1.000000   0.000000
+     R_A3  -2.09000  2.09000  0.000000  0.000000  1.000000   0.000000
+     R_A4  -2.96000  2.96000  0.000000  0.000000  1.000000   0.000000
+     R_A5  -2.09000  2.09000  0.000000  0.000000  1.000000   0.000000
+     R_A6  -2.96000  2.96000  0.000000  0.000000  1.000000   0.000000
+
+
+
+
+
+

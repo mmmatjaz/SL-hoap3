@@ -1,0 +1,108 @@
+{ (* Base Coordinate System *)
+{jointID,{ID=0}},
+{floatingBase,{0}},
+{notUsed,{}},
+{notUsed,{}},
+{successors,{1}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]},
+{mass,GenMassS["links",ID]},
+{baseVariables,GenBaseVariablesS["basec","baseo",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* A1 Joint *)
+{jointID,{ID=1}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,BA1}},
+{rotationMatrix,{0,0,0}},
+{successors,{2}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* A2 Joint *)
+{jointID,{ID=2}},
+{jointAxis,{0,0,1}},
+{translation,{0,0, A1A2}},
+{rotationMatrix,{0,Pi/2,0}},
+{successors,{3}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* E1 Joint *)
+{jointID,{ID=3}},
+{jointAxis,{0,0,1}},
+{translation,{-A2E1,0,0}},
+{rotationMatrix,{0,-Pi/2,0}},
+{successors,{4}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* A3 Joint *)
+{jointID,{ID=4}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,E1A3}},
+{rotationMatrix,{0,-Pi/2,0}},
+{successors,{5}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* A4 Joint *)
+{jointID,{ID=5}},
+{jointAxis,{0,0,1}},
+{translation,{A3A4,0,0}},
+{rotationMatrix,{0,Pi/2,0}},
+{successors,{6}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* A5 Joint *)
+{jointID,{ID=6}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,A4A5}},
+{rotationMatrix,{0,Pi/2,0}},
+{successors,{7}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* A6 Joint *)
+{jointID,{ID=7}},
+{jointAxis,{0,0,1}},
+{translation,{-A5A6,0,0}},
+{rotationMatrix,{0,-Pi/2,0}},
+{successors,{108}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* the end-effector coordinate system becomes a static system *)
+{jointID,{ID=108}},
+{jointAxis,{0,0,0}},
+{translation,{eff$1$$x[[1]],eff$1$$x[[2]],eff$1$$x[[3]]}},
+{rotationMatrix,{eff$1$$a[[1]],eff$1$$a[[2]],eff$1$$a[[3]]}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{eff$1$$mcm[[1]],eff$1$$mcm[[2]],eff$1$$mcm[[3]]}}, 
+{mass,{eff$1$$m}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}

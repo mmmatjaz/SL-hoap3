@@ -18,27 +18,24 @@
 
 /*! the robot name */
 #define ROBOT_NAME "hoap"
-
 #define KIN_SCALE		1.0
-#define ARMLINK1	 	0.111*KIN_SCALE
-#define ARMLINK2	 	0.111*KIN_SCALE
-#define ARMLINK3	 	0.171*KIN_SCALE
-#define LEGLINK1	 	0.039*KIN_SCALE
-#define LEGLINK2	 	0.105*KIN_SCALE
-#define LEGLINK3	 	0.105*KIN_SCALE
-#define LEGLINK4	 	0.040*KIN_SCALE
-#define BODYLINK1	 	0.125*KIN_SCALE
-#define BODYLINK2   	0.035*KIN_SCALE
-#define HEADLINK1   	0.013*KIN_SCALE
-#define HEADLINK2   	0.015*KIN_SCALE
-#define WAISTLINK1  	0.055*KIN_SCALE
-#define WAISTLINK2  	0.035*KIN_SCALE
-
+#define ARMLINK1	 	0.111
+#define ARMLINK2	 	0.111
+#define ARMLINK3	 	0.171
+#define LEGLINK1	 	0.039
+#define LEGLINK2	 	0.105
+#define LEGLINK3	 	0.105
+#define LEGLINK4	 	0.040
+#define BODYLINK1	 	0.125
+#define BODYLINK2   	0.035
+#define HEADLINK1   	0.013
+#define HEADLINK2   	0.015
+#define WAISTLINK1  	0.055
+#define WAISTLINK2  	0.035
 #define FOOTWIDSHORT	0.0315
 #define FOOTWIDLONG		0.0415
 #define FOOTLENGSHORT	0.040
 #define FOOTLLENGLONG	0.068
-
 #define GRIPJOFFX		0.01
 #define GRIPJOFFZ		0.01
 #define PALMOFFSETX		0.01
@@ -48,8 +45,8 @@
 
 /*! links of the robot */
 enum RobotLinks {
- 	L00=1,
-	L01,
+ 	//L00=1,
+	L01=1,
 	L02,
 	L03,
 	LO4,
@@ -108,30 +105,24 @@ enum RobotDOFs {
   	RL_J4,
   	RL_J5,
   	RL_J6,
-
   	RA_J1,
   	RA_J2,
   	RA_J3,
   	RA_J4,
-
   	LL_J1,
   	LL_J2,
   	LL_J3,
   	LL_J4,
   	LL_J5,
   	LL_J6,
-
   	LA_J1,
   	LA_J2,
   	LA_J3,
   	LA_J4,
-
   	B_J,
-
   	H_J1,
   	H_J2,
   	H_J3,
-
   	//wrists and grippers servos
   	RA_S1,
   	RA_S2,

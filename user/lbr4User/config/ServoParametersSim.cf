@@ -1,0 +1,9 @@
+/* This files specifies parameters needed for the different servo processes of SL */
+/* Format: servo_name process_priority   process_stack_size   cpuID   delay_ns */
+
+task_servo 	      50	       2000000		      1	      	0
+motor_servo 	      75	       2000000		      2		0
+vision_servo 	      25	       2000000		      3		0
+sim_servo 	      90	       2000000		      4		0
+openGL_servo 	      10	       2000000		      0		0
+
