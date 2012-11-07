@@ -38,14 +38,29 @@
 #define YHEEL         (0.10*MAG)
 #define ZHEEL         0.0512
 
+
+#define ARMLINK1	 	0.111
+#define ARMLINK2	 	0.111
+#define ARMLINK3	 	0.171
+#define LEGLINK1	 	0.039
+#define LEGLINK2	 	0.105
+#define LEGLINK3	 	0.105
+#define LEGLINK4	 	0.040
+#define BODYLINK1	 	0.125
+#define BODYLINK2   	0.035
+#define HEADLINK1   	0.013
+#define HEADLINK2   	0.015
+#define WAISTLINK1  	0.055
+#define WAISTLINK2  	0.035
+#define FOOTWIDSHORT	0.0315
+#define FOOTWIDLONG		0.0415
+#define FOOTLENGSHORT	0.040
+#define FOOTLLENGLONG	0.068
 /*! links of the robot */
 enum RobotLinks {
   B_SACRAL=1,
-  B_THORAX,
-  B_HEAD,
 
   R_HIP,
-  R_HIP_R,
   R_KNEE,
   R_ANKLE,
   R_OUT_TOE,
@@ -55,7 +70,6 @@ enum RobotLinks {
   R_FOOT,
 
   L_HIP,
-  L_HIP_R,
   L_KNEE,
   L_ANKLE,
   L_IN_TOE,
@@ -63,6 +77,8 @@ enum RobotLinks {
   L_IN_HEEL,
   L_OUT_HEEL,
   L_FOOT,
+
+  B_LINK2,
 
   N_ROBOT_LINKS
 };
@@ -103,7 +119,6 @@ enum RobotDOFs {
   L_HFR,
   L_KFE,
   L_AR,
-  L_AFE,
   L_AAA,
 
   R_HFE,
@@ -111,12 +126,9 @@ enum RobotDOFs {
   R_HFR,
   R_KFE,
   R_AR,
-  R_AFE,
   R_AAA,
 
-  B_TR,
-  B_TAA,
-  
+  B_J,
   N_ROBOT_DOFS
 };
 

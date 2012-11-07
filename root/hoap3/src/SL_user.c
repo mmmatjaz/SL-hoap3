@@ -183,7 +183,7 @@ initSimulation(int argc, char** argv)
 #include "LEKin_contact.h"
   contacts[R_FOOT].active = FALSE;
   contacts[L_FOOT].active = FALSE;
-  contacts[B_HEAD].active = FALSE;
+  //contacts[B_HEAD].active = FALSE;
   
   initContacts();
 

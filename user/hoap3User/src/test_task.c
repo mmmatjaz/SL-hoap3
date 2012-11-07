@@ -140,14 +140,14 @@ run_test_task(void)
 
   if (task_time < 0.1) {
     //uext_sim[0].t[ax] =  3;
-    uext_sim[7].f[ax] =  uext_sim[14].f[ax] =  3;
+    //uext_sim[7].f[ax] =  uext_sim[14].f[ax] =  3;
     //uext_sim[0].f[ax] =  3;
   } else {
     bzero((void *)uext_sim,sizeof(SL_uext)*(n_dofs+1));
     //freeze();
-    joint_des_state[R_KFE].th = joint_state[R_KFE].th;
-    joint_des_state[R_KFE].thd = joint_state[R_KFE].thd;
-    joint_des_state[R_KFE].uff = 10;
+    //joint_des_state[R_KFE].th = joint_state[R_KFE].th;
+    //joint_des_state[R_KFE].thd = joint_state[R_KFE].thd;
+    //joint_des_state[R_KFE].uff = 10;
     return TRUE;
   }
 

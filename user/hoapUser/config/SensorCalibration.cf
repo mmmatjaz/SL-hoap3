@@ -1,4 +1,16 @@
 /* format: keyword, jaba daba du ! 1   */
+
+/* format: keyword, 
+           linear sensor (1/0), 
+           linear actuator (1/0),
+           linear load cell (1/0), 
+           moment arm, 
+           length from attachement of linear actuator to joint axis 
+	   (every linear value is in meters), 
+           polarity of position sensor (1/-1),
+           polarity of load (1/-1)
+*/
+
 RL_J1	0 	0 	0 	0 	0 	1 	1
 RL_J2	0 	0 	0 	0 	0 	1 	1
 RL_J3	0 	0 	0 	0 	0 	1 	1
@@ -27,3 +39,5 @@ RA_S1	0 	0 	0 	0 	0 	1 	1
 RA_S2	0 	0 	0 	0 	0 	1 	1
 LA_S1	0 	0 	0 	0 	0 	1 	1
 LA_S2	0 	0 	0 	0 	0 	1 	1
+
+/*LA_S2	0 	0 	0 	0 	0 	1 	1*/

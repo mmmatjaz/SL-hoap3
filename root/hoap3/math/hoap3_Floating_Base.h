@@ -1,1 +1,1 @@
-const int floating_base_flag=1;
+const int floating_base_flag=0;

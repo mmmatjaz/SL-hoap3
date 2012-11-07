@@ -71,9 +71,9 @@ init_user_simulation(void)
 
   // assign contact force mappings
 #include "LEKin_contact.h"
-  contacts[R_FOOT].active = FALSE;
-  contacts[L_FOOT].active = FALSE;
-  contacts[B_HEAD].active = FALSE;
+  //contacts[R_FOOT].active = FALSE;
+  //contacts[L_FOOT].active = FALSE;
+  //contacts[B_HEAD].active = FALSE;
 
   // change numerical integration
   n_integration = 4;

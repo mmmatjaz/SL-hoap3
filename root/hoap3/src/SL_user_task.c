@@ -63,9 +63,9 @@ init_user_task(void)
 {
   
   int i,j;
-
+/*
   base_orient.q[_Q0_] = 1.0;
-
+*/
   addToMan("toggleSimBase","toggles the use of the simulated base state on/off",
 	   toggleSimulatedBaseState);
 

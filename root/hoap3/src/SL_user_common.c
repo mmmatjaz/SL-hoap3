@@ -29,7 +29,6 @@ char joint_names[][20]= {
   {"L_HFR"},
   {"L_KFE"},
   {"L_AR"},
-  {"L_AFE"},
   {"L_AAA"},
   
   {"R_HFE"},
@@ -37,11 +36,10 @@ char joint_names[][20]= {
   {"R_HFR"},
   {"R_KFE"},
   {"R_AR"},
-  {"R_AFE"},
   {"R_AAA"},
 
-  {"B_TR"},
-  {"B_TAA"}
+  {"B_J"},
+
 
 };
 
@@ -65,11 +63,8 @@ char link_names[][20]= {
   {"BASE"},
 
   {"B_SACRAL"},
-  {"B_THORAX"},
-  {"HEAD"},
 
   {"R_HIP"},
-  {"R_HIP_R"},
   {"R_KNEE"},
   {"R_ANKLE"},
   {"R_OUT_TOE"},
@@ -79,14 +74,15 @@ char link_names[][20]= {
   {"R_FOOT"},
 
   {"L_HIP"},
-  {"L_HIP_R"},
   {"L_KNEE"},
   {"L_ANKLE"},
   {"L_IN_TOE"},
   {"L_OUT_TOE"},
   {"L_IN_HEEL"},
   {"L_OUT_HEEL"},
-  {"L_FOOT"}
+  {"L_FOOT"},
+
+  {"B_LINK2"}
 
 };
 

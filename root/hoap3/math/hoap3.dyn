@@ -1,9 +1,9 @@
 { (* Base Coordinate System *)
 {jointID,{ID=0}},
-{floatingBase,{1}},
+{floatingBase,{0}},
 {notUsed,{}},
 {notUsed,{}},
-{successors,{2,9,15}},
+{successors,{2102,13}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]},
 {mass,GenMassS["links",ID]},
@@ -11,35 +11,11 @@
 {extForce,GenExtForceS["uex",ID]}
 }
 { (******************** body *******************)
-(* Body torso aduction/abduction, low (B_TR), to the right is positive *)
-{jointID,{ID=15}}, 
-{jointAxis,{0,0,1}}, 
-{translation,{0,-PELVISOFFSET,0}},  
-{rotationMatrix,{Pi,0,0}}, 
-{successors,{16}},     
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{ (* body torso rotation (B_TAA), to the right is positive *)
-{jointID,{ID=16}}, 
-{jointAxis,{0,0,1}}, 
-{translation,{0,0,-PELVIS2THORAX}},  
-{rotationMatrix,{Pi/2,0,0}}, 
-{successors,{120}},     
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{ (* head DOF for gyros *)
-{jointID,{ID=120}},
+(* CHEST *)
+{jointID,{ID=2102}},
 {jointAxis,{0,0,0}},
-{translation,{0,-THORAX2HEAD,0}},
-{rotationMatrix,{Pi/2,0,0}},
+{translation,{0,0,BODYLINK1}},
+{rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
 {massCenterMass,{0,0,0}}, 
@@ -47,85 +23,84 @@
 {jointVariables,{0,0,0,0,0}},
 {extForce,{0,0,0,0,0,0}}
 }
-
-{  (******************** right leg  *******************)
-(* right hip FE (R_HFE), forward is positive *)
-{jointID,{ID=8}}, 
+{ (* B_J[1] *)
+{jointID,{ID=13}}, 
 {jointAxis,{0,0,1}}, 
-{translation,{0,0,0}},  
-{rotationMatrix,{0,Pi/2,0}}, 
-{successors,{10}},     
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]*0}
-}
-{ (* right hip AA (R_HAA), outward is negative *)
-{jointID,{ID=9}},
-{jointAxis,{0,0,1}},
-{translation,{XHIP,0,0}},
-{rotationMatrix,{-Pi/2,0,0}},
-{successors,{8}},
+{translation,{BODYLINK2,0,0}},  
+{rotationMatrix,{Pi/2,0,0}}, 
+{successors,{1,7}},     
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{ (* right hip R (R_HFR), outward is positive *)
-{jointID,{ID=10}},
-{jointAxis,{0,0,1}},
-{translation,{YHIP,0,0}},
-{rotationMatrix,{-Pi/2,-15.5/180*Pi,0}},
-{successors,{11}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]*0}
-}
-{ (* right knee (R_KFE), flex is positive *)
-{jointID,{ID=11}},
-{jointAxis,{0,0,1}},
-{translation,{(YKNEE*Cos[15.5/180*Pi]),0,(UPPERLEG-YKNEE*Sin[15.5/180*Pi])}},
-{rotationMatrix,{-Pi/2,0,15.5/180*Pi}},
-{successors,{12}},
+{  (******************** right leg  *******************)
+(* RL_J1 *)
+{jointID,{ID=1}}, 
+{jointAxis,{0,0,1}}, 
+{translation,{-WAISTLINK2,-WAISTLINK1,LEGLINK1}},  
+{rotationMatrix,{-Pi/2,0,Pi/2}}, 
+{successors,{2}},     
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{  (* right ankle rotation (R_AR), outward is positive *)
-{jointID,{ID=12}},
-{jointAxis,{0,0,1}},
-{translation,{0,0,0.}},
-{rotationMatrix,{Pi/2,0,0}},
-{successors,{13}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]*0}
-}
-{  (* right anke FE (R_AFE), flex is positive *)
-{jointID,{ID=13}},
-{jointAxis,{0,0,1}},
-{translation,{0,0,LOWERLEG}},
-{rotationMatrix,{Pi/2,0,0}},
-{successors,{14}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{  (* right anke AA (R_AAA), inward is positive *)
-{jointID,{ID=14}},
+{ (* RL_J2 *)
+{jointID,{ID=2}},
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
-{rotationMatrix,{0,-Pi/2,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{3}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* RL_J3 *)
+{jointID,{ID=3}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,0}},
+{successors,{4}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* RL_J4 - knee *)
+{jointID,{ID=4}},
+{jointAxis,{0,0,1}},
+{translation,{-LEGLINK2,0,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{5}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{  (* RL_J5 - ankle *)
+{jointID,{ID=5}},
+{jointAxis,{0,0,1}},
+{translation,{-LEGLINK3,0,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{6}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{  (* RL_J6 - ankle *)
+{jointID,{ID=6}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{-Pi/2,0,0}},
 {successors,{115,116,117,118,119}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
@@ -136,7 +111,7 @@
 { (* right toe of foot *)
 {jointID,{ID=115}},
 {jointAxis,{0,0,0}},
-{translation,{XTOE,ZTOE,YTOE}},
+{translation,{-LEGLINK4,-FOOTWIDLONG,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -148,7 +123,7 @@
 { (* left toe of foot *)
 {jointID,{ID=116}},
 {jointAxis,{0,0,0}},
-{translation,{-XTOE,ZTOE,YTOE}},
+{translation,{-LEGLINK4,FOOTWIDSHORT,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -160,7 +135,7 @@
 { (* right heel of foot *)
 {jointID,{ID=117}},
 {jointAxis,{0,0,0}},
-{translation,{XHEEL,ZHEEL,-YHEEL}},
+{translation,{-LEGLINK4,FOOTWIDSHORT,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -172,7 +147,7 @@
 { (* left heel of foot *)
 {jointID,{ID=118}},
 {jointAxis,{0,0,0}},
-{translation,{-XHEEL,ZHEEL,-YHEEL}},
+{translation,{-LEGLINK4,-FOOTWIDLONG,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -194,83 +169,71 @@
 {extForce,{0,0,0,0,0,0}}
 }
 { (******************** left leg  *******************)
-(* left hip FE (L_HFE), forward is positive *)
-{jointID,{ID=1}}, 
+(* LL_J1 *)
+{jointID,{ID=7}}, 
 {jointAxis,{0,0,1}}, 
-{translation,{0,0,0}},  
-{rotationMatrix,{0,Pi/2,0}}, 
-{successors,{3}},     
+{translation,{-WAISTLINK2,-WAISTLINK1,-LEGLINK1}},  
+{rotationMatrix,{-Pi/2,0,Pi/2}}, 
+{successors,{8}},     
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]*0}
+{extForce,GenExtForceS["uex",ID]}
 }
-{ (* left hip AA (L_HAA), outward is negative *)
-{jointID,{ID=2}},
+{ (* LL_J2 *)
+{jointID,{ID=8}},
 {jointAxis,{0,0,1}},
-{translation,{-XHIP,0,0}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{9}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* LL_J3 *)
+{jointID,{ID=9}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
 {rotationMatrix,{Pi/2,0,0}},
-{successors,{1}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{ (* left hip R (L_HFR), outward is positive *)
-{jointID,{ID=3}},
-{jointAxis,{0,0,1}},
-{translation,{-YHIP,0,0}},
-{rotationMatrix,{-Pi/2,-15.5/180*Pi,0}},
-{successors,{4}},
+{successors,{10}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]*0}
 }
-{ (* left knee (L_KFE), flex is positive *)
-{jointID,{ID=4}},
+{ (* LL_J4 - knee *)
+{jointID,{ID=10}},
 {jointAxis,{0,0,1}},
-{translation,{-(YKNEE*Cos[15.5/180*Pi]),0,-(UPPERLEG-YKNEE*Sin[15.5/180*Pi])}},
-{rotationMatrix,{-Pi/2,0,Pi+15.5/180*Pi}},
-{successors,{5}},
+{translation,{-LEGLINK2,0,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{11}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{  (* left ankle rotation (L_AR), outward is positive *)
-{jointID,{ID=5}},
+{  (* LL_J5 - ankle *)
+{jointID,{ID=11}},
 {jointAxis,{0,0,1}},
-{translation,{0,0,0}},
-{rotationMatrix,{-Pi/2,0,0}},
-{successors,{6}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]*0}
-}
-{  (* left ankle FE (L_AFE), flex is positive *)
-{jointID,{ID=6}},
-{jointAxis,{0,0,1}},
-{translation,{0,0,-LOWERLEG}},
-{rotationMatrix,{-Pi/2,0,0}},
-{successors,{7}},
+{translation,{-LEGLINK3,0,0.}},
+{rotationMatrix,{0,0,0}},
+{successors,{12}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{  (* left ankle AA (L_AAA), forward is positive *)
-{jointID,{ID=7}},
+{  (* LL_J6 - ankle *)
+{jointID,{ID=12}},
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
-{rotationMatrix,{0,Pi/2,0}},
+{rotationMatrix,{-Pi/2,0,0}},
 {successors,{108,109,110,111,112}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
@@ -281,7 +244,7 @@
 { (* right toe of foot *)
 {jointID,{ID=108}},
 {jointAxis,{0,0,0}},
-{translation,{-XTOE,ZTOE,-YTOE}},
+{translation,{-LEGLINK4,FOOTWIDLONG,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -293,7 +256,7 @@
 { (* left toe of foot *)
 {jointID,{ID=109}},
 {jointAxis,{0,0,0}},
-{translation,{XTOE,ZTOE,-YTOE}},
+{translation,{-LEGLINK4,-FOOTWIDSHORT,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -305,7 +268,7 @@
 { (* right heel of foot *)
 {jointID,{ID=110}},
 {jointAxis,{0,0,0}},
-{translation,{-XHEEL,ZHEEL,YHEEL}},
+{translation,{-LEGLINK4,-FOOTWIDSHORT,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -317,7 +280,7 @@
 { (* left heel of foot *)
 {jointID,{ID=111}},
 {jointAxis,{0,0,0}},
-{translation,{XHEEL,ZHEEL,YHEEL}},
+{translation,{-LEGLINK4,FOOTWIDLONG,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},

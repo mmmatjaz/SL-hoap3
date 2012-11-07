@@ -1,2 +1,2 @@
-double  Jlist[21+1][27+1];
+double  Jlist[18+1][24+1];
 
