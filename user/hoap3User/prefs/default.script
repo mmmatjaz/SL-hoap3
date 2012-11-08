@@ -31,16 +31,16 @@ L_HFR_des_thd
 L_HFR_des_thdd
 L_HFR_uff
 
-L_KFE_th
-L_KFE_thd
-L_KFE_thdd
-L_KFE_u
-L_KFE_ufb
-L_KFE_load
-L_KFE_des_th
-L_KFE_des_thd
-L_KFE_des_thdd
-L_KFE_uff
+L_K_th
+L_K_thd
+L_K_thdd
+L_K_u
+L_K_ufb
+L_K_load
+L_K_des_th
+L_K_des_thd
+L_K_des_thdd
+L_K_uff
 
 L_AR_th
 L_AR_thd
@@ -108,16 +108,16 @@ R_HFR_des_thd
 R_HFR_des_thdd
 R_HFR_uff
 
-R_KFE_th
-R_KFE_thd
-R_KFE_thdd
-R_KFE_u
-R_KFE_ufb
-R_KFE_load
-R_KFE_des_th
-R_KFE_des_thd
-R_KFE_des_thdd
-R_KFE_uff
+R_K_th
+R_K_thd
+R_K_thdd
+R_K_u
+R_K_ufb
+R_K_load
+R_K_des_th
+R_K_des_thd
+R_K_des_thdd
+R_K_uff
 
 R_AR_th
 R_AR_thd
@@ -212,7 +212,7 @@ ORTH_Z
 L_HFE_des_uff
 L_HAA_des_uff
 L_HFR_des_uff
-L_KFE_des_uff
+L_K_des_uff
 L_AR_des_uff
 L_AFE_des_uff
 L_AAA_des_uff
@@ -220,7 +220,7 @@ L_AAA_des_uff
 R_HFE_des_uff
 R_HAA_des_uff
 R_HFR_des_uff
-R_KFE_des_uff
+R_K_des_uff
 R_AR_des_uff
 R_AFE_des_uff
 R_AAA_des_uff

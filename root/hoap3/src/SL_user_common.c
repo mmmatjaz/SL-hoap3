@@ -14,6 +14,8 @@
 
   ============================================================================*/
 
+#include "SL_system_headers.h"
+
 #include "SL.h"
 #include "SL_user.h"
 #include "SL_common.h"
@@ -24,21 +26,23 @@
 char joint_names[][20]= {
   {"BASE"},
 
+  {"R_HFE"},
+    {"R_HAA"},
+    {"R_HFR"},
+    {"R_K"},
+    {"R_AR"},
+    {"R_AAA"},
+
   {"L_HFE"},
   {"L_HAA"},
   {"L_HFR"},
-  {"L_KFE"},
+  {"L_K"},
   {"L_AR"},
   {"L_AAA"},
   
-  {"R_HFE"},
-  {"R_HAA"},
-  {"R_HFR"},
-  {"R_KFE"},
-  {"R_AR"},
-  {"R_AAA"},
-
   {"B_J"},
+
+  {"RA_J1"}
 
 
 };
@@ -62,7 +66,10 @@ char blob_names[][20]= {
 char link_names[][20]= {
   {"BASE"},
 
-  {"B_SACRAL"},
+  {"B_LINK1"},
+  {"B_LINK2"},
+
+  {"R_SH"},
 
   {"R_HIP"},
   {"R_KNEE"},
@@ -80,10 +87,7 @@ char link_names[][20]= {
   {"L_OUT_TOE"},
   {"L_IN_HEEL"},
   {"L_OUT_HEEL"},
-  {"L_FOOT"},
-
-  {"B_LINK2"}
-
+  {"L_FOOT"}
 };
 
 char misc_sensor_names[][20]= {
@@ -148,10 +152,10 @@ setDefaultEndeffector(void) {
     endeff[i].a[_A_]  = 0.0;
     endeff[i].a[_B_]  = 0.0;
     endeff[i].a[_G_]  = 0.0;
-
+/*
     for (j=1; j<=N_CART*2; ++j)
       endeff[i].c[j] = FALSE;
-
+*/
   }
 
 }

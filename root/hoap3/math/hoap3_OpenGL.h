@@ -1,9 +1,6 @@
 /* this function generates simple OpenGL graphics code to draw each link */
 
-for (i=1;i<14;i++)
-{
-	//state[i].th=0.0;
-}
+
 glPushMatrix();
 myDrawGLElement((int)999,(double)0.0,(int)1);
 glPopMatrix();
@@ -29,7 +26,21 @@ if (0==0 && 0==0)
 glRotated((GLdouble)90.*(-1. + BODYLINK1/Sqrt(Power(BODYLINK1,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
 glRotated((GLdouble)180.0,(GLdouble)0.,(GLdouble)0.,(GLdouble)0.5*(BODYLINK1 + Sqrt(Power(BODYLINK1,2))));
-myDrawGLElement((int)2102,(double)Sqrt(Power(BODYLINK1,2)),(int)0);
+myDrawGLElement((int)2102,(double)Sqrt(Power(BODYLINK1,2)),(int)1);
+glPopMatrix();
+glTranslated((GLdouble)0,(GLdouble)0,(GLdouble)BODYLINK1);
+glRotated((GLdouble)0.,(GLdouble)0,(GLdouble)0,(GLdouble)0);
+
+/* JointID = 14 */
+
+glPushMatrix();
+glPushMatrix();
+if (0==0 && -ARMLINK1==0)
+glRotated((GLdouble)-90.,(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
+else
+glRotated((GLdouble)180.0,(GLdouble)0.,(GLdouble)-0.5*ARMLINK1,(GLdouble)0.5*Sqrt(Power(ARMLINK1,2)));
+myDrawGLElement((int)14,(double)Sqrt(Power(ARMLINK1,2)),(int)0);
+glPopMatrix();
 glPopMatrix();
 glPopMatrix();
 
@@ -120,10 +131,10 @@ glRotated((GLdouble)57.29577951308232*state[6].th,(GLdouble)0,(GLdouble)0,(GLdou
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && -FOOTWIDLONG==0)
+if (-LEGLINK4==0 && FOOTWIDLONG==0)
 glRotated((GLdouble)90.*(-1. + FOOTLLENGLONG/Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDLONG,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDLONG,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)115,(double)Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -132,10 +143,10 @@ glPopMatrix();
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && FOOTWIDSHORT==0)
+if (-LEGLINK4==0 && -FOOTWIDSHORT==0)
 glRotated((GLdouble)90.*(-1. + FOOTLLENGLONG/Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDSHORT,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDSHORT,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)116,(double)Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -144,10 +155,10 @@ glPopMatrix();
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && FOOTWIDSHORT==0)
+if (-LEGLINK4==0 && -FOOTWIDSHORT==0)
 glRotated((GLdouble)90.*(-1. - FOOTLENGSHORT/Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDSHORT,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDSHORT,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)117,(double)Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -156,10 +167,10 @@ glPopMatrix();
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && -FOOTWIDLONG==0)
+if (-LEGLINK4==0 && FOOTWIDLONG==0)
 glRotated((GLdouble)90.*(-1. - FOOTLENGSHORT/Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDLONG,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDLONG,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)118,(double)Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -236,10 +247,10 @@ glPushMatrix();
 if (-LEGLINK3==0 && 0==0)
 glRotated((GLdouble)-90.,(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK3,(GLdouble)0.,(GLdouble)0.5*(0. + Sqrt(0. + Power(LEGLINK3,2))));
-myDrawGLElement((int)11,(double)Sqrt(0. + Power(LEGLINK3,2)),(int)1);
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK3,(GLdouble)0.,(GLdouble)0.5*Sqrt(Power(LEGLINK3,2)));
+myDrawGLElement((int)11,(double)Sqrt(Power(LEGLINK3,2)),(int)1);
 glPopMatrix();
-glTranslated((GLdouble)-LEGLINK3,(GLdouble)0,(GLdouble)0.);
+glTranslated((GLdouble)-LEGLINK3,(GLdouble)0,(GLdouble)0);
 glRotated((GLdouble)57.29577951308232*state[11].th,(GLdouble)0,(GLdouble)0,(GLdouble)1);
 
 /* JointID = 12 */
@@ -255,10 +266,10 @@ glRotated((GLdouble)57.29577951308232*state[12].th,(GLdouble)0,(GLdouble)0,(GLdo
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && FOOTWIDLONG==0)
+if (-LEGLINK4==0 && -FOOTWIDLONG==0)
 glRotated((GLdouble)90.*(-1. + FOOTLLENGLONG/Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDLONG,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDLONG,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)108,(double)Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -267,10 +278,10 @@ glPopMatrix();
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && -FOOTWIDSHORT==0)
+if (-LEGLINK4==0 && FOOTWIDSHORT==0)
 glRotated((GLdouble)90.*(-1. + FOOTLLENGLONG/Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDSHORT,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDSHORT,(GLdouble)0.5*(FOOTLLENGLONG + Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)109,(double)Sqrt(Power(FOOTLLENGLONG,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -279,10 +290,10 @@ glPopMatrix();
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && -FOOTWIDSHORT==0)
+if (-LEGLINK4==0 && FOOTWIDSHORT==0)
 glRotated((GLdouble)90.*(-1. - FOOTLENGSHORT/Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDSHORT,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDSHORT,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)110,(double)Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDSHORT,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();
@@ -291,10 +302,10 @@ glPopMatrix();
 
 glPushMatrix();
 glPushMatrix();
-if (-LEGLINK4==0 && FOOTWIDLONG==0)
+if (-LEGLINK4==0 && -FOOTWIDLONG==0)
 glRotated((GLdouble)90.*(-1. - FOOTLENGSHORT/Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)0.5*FOOTWIDLONG,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
+glRotated((GLdouble)180.0,(GLdouble)-0.5*LEGLINK4,(GLdouble)-0.5*FOOTWIDLONG,(GLdouble)0.5*(-FOOTLENGSHORT + Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2))));
 myDrawGLElement((int)111,(double)Sqrt(Power(FOOTLENGSHORT,2) + Power(FOOTWIDLONG,2) + Power(LEGLINK4,2)),(int)0);
 glPopMatrix();
 glPopMatrix();

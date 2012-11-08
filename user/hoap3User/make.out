@@ -1,0 +1,32 @@
+Make all in /home/sl/sl-new/user/hoap3User/src begun...
+make[1]: Entering directory `/home/sl/sl-new/user/hoap3User/src'
+Make all in /home/sl/sl-new/user/hoap3User/x86_64 begun...
+make[2]: Entering directory `/home/sl/sl-new/user/hoap3User/x86_64'
+Make all in /home/sl/sl-new/user/hoap3User/x86_64 complete.
+make[2]: Leaving directory `/home/sl/sl-new/user/hoap3User/x86_64'
+make[1]: Leaving directory `/home/sl/sl-new/user/hoap3User/src'
+Make all in /home/sl/sl-new/user/hoap3User/src begun...
+make[1]: Entering directory `/home/sl/sl-new/user/hoap3User/src'
+Make all in /home/sl/sl-new/user/hoap3User/x86_64 begun...
+* initUserTasks.c
+make[2]: Entering directory `/home/sl/sl-new/user/hoap3User/x86_64'
+rm -f initUserTasks.o
+mkdir -p ./
+gcc -MD -MP -MF initUserTasks.d -o initUserTasks.o -c -I../src 			 -I../include 			 -I/home/sl/sl-new/user/include 			 -I-I/home/sl/sl-new/root/include 		         -I/home/sl/sl-new/root/hoap3/include 		         -I/home/sl/sl-new/root/hoap3/math 			 -I/include                          -I/sw/include                          -I/usr/X11/include                          -I/usr/local/glut/include  -I/home/sl/sl-new/root/include  -O3  -mfpmath=sse -ffast-math -fprefetch-loop-arrays -funit-at-a-time -fomit-frame-pointer -fPIC -I../src 			 -I../include 			 -I/home/sl/sl-new/user/include 			 -I-I/home/sl/sl-new/root/include 		         -I/home/sl/sl-new/root/hoap3/include 		         -I/home/sl/sl-new/root/hoap3/math 			 -I/include                          -I/sw/include                          -I/usr/X11/include                          -I/usr/local/glut/include -Dx86_64 -Dx86_64 -DCLMC -DUNIX -Wall -Wno-unused -Wno-strict-aliasing -Wno-write-strings -m64 -march=native -mtune=native -fPIC    ../src/initUserTasks.c
+rm -f xtask
+gcc -MD -MP -MF .d -o xtask  initUserTasks.o -L/home/sl/sl-new/user/lib/x86_64 -L/home/sl/sl-new/root/lib/x86_64  -L/home/sl/sl-new/root/lib/x86_64 -L/usr/X11/lib64 -L/usr/X11/lib  -lhoap3_task -lhoap3 -lSLtask -lSLcommon -lutility -lnsl -lm     			-lpthread -lrt -lreadline -lcurses
+* initUserGraphics.c
+rm -f initUserGraphics.o
+mkdir -p ./
+gcc -MD -MP -MF initUserGraphics.d -o initUserGraphics.o -c -I../src 			 -I../include 			 -I/home/sl/sl-new/user/include 			 -I-I/home/sl/sl-new/root/include 		         -I/home/sl/sl-new/root/hoap3/include 		         -I/home/sl/sl-new/root/hoap3/math 			 -I/include                          -I/sw/include                          -I/usr/X11/include                          -I/usr/local/glut/include  -I/home/sl/sl-new/root/include  -O3  -mfpmath=sse -ffast-math -fprefetch-loop-arrays -funit-at-a-time -fomit-frame-pointer -fPIC -I../src 			 -I../include 			 -I/home/sl/sl-new/user/include 			 -I-I/home/sl/sl-new/root/include 		         -I/home/sl/sl-new/root/hoap3/include 		         -I/home/sl/sl-new/root/hoap3/math 			 -I/include                          -I/sw/include                          -I/usr/X11/include                          -I/usr/local/glut/include -Dx86_64 -Dx86_64 -DCLMC -DUNIX -Wall -Wno-unused -Wno-strict-aliasing -Wno-write-strings -m64 -march=native -mtune=native -fPIC    ../src/initUserGraphics.c
+rm -f xopengl
+gcc -MD -MP -MF .d -o xopengl  initUserGraphics.o -L/home/sl/sl-new/user/lib/x86_64 -L/home/sl/sl-new/root/lib/x86_64  -L/home/sl/sl-new/root/lib/x86_64 -L/usr/X11/lib64 -L/usr/X11/lib   -lhoap3_openGL -lhoap3 -lSLopenGL -lSLcommon -lutility -lnsl -lm  -lglut -lGL -lGLU -lX11 -lXmu     			-lpthread -lrt -lreadline -lcurses
+* initUserSimulation.c
+rm -f initUserSimulation.o
+mkdir -p ./
+gcc -MD -MP -MF initUserSimulation.d -o initUserSimulation.o -c -I../src 			 -I../include 			 -I/home/sl/sl-new/user/include 			 -I-I/home/sl/sl-new/root/include 		         -I/home/sl/sl-new/root/hoap3/include 		         -I/home/sl/sl-new/root/hoap3/math 			 -I/include                          -I/sw/include                          -I/usr/X11/include                          -I/usr/local/glut/include  -I/home/sl/sl-new/root/include  -O3  -mfpmath=sse -ffast-math -fprefetch-loop-arrays -funit-at-a-time -fomit-frame-pointer -fPIC -I../src 			 -I../include 			 -I/home/sl/sl-new/user/include 			 -I-I/home/sl/sl-new/root/include 		         -I/home/sl/sl-new/root/hoap3/include 		         -I/home/sl/sl-new/root/hoap3/math 			 -I/include                          -I/sw/include                          -I/usr/X11/include                          -I/usr/local/glut/include -Dx86_64 -Dx86_64 -DCLMC -DUNIX -Wall -Wno-unused -Wno-strict-aliasing -Wno-write-strings -m64 -march=native -mtune=native -fPIC    ../src/initUserSimulation.c
+rm -f xsimulation
+gcc -MD -MP -MF .d -o xsimulation  initUserSimulation.o -L/home/sl/sl-new/user/lib/x86_64 -L/home/sl/sl-new/root/lib/x86_64  -L/home/sl/sl-new/root/lib/x86_64 -L/usr/X11/lib64 -L/usr/X11/lib   -lhoap3_simulation -lhoap3 -lSLsimulation -lSLcommon -lutility -lnsl -lm     			-lpthread -lrt -lreadline -lcurses
+Make all in /home/sl/sl-new/user/hoap3User/x86_64 complete.
+make[2]: Leaving directory `/home/sl/sl-new/user/hoap3User/x86_64'
+make[1]: Leaving directory `/home/sl/sl-new/user/hoap3User/src'

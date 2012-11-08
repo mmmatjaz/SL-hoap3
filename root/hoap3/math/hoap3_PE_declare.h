@@ -1,3 +1,5 @@
+double  sstate14th;
+double  cstate14th;
 double  sstate13th;
 double  cstate13th;
 double  sstate1th;
@@ -38,9 +40,9 @@ double  rceff2a2;
 double  rseff2a3;
 double  rceff2a3;
 
-double  Xinv[24+1][6+1][6+1];
+double  Xinv[25+1][6+1][6+1];
 
-double  st[24+1][6+1];
+double  st[25+1][6+1];
 
 double  v0[6+1];
 double  v1[6+1];
@@ -67,6 +69,7 @@ double  v21[6+1];
 double  v22[6+1];
 double  v23[6+1];
 double  v24[6+1];
+double  v25[6+1];
 
 double  a0[6+1];
 double  a1[6+1];
@@ -93,13 +96,14 @@ double  a21[6+1];
 double  a22[6+1];
 double  a23[6+1];
 double  a24[6+1];
+double  a25[6+1];
 
-double  A[24+1][6+1][N_RBD_PARMS+1];
+double  A[25+1][6+1][N_RBD_PARMS+1];
 
-int     pred[24+1];
+int     pred[25+1];
 int     map[2102+1];
-double  K[30+1][25*N_RBD_PARMS+1];
+double  K[31+1][26*N_RBD_PARMS+1];
 double  U[6+1][N_RBD_PARMS+1];
 double  Unew[6+1][N_RBD_PARMS+1];
-double  Y[30+1];
+double  Y[31+1];
 

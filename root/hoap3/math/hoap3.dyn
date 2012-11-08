@@ -16,7 +16,7 @@
 {jointAxis,{0,0,0}},
 {translation,{0,0,BODYLINK1}},
 {rotationMatrix,{0,0,0}},
-{successors,{}},
+{successors,{14}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
 {massCenterMass,{0,0,0}}, 
 {mass,{0}}, 
@@ -111,7 +111,7 @@
 { (* right toe of foot *)
 {jointID,{ID=115}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,-FOOTWIDLONG,FOOTLLENGLONG}},
+{translation,{-LEGLINK4,FOOTWIDLONG,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -123,7 +123,7 @@
 { (* left toe of foot *)
 {jointID,{ID=116}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,FOOTWIDSHORT,FOOTLLENGLONG}},
+{translation,{-LEGLINK4,-FOOTWIDSHORT,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -135,7 +135,7 @@
 { (* right heel of foot *)
 {jointID,{ID=117}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,FOOTWIDSHORT,-FOOTLENGSHORT}},
+{translation,{-LEGLINK4,-FOOTWIDSHORT,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -147,7 +147,7 @@
 { (* left heel of foot *)
 {jointID,{ID=118}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,-FOOTWIDLONG,-FOOTLENGSHORT}},
+{translation,{-LEGLINK4,FOOTWIDLONG,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -167,6 +167,19 @@
 {mass,{eff$1$$m}}, 
 {jointVariables,{0,0,0,0,0}},
 {extForce,{0,0,0,0,0,0}}
+}
+{ (******************** right arm  *******************)
+(* RA_J1 *)
+{jointID,{ID=14}}, 
+{jointAxis,{0,0,1}}, 
+{translation,{0,-ARMLINK1,0}},  
+{rotationMatrix,{-Pi/2,0,0}}, 
+{successors,{}},     
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]*0}
 }
 { (******************** left leg  *******************)
 (* LL_J1 *)
@@ -220,7 +233,7 @@
 {  (* LL_J5 - ankle *)
 {jointID,{ID=11}},
 {jointAxis,{0,0,1}},
-{translation,{-LEGLINK3,0,0.}},
+{translation,{-LEGLINK3,0,0}},
 {rotationMatrix,{0,0,0}},
 {successors,{12}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
@@ -244,7 +257,7 @@
 { (* right toe of foot *)
 {jointID,{ID=108}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,FOOTWIDLONG,FOOTLLENGLONG}},
+{translation,{-LEGLINK4,-FOOTWIDLONG,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -256,7 +269,7 @@
 { (* left toe of foot *)
 {jointID,{ID=109}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,-FOOTWIDSHORT,FOOTLLENGLONG}},
+{translation,{-LEGLINK4,FOOTWIDSHORT,FOOTLLENGLONG}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -268,7 +281,7 @@
 { (* right heel of foot *)
 {jointID,{ID=110}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,-FOOTWIDSHORT,-FOOTLENGSHORT}},
+{translation,{-LEGLINK4,FOOTWIDSHORT,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -280,7 +293,7 @@
 { (* left heel of foot *)
 {jointID,{ID=111}},
 {jointAxis,{0,0,0}},
-{translation,{-LEGLINK4,FOOTWIDLONG,-FOOTLENGSHORT}},
+{translation,{-LEGLINK4,-FOOTWIDLONG,-FOOTLENGSHORT}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},

@@ -73,6 +73,7 @@ main(int argc, char**argv)
   semTake(sm_init_process_ready_sem,WAIT_FOREVER);
   
   // the vision servo
+
   if (fork() == 0) {
     sprintf(argv_ptr[geometry_argv],"90x12+%d+484",display_width-delta_width);
     if (read_parameter_pool_string(config_files[PARAMETERPOOL], 

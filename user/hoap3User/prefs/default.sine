@@ -1,13 +1,10 @@
 /* keyword  #sines offset  amplitude  phase freq */
 
 
-R_AFE          1    0.0       0.1       0.0   1.0
-L_AFE          1    0.0       0.1       0.0   1.0
+R_AFE          1    0.0       0.0       0.0   1.0
 
-R_KFE          1    0.0        0.2       0.0   1.0
-L_KFE          1    0.0        0.2       0.0   1.0
+B_J          	1    0.0        0.2       0.0   1.0
 
-R_HFE          1    0.0       0.1       0.0   1.0
-L_HFE          1    0.0       0.1       0.0   1.0
+R_HFE          1    0.0       0.0       0.0   1.0
 
 

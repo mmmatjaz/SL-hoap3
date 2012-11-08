@@ -24,8 +24,6 @@
 #include "utility.h"
 #include "SL_man.h"
 
-#define  N_DOFS_LEG    7
-#define  N_DOFS_TORSO  2
 
 /* global variables */
 

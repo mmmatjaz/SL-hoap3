@@ -58,7 +58,11 @@
 #define FOOTLLENGLONG	0.068
 /*! links of the robot */
 enum RobotLinks {
-  B_SACRAL=1,
+  B_LINK1=1,
+
+  B_LINK2,
+
+  R_SH,
 
   R_HIP,
   R_KNEE,
@@ -77,8 +81,6 @@ enum RobotLinks {
   L_IN_HEEL,
   L_OUT_HEEL,
   L_FOOT,
-
-  B_LINK2,
 
   N_ROBOT_LINKS
 };
@@ -114,21 +116,24 @@ enum ColorBlobs {
 enum RobotDOFs {
   BASE=0,
 
-  L_HFE,
-  L_HAA,
-  L_HFR,
-  L_KFE,
-  L_AR,
-  L_AAA,
-
   R_HFE,
   R_HAA,
   R_HFR,
-  R_KFE,
+  R_K,
   R_AR,
   R_AAA,
 
+  L_HFE,
+  L_HAA,
+  L_HFR,
+  L_K,
+  L_AR,
+  L_AAA,
+
   B_J,
+
+  RA_J1,
+
   N_ROBOT_DOFS
 };
 

@@ -1,3 +1,4 @@
+prismatic_joint_flag[14]=0;
 prismatic_joint_flag[13]=0;
 prismatic_joint_flag[1]=0;
 prismatic_joint_flag[2]=0;

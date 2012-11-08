@@ -147,14 +147,13 @@ run_sample_task(void)
 
   task_time = task_servo_time - start_time;
   omega     = 2.0*PI*freq;
-
+/*
   for (i=R_EB; i<=R_EB; ++i) {
-    target[i].th   = joint_default_state[i].th +
-      amp*sin(omega*task_time);
+    target[i].th   = joint_default_state[i].th ;//	+  amp*sin(omega*task_time);
     target[i].thd   = amp*omega*cos(omega*task_time);
     target[i].thdd  =-amp*omega*omega*sin(omega*task_time);
   }
-
+*/
   // the following variables need to be assigned
   for (i=1; i<=N_DOFS; ++i) {
     joint_des_state[i].th   = target[i].th;

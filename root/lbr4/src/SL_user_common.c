@@ -15,7 +15,7 @@
   ============================================================================*/
 
 // SL general includes of system headers
-#include "SL_system_headers.h"
+
 
 // SL headers
 #include "SL.h"
