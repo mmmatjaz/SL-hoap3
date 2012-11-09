@@ -284,12 +284,12 @@ int      isphere = 10;
 */
 
   switch (num) {
-  /*
+
   case 7:
 	  drawSphericJoint(solid,0.028,length);
 	  drawCylLink(solid,0.028,length);
 	  break;
-
+/*
   case 9:
     	  drawSphericJoint(solid,0.028,length);
     	  drawCylLink(solid,0.028,length);
@@ -313,8 +313,8 @@ int      isphere = 10;
 	  break;
   default:
 
-	  drawSphericJoint(solid,0.02,length);
-	  drawCylLink(solid,0.01,length);
+	  drawSphericJoint(solid,0.01,length);
+	  drawCylLink(solid,0.005,length);
 	  /*
     glScaled(width/2.,width/2.,length);
     glColor4fv(gray);
