@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[      5115,        155]
-NotebookOptionsPosition[      4140,        121]
-NotebookOutlinePosition[      4765,        145]
-CellTagsIndexPosition[      4722,        142]
+NotebookDataLength[      5212,        156]
+NotebookOptionsPosition[      4238,        122]
+NotebookOutlinePosition[      4862,        146]
+CellTagsIndexPosition[      4819,        143]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -75,13 +75,14 @@ Cell[BoxData[
  RowBox[{"GeometricJacobian", "[", 
   RowBox[{"\"\<hoap3.dyn\>\"", ",", 
    RowBox[{"{", 
-    RowBox[{"119", ",", "112"}], "}"}], ",", "\"\<hoap3\>\""}], 
+    RowBox[{"119", ",", "1000"}], "}"}], ",", "\"\<hoap3\>\""}], 
   "]"}]], "Input",
  CellChangeTimes->{{3.5596244329160433`*^9, 3.559624432921826*^9}, {
    3.559636510049341*^9, 3.559636513282792*^9}, 3.559638710035881*^9, 
    3.559638745371014*^9, 3.559638976992874*^9, 3.559639341276926*^9, {
    3.560162940577297*^9, 3.560162970840088*^9}, {3.561114221942391*^9, 
-   3.561114222374318*^9}, 3.561114646937476*^9}],
+   3.561114222374318*^9}, 3.561114646937476*^9, 3.561445030243627*^9, 
+   3.5614450724424133`*^9, {3.56144683174625*^9, 3.5614468323130198`*^9}}],
 
 Cell[BoxData[
  RowBox[{"ForDynArt", "[", 
@@ -122,7 +123,7 @@ Cell[BoxData[
 WindowToolbars->{},
 CellGrouping->Automatic,
 WindowSize->{775, 853},
-WindowMargins->{{-939, Automatic}, {18, Automatic}},
+WindowMargins->{{-949, Automatic}, {8, Automatic}},
 PrivateNotebookOptions->{"ColorPalette"->{RGBColor, 128}},
 ShowSelection->True,
 ShowCellLabel->True,
@@ -152,11 +153,11 @@ Cell[1056, 40, 235, 4, 30, "Input"],
 Cell[1294, 46, 398, 9, 30, "Input"],
 Cell[1695, 57, 326, 7, 30, "Input"],
 Cell[2024, 66, 270, 5, 30, "Input"],
-Cell[2297, 73, 519, 10, 30, "Input"],
-Cell[2819, 85, 400, 9, 30, "Input"],
-Cell[3222, 96, 352, 8, 30, "Input"],
-Cell[3577, 106, 236, 4, 30, "Input"],
-Cell[3816, 112, 320, 7, 30, "Input"]
+Cell[2297, 73, 617, 11, 30, "Input"],
+Cell[2917, 86, 400, 9, 30, "Input"],
+Cell[3320, 97, 352, 8, 30, "Input"],
+Cell[3675, 107, 236, 4, 30, "Input"],
+Cell[3914, 113, 320, 7, 30, "Input"]
 }
 ]
 *)

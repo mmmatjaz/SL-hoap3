@@ -20,7 +20,7 @@
 
 */
 
-/*
+
 R_HIP_R		R_KNEE		1	5	orth	orth
 R_KNEE		R_ANKLE		1	5	orth	orth
 
@@ -36,4 +36,4 @@ R_IN_TOE	R_IN_HEEL	1	5	full	full
 R_IN_HEEL	R_OUT_HEEL	1	5	full	full
 R_OUT_HEEL	R_OUT_TOE	1	5	full	full
 R_OUT_TOE	R_IN_TOE	1	5	full	full
-*/
+

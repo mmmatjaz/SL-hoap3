@@ -3,7 +3,7 @@
 {floatingBase,{0}},
 {notUsed,{}},
 {notUsed,{}},
-{successors,{2102,13}},
+{successors,{2102,21}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]},
 {mass,GenMassS["links",ID]},
@@ -16,7 +16,7 @@
 {jointAxis,{0,0,0}},
 {translation,{0,0,BODYLINK1}},
 {rotationMatrix,{0,0,0}},
-{successors,{14}},
+{successors,{22,7,17}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
 {massCenterMass,{0,0,0}}, 
 {mass,{0}}, 
@@ -24,11 +24,11 @@
 {extForce,{0,0,0,0,0,0}}
 }
 { (* B_J[1] *)
-{jointID,{ID=13}}, 
+{jointID,{ID=21}}, 
 {jointAxis,{0,0,1}}, 
 {translation,{BODYLINK2,0,0}},  
 {rotationMatrix,{Pi/2,0,0}}, 
-{successors,{1,7}},     
+{successors,{1,11}},     
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
@@ -101,7 +101,7 @@
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
 {rotationMatrix,{-Pi/2,0,0}},
-{successors,{115,116,117,118,119}},
+{successors,{115,116,117,118,1000}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
@@ -157,7 +157,7 @@
 {extForce,{0,0,0,0,0,0}}
 }
 { (* Midpoint under the foot acts like endeffector *)
-{jointID,{ID=119}},
+{jointID,{ID=1000}},
 {jointAxis,{0,0,0}},
 {translation,{eff$1$$x[[1]],eff$1$$x[[2]],eff$1$$x[[3]]}},
 {rotationMatrix,{eff$1$$a[[1]],eff$1$$a[[2]],eff$1$$a[[3]]}},
@@ -170,71 +170,10 @@
 }
 { (******************** right arm  *******************)
 (* RA_J1 *)
-{jointID,{ID=14}}, 
+{jointID,{ID=7}}, 
 {jointAxis,{0,0,1}}, 
 {translation,{0,-ARMLINK1,0}},  
 {rotationMatrix,{-Pi/2,0,0}}, 
-{successors,{15}},     
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]*0}
-}
-{ (* RA_J2 *)
-{jointID,{ID=15}},
-{jointAxis,{0,-1,0}},
-{translation,{0,0,0}},
-{rotationMatrix,{0,0,0}},
-{successors,{16}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{ (* RA_J3 *)
-{jointID,{ID=16}},
-{jointAxis,{1,0,0}},
-{translation,{0,0,0}},
-{rotationMatrix,{0,0,0}},
-{successors,{17}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{ (* RA_J4 *)
-{jointID,{ID=17}},
-{jointAxis,{0,0,1}},
-{translation,{ARMLINK2,0,0}},
-{rotationMatrix,{0,0,0}},
-{successors,{420}},
-{inertia,GenInertiaMatrixS["links",ID,1]},
-{massCenterMass,GenMCMVectorS["links",ID,1]}, 
-{mass,GenMassS["links",ID]}, 
-{jointVariables,GenVariablesS["state",ID]},
-{extForce,GenExtForceS["uex",ID]}
-}
-{ (* test dummy *)
-{jointID,{ID=420}},
-{jointAxis,{0,0,0}},
-{translation,{ARMLINK3,0,0}},
-{rotationMatrix,{0,0,0}},
-{successors,{}},
-{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
-{massCenterMass,{0,0,0}}, 
-{mass,{0}}, 
-{jointVariables,{0,0,0,0,0}},
-{extForce,{0,0,0,0,0,0}}
-}
-{ (******************** left leg  *******************)
-(* LL_J1 *)
-{jointID,{ID=7}}, 
-{jointAxis,{0,0,1}}, 
-{translation,{-WAISTLINK2,-WAISTLINK1,-LEGLINK1}},  
-{rotationMatrix,{-Pi/2,0,Pi/2}}, 
 {successors,{8}},     
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
@@ -242,7 +181,7 @@
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{ (* LL_J2 *)
+{ (* RA_J2 *)
 {jointID,{ID=8}},
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
@@ -254,12 +193,73 @@
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{ (* LL_J3 *)
+{ (* RA_J3 *)
 {jointID,{ID=9}},
+{jointAxis,{1,0,0}},
+{translation,{0,-ARMLINK2,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{10}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* RA_J4 *)
+{jointID,{ID=10}},
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
 {rotationMatrix,{Pi/2,0,0}},
-{successors,{10}},
+{successors,{420}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* test dummy *)
+{jointID,{ID=420}},
+{jointAxis,{0,0,0}},
+{translation,{0,ARMLINK3,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (******************** left leg  *******************)
+(* LL_J1 *)
+{jointID,{ID=11}}, 
+{jointAxis,{0,0,1}}, 
+{translation,{-WAISTLINK2,-WAISTLINK1,-LEGLINK1}},  
+{rotationMatrix,{-Pi/2,0,Pi/2}}, 
+{successors,{12}},     
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* LL_J2 *)
+{jointID,{ID=12}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{13}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* LL_J3 *)
+{jointID,{ID=13}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,0}},
+{successors,{14}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
@@ -267,11 +267,11 @@
 {extForce,GenExtForceS["uex",ID]*0}
 }
 { (* LL_J4 - knee *)
-{jointID,{ID=10}},
+{jointID,{ID=14}},
 {jointAxis,{0,0,1}},
 {translation,{-LEGLINK2,0,0}},
 {rotationMatrix,{0,0,0}},
-{successors,{11}},
+{successors,{15}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
@@ -279,11 +279,11 @@
 {extForce,GenExtForceS["uex",ID]}
 }
 {  (* LL_J5 - ankle *)
-{jointID,{ID=11}},
+{jointID,{ID=15}},
 {jointAxis,{0,0,1}},
 {translation,{-LEGLINK3,0,0}},
 {rotationMatrix,{0,0,0}},
-{successors,{12}},
+{successors,{16}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
@@ -291,11 +291,11 @@
 {extForce,GenExtForceS["uex",ID]}
 }
 {  (* LL_J6 - ankle *)
-{jointID,{ID=12}},
+{jointID,{ID=16}},
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
 {rotationMatrix,{-Pi/2,0,0}},
-{successors,{108,109,110,111,112}},
+{successors,{108,109,110,111,2000}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
@@ -351,7 +351,7 @@
 {extForce,{0,0,0,0,0,0}}
 }
 { (* Midpoint under the foot acts like endeffector *)
-{jointID,{ID=112}},
+{jointID,{ID=2000}},
 {jointAxis,{0,0,0}},
 {translation,{eff$2$$x[[1]],eff$2$$x[[2]],eff$2$$x[[3]]}},
 {rotationMatrix,{eff$2$$a[[1]],eff$2$$a[[2]],eff$2$$a[[3]]}},
@@ -361,4 +361,102 @@
 {mass,{eff$2$$m}}, 
 {jointVariables,{0,0,0,0,0}},
 {extForce,{0,0,0,0,0,0}}
+}
+{ (******************** left arm  *******************)
+(* LA_J1 *)
+{jointID,{ID=17}}, 
+{jointAxis,{0,0,1}}, 
+{translation,{0,ARMLINK1,0}},  
+{rotationMatrix,{-Pi/2,0,0}}, 
+{successors,{18}},     
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* LA_J2 *)
+{jointID,{ID=18}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{19}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* LA_J3 *)
+{jointID,{ID=19}},
+{jointAxis,{1,0,0}},
+{translation,{0,-ARMLINK2,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{20}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* LA_J4 *)
+{jointID,{ID=20}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,0}},
+{successors,{421}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* test dummy *)
+{jointID,{ID=421}},
+{jointAxis,{0,0,0}},
+{translation,{0,ARMLINK3,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (******************** HEAD  *******************)
+(* H_J1 *)
+{jointID,{ID=22}}, 
+{jointAxis,{0,0,1}}, 
+{translation,{0,0,0}},  
+{rotationMatrix,{0,0,0}}, 
+{successors,{23}},     
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* H_J2 *)
+{jointID,{ID=23}},
+{jointAxis,{0,0,1}},
+{translation,{HEADLINK2,0,HEADLINK1}},
+{rotationMatrix,{-Pi/2,0,0}},
+{successors,{24}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* H_J3 *)
+{jointID,{ID=24}},
+{jointAxis,{1,0,0}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,0}},
+{successors,{}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
 }

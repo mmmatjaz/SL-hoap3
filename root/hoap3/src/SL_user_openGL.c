@@ -43,11 +43,18 @@
 int print_Hmat = FALSE;
 
 // local variables
-  
+GLfloat  gray[4]={(float)0.8,(float)0.8,(float)0.8,(float)1.0};
+  GLfloat  green[4]={(float)0.1,(float)0.5,(float)0.5,(float)1.0};
+  GLfloat  red[4]={(float)1.0,(float)0.25,(float)0.25,(float)1.0};
+  GLfloat  blue[4]={(float)0.1,(float)0.1,(float)1.0,(float)1.0};
+  GLfloat  black[4]={(float)0.,(float)0.,(float)0.0,(float)1.0};
+  GLfloat  white[4]={(float)1.,(float)1.,(float)1.0,(float)1.0};
+  GLfloat  yellow[4]={(float)1.0,(float)0.8,(float)0.7,(float)1.0};
 // local functions
 static int  createWindows(void);
 static void myDrawGLElement(int num, double length, int flag);
-
+static void drawSphericJoint(int solid, double radius, double length);
+static void drawCylLink(int solid, double radius, double length);
 // global functions
 void display(void);
 void idle(void);
@@ -252,22 +259,16 @@ myDrawGLElement(int num, double length, int flag)
   double thumb_width = 0.02;
   double shoulder_width  = 0.45;
   
-  GLfloat  gray[4]={(float)0.8,(float)0.8,(float)0.8,(float)1.0};
-  GLfloat  green[4]={(float)0.1,(float)0.5,(float)0.5,(float)1.0};
-  GLfloat  red[4]={(float)1.0,(float)0.25,(float)0.25,(float)1.0};
-  GLfloat  blue[4]={(float)0.1,(float)0.1,(float)1.0,(float)1.0};
-  GLfloat  black[4]={(float)0.,(float)0.,(float)0.0,(float)1.0};
-  GLfloat  white[4]={(float)1.,(float)1.,(float)1.0,(float)1.0};
-  GLfloat  yellow[4]={(float)1.0,(float)0.8,(float)0.7,(float)1.0};
+
 
   //printf("\n num %d | len %f | flag %d", num, length, flag);
 int      isphere = 10;
 
-	flag=1;
+	/*
   if (flag==1) {
     glTranslated(0.0,0.0,length); 
 
-    if (num==999) {/* the base coordinate system */
+    if (num==999) {
       glColor4fv(blue);
     } else {
       glColor4fv(green);
@@ -280,21 +281,74 @@ int      isphere = 10;
 
     glTranslated(0.0,0.0,-length);
   }
-
+*/
 
   switch (num) {
+  /*
+  case 7:
+	  drawSphericJoint(solid,0.028,length);
+	  drawCylLink(solid,0.028,length);
+	  break;
+
+  case 9:
+    	  drawSphericJoint(solid,0.028,length);
+    	  drawCylLink(solid,0.028,length);
+  case 420:
+    	  drawSphericJoint(solid,0.028,length);
+    	  drawCylLink(solid,0.028,length);
+
+  case 17:
+    	  drawSphericJoint(solid,0.028,length);
+    	  drawCylLink(solid,0.028,length);
+  case 19:
+    	  drawSphericJoint(solid,0.028,length);
+    	  drawCylLink(solid,0.028,length);
+  case 421:
+      	  drawSphericJoint(solid,0.028,length);
+      	  drawCylLink(solid,0.028,length);
+*/
+  case 23:
+	  drawSphericJoint(solid,0.065,length);
+	  drawCylLink(solid,0.01,length);
+	  break;
   default:
 
+	  drawSphericJoint(solid,0.02,length);
+	  drawCylLink(solid,0.01,length);
+	  /*
     glScaled(width/2.,width/2.,length);
     glColor4fv(gray);
     if (solid)
       glutSolidCylinder(1.0/2.0,1.0,isphere,1);
     else
       glutWireCylinder(1.0/2.0,1.0,isphere,1);
-			
+		*/
   }
 }
 
+static void drawSphericJoint(int solid, double radius, double length)
+{
+	int      isphere = 10;
+	glTranslated(0.0,0.0,length);
+
+	if (solid)
+	  glutSolidSphere(radius,isphere,isphere);
+	else
+	  glutWireSphere(radius,isphere,isphere);
+
+	glTranslated(0.0,0.0,-length);
+}
+
+static void drawCylLink(int solid, double radius, double length)
+{
+	int      isphere = 10;
+	glScaled(1.,1.,length);
+	    glColor4fv(gray);
+	    if (solid)
+	      glutSolidCylinder(radius,1.0,isphere,1);
+	    else
+	      glutWireCylinder(radius,1.0,isphere,1);
+}
 /*!*****************************************************************************
  *******************************************************************************
 \note  idle

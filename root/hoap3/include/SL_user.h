@@ -41,14 +41,14 @@
 
 #define ARMLINK1	 	0.111
 #define ARMLINK2	 	0.111
-#define ARMLINK3	 	0.171
+#define ARMLINK3	 	0.133
 #define LEGLINK1	 	0.039
 #define LEGLINK2	 	0.105
 #define LEGLINK3	 	0.105
 #define LEGLINK4	 	0.040
 #define BODYLINK1	 	0.125
 #define BODYLINK2   	0.035
-#define HEADLINK1   	0.013
+#define HEADLINK1   	0.103
 #define HEADLINK2   	0.015
 #define WAISTLINK1  	0.055
 #define WAISTLINK2  	0.035
@@ -60,9 +60,15 @@
 enum RobotLinks {
   B_LINK1=1,
 
+  H_1,
+
   R_SH,
   R_UA,
   R_LA,
+
+  L_SH,
+  L_UA,
+  L_LA,
 
   B_LINK2,
 
@@ -125,6 +131,11 @@ enum RobotDOFs {
   R_AR,
   R_AAA,
 
+  RA_J1,
+  RA_J2,
+  RA_J3,
+  RA_J4,
+
   L_HFE,
   L_HAA,
   L_HFR,
@@ -132,12 +143,16 @@ enum RobotDOFs {
   L_AR,
   L_AAA,
 
+  LA_J1,
+  LA_J2,
+  LA_J3,
+  LA_J4,
+
   B_J,
 
-  RA_J1,
-  RA_J2,
-  RA_J3,
-  RA_J4,
+  H_J1,
+  H_J2,
+  H_J3,
 
 
   N_ROBOT_DOFS

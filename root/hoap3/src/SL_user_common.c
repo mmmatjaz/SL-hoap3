@@ -24,28 +24,38 @@
 
 /* global variables */
 char joint_names[][20]= {
-  {"BASE"},
+	{"BASE"},
 
-  {"R_HFE"},
-    {"R_HAA"},
-    {"R_HFR"},
-    {"R_K"},
-    {"R_AR"},
-    {"R_AAA"},
+	{"R_HFE"},
+	{"R_HAA"},
+	{"R_HFR"},
+	{"R_K"},
+	{"R_AR"},
+	{"R_AAA"},
 
-  {"L_HFE"},
-  {"L_HAA"},
-  {"L_HFR"},
-  {"L_K"},
-  {"L_AR"},
-  {"L_AAA"},
-  
-  {"B_J"},
+	{"RA_J1"},
+	{"RA_J2"},
+	{"RA_J3"},
+	{"RA_J4"},
 
-  {"RA_J1"},
-  {"RA_J2"},
-  {"RA_J3"},
-  {"RA_J4"}
+	{"L_HFE"},
+	{"L_HAA"},
+	{"L_HFR"},
+	{"L_K"},
+	{"L_AR"},
+	{"L_AAA"},
+
+	{"LA_J1"},
+	{"LA_J2"},
+	{"LA_J3"},
+	{"LA_J4"},
+
+	{"B_J"},
+
+	{"H_J1"},
+	{"H_J2"},
+	{"H_J3"}
+
 
 };
 
@@ -69,9 +79,16 @@ char link_names[][20]= {
   {"BASE"},
 
   {"B_LINK1"},
+
+  {"H_1"},
+
   {"R_SH"},
   {"R_UA"},
   {"R_LA"},
+
+  {"L_SH"},
+  {"L_UA"},
+  {"L_LA"},
 
   {"B_LINK2"},
 
