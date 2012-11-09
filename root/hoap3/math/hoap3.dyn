@@ -174,12 +174,36 @@
 {jointAxis,{0,0,1}}, 
 {translation,{0,-ARMLINK1,0}},  
 {rotationMatrix,{-Pi/2,0,0}}, 
-{successors,{}},     
+{successors,{15}},     
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]*0}
+}
+{ (* LA_J2 *)
+{jointID,{ID=15}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,0}},
+{rotationMatrix,{Pi/2,0,Pi/2}},
+{successors,{420}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* test dummy *)
+{jointID,{ID=420}},
+{jointAxis,{0,0,0}},
+{translation,{0,0,ARMLINK2}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
 }
 { (******************** left leg  *******************)
 (* LL_J1 *)

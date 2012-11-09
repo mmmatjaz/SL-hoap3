@@ -139,6 +139,16 @@ RA_J1_des_th
 RA_J1_des_thd
 RA_J1_des_thdd
 RA_J1_uff
+RA_J2_th
+RA_J2_thd
+RA_J2_thdd
+RA_J2_u
+RA_J2_ufb
+RA_J2_load
+RA_J2_des_th
+RA_J2_des_thd
+RA_J2_des_thdd
+RA_J2_uff
 RIGHT_FOOT_x
 RIGHT_FOOT_y
 RIGHT_FOOT_z

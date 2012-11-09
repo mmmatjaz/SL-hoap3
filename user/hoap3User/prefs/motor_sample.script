@@ -41,6 +41,9 @@ B_J_rload
 RA_J1_rth
 RA_J1_rthd
 RA_J1_rload
+RA_J2_rth
+RA_J2_rthd
+RA_J2_rload
 VEST_A_r
 VEST_B_r
 VEST_G_r
@@ -171,5 +174,13 @@ RA_J1_load
 RA_J1_des_th
 RA_J1_des_thd
 RA_J1_uff
+RA_J2_th
+RA_J2_thd
+RA_J2_thdd
+RA_J2_u
+RA_J2_load
+RA_J2_des_th
+RA_J2_des_thd
+RA_J2_uff
 MSErrors
 MSNoReceive
