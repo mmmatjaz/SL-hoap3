@@ -56,6 +56,7 @@
 #define FOOTWIDLONG		0.0415
 #define FOOTLENGSHORT	0.040
 #define FOOTLLENGLONG	0.068
+#define FOOTTHICK 0.01
 /*! links of the robot */
 enum RobotLinks {
   B_LINK1=1,

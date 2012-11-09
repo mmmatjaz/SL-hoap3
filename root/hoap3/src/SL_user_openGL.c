@@ -55,6 +55,7 @@ static int  createWindows(void);
 static void myDrawGLElement(int num, double length, int flag);
 static void drawSphericJoint(int solid, double radius, double length);
 static void drawCylLink(int solid, double radius, double length);
+static void drawCuboLink(int solid, double a, double b, double length);
 // global functions
 void display(void);
 void idle(void);
@@ -247,7 +248,6 @@ display(void)
  ******************************************************************************/
 static void  
 myDrawGLElement(int num, double length, int flag)
-
 {
 		
   double width=0.03;
@@ -283,38 +283,103 @@ int      isphere = 10;
   }
 */
 
-  switch (num) {
+	switch (num) {
 
-  case 7:
-	  drawSphericJoint(solid,0.028,length);
-	  drawCylLink(solid,0.028,length);
-	  break;
-/*
-  case 9:
-    	  drawSphericJoint(solid,0.028,length);
-    	  drawCylLink(solid,0.028,length);
-  case 420:
-    	  drawSphericJoint(solid,0.028,length);
-    	  drawCylLink(solid,0.028,length);
+	case 115:
+		break;
+	case 116:
+		break;
+	case 117:
+		break;
+	case 118:
+		break;
+	case 108:
+		break;
+	case 109:
+		break;
+	case 110:
+		break;
+	case 111:
+		break;
+	case 4:
+		drawSphericJoint(solid,0.03,length);
+		drawCuboLink(solid,0.06,0.06,length);
+		break;
+	case 5:
+		drawSphericJoint(solid,0.03,length);
+		drawCuboLink(solid,0.06,0.06,length);
+		break;
+	case 6:
+		glTranslated(		-LEGLINK4+FOOTTHICK/2,
+							((FOOTLENGSHORT+FOOTLLENGLONG)/2-FOOTLENGSHORT),
+							-FOOTWIDLONG);//((FOOTWIDSHORT+FOOTWIDLONG)/2-FOOTWIDSHORT));
+		drawCuboLink(solid,	FOOTTHICK,
+							FOOTLENGSHORT+FOOTLLENGLONG,
+							FOOTWIDSHORT+FOOTWIDLONG);
+		break;
 
-  case 17:
-    	  drawSphericJoint(solid,0.028,length);
-    	  drawCylLink(solid,0.028,length);
-  case 19:
-    	  drawSphericJoint(solid,0.028,length);
-    	  drawCylLink(solid,0.028,length);
-  case 421:
-      	  drawSphericJoint(solid,0.028,length);
-      	  drawCylLink(solid,0.028,length);
-*/
-  case 23:
-	  drawSphericJoint(solid,0.065,length);
-	  drawCylLink(solid,0.01,length);
-	  break;
-  default:
+	case 14:
+		drawSphericJoint(solid,0.03,length);
+		drawCuboLink(solid,0.06,0.06,length);
+		break;
+	case 15:
+		drawSphericJoint(solid,0.03,length);
+		drawCuboLink(solid,0.06,0.06,length);
+		break;
+	case 16:
 
-	  drawSphericJoint(solid,0.01,length);
-	  drawCylLink(solid,0.005,length);
+		glTranslated(		-LEGLINK4+FOOTTHICK/2,
+							((FOOTLENGSHORT+FOOTLLENGLONG)/2-FOOTLENGSHORT),
+							-FOOTWIDSHORT);//((FOOTWIDSHORT+FOOTWIDLONG)/2-FOOTWIDLONG));
+		drawCuboLink(solid,	FOOTTHICK,
+							FOOTLENGSHORT+FOOTLLENGLONG,
+							FOOTWIDSHORT+FOOTWIDLONG);
+
+		break;
+
+	case 2102:
+			glTranslated(		-.04,
+								.0,
+								-BODYLINK1+.02+.18/2.);
+			drawCuboLink(solid,	.205,
+								.144,
+								.18);
+			break;
+
+	case 7:
+		drawSphericJoint(solid,0.028,length);
+		drawCylLink(solid,0.028,length);
+		break;
+	case 9:
+		drawSphericJoint(solid,0.028,length);
+		drawCylLink(solid,0.028,length);
+		break;
+	case 420:
+		//drawSphericJoint(solid,0.028,length);
+		drawCylLink(solid,0.028,length);
+		break;
+
+	case 17:
+		drawSphericJoint(solid,0.028,length);
+		drawCylLink(solid,0.028,length);
+		break;
+	case 19:
+		drawSphericJoint(solid,0.028,length);
+		drawCylLink(solid,0.028,length);
+		break;
+	case 421:
+		//drawSphericJoint(solid,0.028,length);
+		drawCylLink(solid,0.028,length);
+		break;
+
+	case 23:
+		drawSphericJoint(solid,0.065,length);
+		drawCylLink(solid,0.01,length);
+		break;
+
+	default:
+		drawSphericJoint(solid,0.01,length);
+		drawCylLink(solid,0.005,length);
 	  /*
     glScaled(width/2.,width/2.,length);
     glColor4fv(gray);
@@ -348,6 +413,18 @@ static void drawCylLink(int solid, double radius, double length)
 	      glutSolidCylinder(radius,1.0,isphere,1);
 	    else
 	      glutWireCylinder(radius,1.0,isphere,1);
+}
+
+
+static void drawCuboLink(int solid, double a, double b, double length)
+{
+	glScaled(a,b,length);
+	glTranslated(0.0,0.0,0.5);
+	glColor4fv(gray);
+	if (solid)
+		glutSolidCube(1.0);
+	else
+		glutWireCube(1.0);
 }
 /*!*****************************************************************************
  *******************************************************************************
