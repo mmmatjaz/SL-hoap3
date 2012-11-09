@@ -2,7 +2,7 @@
    Note: the file is parsed according to keywords, after the keyword,
          the values need to come in the correct sequence */
 
-/* format: keyword, gain_th, gain_thd, gain_int, max_control  
+/* format: keyword, gain_th, gain_thd, gain_int, max_control  */
 RL_J1 	    500 	      70 	   0.001 	     300 
 RL_J2 	    500 	      70 	   0.001 	     300 
 RL_J3 	    500 	      70 	   0.001 	     300 
@@ -31,7 +31,7 @@ RA_S1 	    500 	      70 	   0.001 	     300
 RA_S2 	    500 	      70 	   0.001 	     300 
 LA_S1 	    500 	      70 	   0.001 	     300 
 LA_S2 	    500 	      70 	   0.001 	     300 
-*/
+
  
 
  

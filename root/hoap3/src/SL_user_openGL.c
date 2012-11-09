@@ -54,6 +54,10 @@ GLfloat  gray[4]={(float)0.8,(float)0.8,(float)0.8,(float)1.0};
 static int  createWindows(void);
 static void myDrawGLElement(int num, double length, int flag);
 static void drawSphericJoint(int solid, double radius, double length);
+static void drawCuboJoint(int solid,
+			double offx, double offy, double offz,
+			double a, double b, double c);
+
 static void drawCylLink(int solid, double radius, double length);
 static void drawCuboLink(int solid, double a, double b, double length);
 // global functions
@@ -305,7 +309,18 @@ int      isphere = 10;
 		break;
 	case 2701:
 		break;
-
+	case 2601:
+		drawCylLink(solid,0.005,length);
+		break;
+	case 2801:
+		drawCylLink(solid,0.005,length);
+		break;
+	case 1:
+		drawSphericJoint(solid,0.032,length);
+		break;
+	case 11:
+		drawSphericJoint(solid,0.032,length);
+		break;
 	case 2702:
 		drawCuboLink(solid,	0.03,
 							0.005,
@@ -324,13 +339,14 @@ int      isphere = 10;
 		drawSphericJoint(solid,0.032,length);
 		drawCuboLink(solid,0.06,0.06,length);
 		break;
-	case 6:
-		glTranslated(		-LEGLINK4+FOOTTHICK/2,
-							((FOOTLENGSHORT+FOOTLLENGLONG)/2-FOOTLENGSHORT),
-							-FOOTWIDLONG);//((FOOTWIDSHORT+FOOTWIDLONG)/2-FOOTWIDSHORT));
-		drawCuboLink(solid,	FOOTTHICK,
-							FOOTLENGSHORT+FOOTLLENGLONG,
-							FOOTWIDSHORT+FOOTWIDLONG);
+	case 1001:
+		drawCuboJoint(solid,
+				(FOOTLENGSHORT+FOOTLLENGLONG)/2-FOOTLLENGLONG,
+				(FOOTWIDSHORT+FOOTWIDLONG)/2-FOOTWIDLONG,
+				length-FOOTTHICK/2,
+				FOOTLENGSHORT+FOOTLLENGLONG,
+				FOOTWIDSHORT+FOOTWIDLONG,
+				FOOTTHICK);
 		break;
 
 	case 14:
@@ -341,21 +357,23 @@ int      isphere = 10;
 		drawSphericJoint(solid,0.032,length);
 		drawCuboLink(solid,0.06,0.06,length);
 		break;
-	case 16:
 
-		glTranslated(		-LEGLINK4+FOOTTHICK/2,
-							((FOOTLENGSHORT+FOOTLLENGLONG)/2-FOOTLENGSHORT),
-							-FOOTWIDSHORT);//((FOOTWIDSHORT+FOOTWIDLONG)/2-FOOTWIDLONG));
-		drawCuboLink(solid,	FOOTTHICK,
-							FOOTLENGSHORT+FOOTLLENGLONG,
-							FOOTWIDSHORT+FOOTWIDLONG);
+	case 2001:
+		drawCuboJoint(solid,
+			(FOOTLENGSHORT+FOOTLLENGLONG)/2-FOOTLLENGLONG,
+			(FOOTWIDSHORT+FOOTWIDLONG)/2-FOOTWIDSHORT,
+			length-FOOTTHICK/2,
+			FOOTLENGSHORT+FOOTLLENGLONG,
+			FOOTWIDSHORT+FOOTWIDLONG,
+			FOOTTHICK);
+		//drawSphericJoint(solid,0.01,length);
 
 		break;
 
 	case 2102:
 			glTranslated(		-.04,
 								.0,
-								-BODYLINK1+.02+.18/2.);
+								-BODYLINK1+.01+.18/2.);
 			drawCuboLink(solid,	.205,
 								.144,
 								.18);
@@ -417,6 +435,19 @@ static void drawSphericJoint(int solid, double radius, double length)
 	  glutWireSphere(radius,isphere,isphere);
 
 	glTranslated(0.0,0.0,-length);
+}
+static void drawCuboJoint(int solid,
+			double offx, double offy, double offz,
+			double a, double b, double c)
+{
+	glTranslated(offx,offy,offz);
+	glScaled(a,b,c);
+	//glTranslated(0.0,0.0,0.5);
+	if (solid)
+		glutSolidCube(1.0);
+	else
+		glutWireCube(1.0);
+	glTranslated(0.0,0.0,-offz);
 }
 
 static void drawCylLink(int solid, double radius, double length)

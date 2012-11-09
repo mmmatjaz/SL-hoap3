@@ -97,6 +97,7 @@ enum RobotLinks {
   R_OUT_HEEL,
   R_IN_HEEL,
   R_FOOT,
+  R_FD,
 
   L_HIP,
   L_KNEE,
@@ -106,6 +107,7 @@ enum RobotLinks {
   L_IN_HEEL,
   L_OUT_HEEL,
   L_FOOT,
+  L_FD,
 
   N_ROBOT_LINKS
 };

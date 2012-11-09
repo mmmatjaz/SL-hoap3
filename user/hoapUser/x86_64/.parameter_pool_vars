@@ -1,7 +1,0 @@
-osc_enabled (int, ./xhoap)
-task_servo_geometry (string, ./xhoap)
-goto_speed (double, task)
-osc_enabled (int, task)
-vision_servo_geometry (string, ./xhoap)
-osc_enabled (int, vision)
-motor_servo_geometry (string, ./xhoap)

@@ -17,7 +17,7 @@
 
 floor 1 		/* name and ID of object type */
 0.8 0.3 0.3          	/* rgb */
-0.0 0.0 -0.85  		/* pos -1.32 */
+0.0 0.0 -0.8  		/* pos -1.32 */
 0.0 0.0 0.0  		/* orient */
 40.0 40.0 1.0  		/* scale */
 3  			/* contact model */

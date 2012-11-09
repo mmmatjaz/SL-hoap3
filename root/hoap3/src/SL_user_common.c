@@ -114,6 +114,7 @@ char link_names[][20]= {
   {"R_OUT_HEEL"},
   {"R_IN_HEEL"},
   {"R_FOOT"},
+  {"R_FD"},
 
   {"L_HIP"},
   {"L_KNEE"},
@@ -122,7 +123,8 @@ char link_names[][20]= {
   {"L_OUT_TOE"},
   {"L_IN_HEEL"},
   {"L_OUT_HEEL"},
-  {"L_FOOT"}
+  {"L_FOOT"},
+  {"L_FD"}
 };
 
 char misc_sensor_names[][20]= {
