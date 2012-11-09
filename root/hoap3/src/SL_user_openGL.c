@@ -301,12 +301,27 @@ int      isphere = 10;
 		break;
 	case 111:
 		break;
+	case 2501:
+		break;
+	case 2701:
+		break;
+
+	case 2702:
+		drawCuboLink(solid,	0.03,
+							0.005,
+							length);
+		break;
+	case 2502:
+		drawCuboLink(solid,	0.03,
+							0.005,
+							length);
+		break;
 	case 4:
-		drawSphericJoint(solid,0.03,length);
+		drawSphericJoint(solid,0.032,length);
 		drawCuboLink(solid,0.06,0.06,length);
 		break;
 	case 5:
-		drawSphericJoint(solid,0.03,length);
+		drawSphericJoint(solid,0.032,length);
 		drawCuboLink(solid,0.06,0.06,length);
 		break;
 	case 6:
@@ -319,11 +334,11 @@ int      isphere = 10;
 		break;
 
 	case 14:
-		drawSphericJoint(solid,0.03,length);
+		drawSphericJoint(solid,0.032,length);
 		drawCuboLink(solid,0.06,0.06,length);
 		break;
 	case 15:
-		drawSphericJoint(solid,0.03,length);
+		drawSphericJoint(solid,0.032,length);
 		drawCuboLink(solid,0.06,0.06,length);
 		break;
 	case 16:
@@ -354,7 +369,7 @@ int      isphere = 10;
 		drawSphericJoint(solid,0.028,length);
 		drawCylLink(solid,0.028,length);
 		break;
-	case 420:
+	case 25:
 		//drawSphericJoint(solid,0.028,length);
 		drawCylLink(solid,0.028,length);
 		break;
@@ -367,7 +382,7 @@ int      isphere = 10;
 		drawSphericJoint(solid,0.028,length);
 		drawCylLink(solid,0.028,length);
 		break;
-	case 421:
+	case 27:
 		//drawSphericJoint(solid,0.028,length);
 		drawCylLink(solid,0.028,length);
 		break;

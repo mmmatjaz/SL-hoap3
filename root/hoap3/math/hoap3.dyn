@@ -210,17 +210,65 @@
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
 {rotationMatrix,{Pi/2,0,0}},
-{successors,{420}},
+{successors,{25}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{ (* test dummy *)
-{jointID,{ID=420}},
-{jointAxis,{0,0,0}},
+{ (* RA_J5 *)
+{jointID,{ID=25}},
+{jointAxis,{0,0,1}},
 {translation,{0,ARMLINK3,0}},
+{rotationMatrix,{-Pi/2,0,0}},
+{successors,{2501,26}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* PALM ROOT *)
+{jointID,{ID=2501}},
+{jointAxis,{0,0,0}},
+{translation,{0,PALMOFF,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{2502}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* PALM TIP *)
+{jointID,{ID=2502}},
+{jointAxis,{0,0,0}},
+{translation,{0,0,PALMTIP}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* GRIPPER JOINT *)
+{jointID,{ID=26}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,GRIPROOT}},
+{rotationMatrix,{0,-Pi/2,0}},
+{successors,{2601}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* THUMB TIP *)
+{jointID,{ID=2601}},
+{jointAxis,{0,0,0}},
+{translation,{THUMBLEN,-THUMBOFF,0}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},
@@ -404,17 +452,65 @@
 {jointAxis,{0,0,1}},
 {translation,{0,0,0}},
 {rotationMatrix,{Pi/2,0,0}},
-{successors,{421}},
+{successors,{27}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
 {mass,GenMassS["links",ID]}, 
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]}
 }
-{ (* test dummy *)
-{jointID,{ID=421}},
-{jointAxis,{0,0,0}},
+{ (* RA_J5 *)
+{jointID,{ID=27}},
+{jointAxis,{0,0,1}},
 {translation,{0,ARMLINK3,0}},
+{rotationMatrix,{-Pi/2,0,0}},
+{successors,{2701,28}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* PALM ROOT *)
+{jointID,{ID=2701}},
+{jointAxis,{0,0,0}},
+{translation,{0,-PALMOFF,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{2702}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* PALM TIP *)
+{jointID,{ID=2702}},
+{jointAxis,{0,0,0}},
+{translation,{0,0,PALMTIP}},
+{rotationMatrix,{0,0,0}},
+{successors,{}},
+{inertia,{{0,0,0},{0,0,0},{0,0,0}}},
+{massCenterMass,{0,0,0}}, 
+{mass,{0}}, 
+{jointVariables,{0,0,0,0,0}},
+{extForce,{0,0,0,0,0,0}}
+}
+{ (* GRIPPER JOINT *)
+{jointID,{ID=28}},
+{jointAxis,{0,0,1}},
+{translation,{0,0,GRIPROOT}},
+{rotationMatrix,{0,-Pi/2,0}},
+{successors,{2801}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* THUMB TIP *)
+{jointID,{ID=2801}},
+{jointAxis,{0,0,0}},
+{translation,{THUMBLEN,THUMBOFF,0}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},

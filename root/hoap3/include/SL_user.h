@@ -41,7 +41,7 @@
 
 #define ARMLINK1	 	0.111
 #define ARMLINK2	 	0.111
-#define ARMLINK3	 	0.133
+#define ARMLINK3	 	0.110
 #define LEGLINK1	 	0.039
 #define LEGLINK2	 	0.105
 #define LEGLINK3	 	0.105
@@ -56,7 +56,15 @@
 #define FOOTWIDLONG		0.0415
 #define FOOTLENGSHORT	0.040
 #define FOOTLLENGLONG	0.068
-#define FOOTTHICK 0.01
+#define FOOTTHICK 	0.01
+
+
+#define PALMOFF 0.01
+#define PALMTIP 0.06
+#define GRIPROOT 0.02
+#define THUMBLEN 0.03
+#define THUMBOFF 0.02
+
 /*! links of the robot */
 enum RobotLinks {
   B_LINK1=1,
@@ -66,10 +74,18 @@ enum RobotLinks {
   R_SH,
   R_UA,
   R_LA,
+  R_POFF,
+  R_PT,
+  R_GR,
+  R_TT,
 
   L_SH,
   L_UA,
   L_LA,
+  L_POFF,
+  L_PT,
+  L_GR,
+  L_TT,
 
   B_LINK2,
 
@@ -155,6 +171,11 @@ enum RobotDOFs {
   H_J2,
   H_J3,
 
+  RA_J5,
+  RA_J6,
+
+  LA_J5,
+  LA_J6,
 
   N_ROBOT_DOFS
 };

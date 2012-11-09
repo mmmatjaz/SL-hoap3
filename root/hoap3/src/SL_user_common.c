@@ -54,7 +54,13 @@ char joint_names[][20]= {
 
 	{"H_J1"},
 	{"H_J2"},
-	{"H_J3"}
+	{"H_J3"},
+
+	{"RA_J5"},
+	{"RA_J6"},
+
+	{"LA_J5"},
+	{"LA_J6"}
 
 
 };
@@ -85,10 +91,18 @@ char link_names[][20]= {
   {"R_SH"},
   {"R_UA"},
   {"R_LA"},
+  {"R_POFF"},
+  {"R_PT"},
+  {"R_GR"},
+  {"R_TT"},
 
   {"L_SH"},
   {"L_UA"},
   {"L_LA"},
+  {"L_POFF"},
+  {"L_PT"},
+  {"L_GR"},
+  {"L_TT"},
 
   {"B_LINK2"},
 

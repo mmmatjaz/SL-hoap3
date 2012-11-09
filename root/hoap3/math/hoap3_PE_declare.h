@@ -12,6 +12,10 @@ double  sstate9th;
 double  cstate9th;
 double  sstate10th;
 double  cstate10th;
+double  sstate25th;
+double  cstate25th;
+double  sstate26th;
+double  cstate26th;
 double  sstate17th;
 double  cstate17th;
 double  sstate18th;
@@ -20,6 +24,10 @@ double  sstate19th;
 double  cstate19th;
 double  sstate20th;
 double  cstate20th;
+double  sstate27th;
+double  cstate27th;
+double  sstate28th;
+double  cstate28th;
 double  sstate21th;
 double  cstate21th;
 double  sstate1th;
@@ -60,9 +68,9 @@ double  rceff2a2;
 double  rseff2a3;
 double  rceff2a3;
 
-double  Xinv[37+1][6+1][6+1];
+double  Xinv[45+1][6+1][6+1];
 
-double  st[37+1][6+1];
+double  st[45+1][6+1];
 
 double  v0[6+1];
 double  v1[6+1];
@@ -102,6 +110,14 @@ double  v34[6+1];
 double  v35[6+1];
 double  v36[6+1];
 double  v37[6+1];
+double  v38[6+1];
+double  v39[6+1];
+double  v40[6+1];
+double  v41[6+1];
+double  v42[6+1];
+double  v43[6+1];
+double  v44[6+1];
+double  v45[6+1];
 
 double  a0[6+1];
 double  a1[6+1];
@@ -141,13 +157,21 @@ double  a34[6+1];
 double  a35[6+1];
 double  a36[6+1];
 double  a37[6+1];
+double  a38[6+1];
+double  a39[6+1];
+double  a40[6+1];
+double  a41[6+1];
+double  a42[6+1];
+double  a43[6+1];
+double  a44[6+1];
+double  a45[6+1];
 
-double  A[37+1][6+1][N_RBD_PARMS+1];
+double  A[45+1][6+1][N_RBD_PARMS+1];
 
-int     pred[37+1];
-int     map[2102+1];
-double  K[43+1][38*N_RBD_PARMS+1];
+int     pred[45+1];
+int     map[2801+1];
+double  K[51+1][46*N_RBD_PARMS+1];
 double  U[6+1][N_RBD_PARMS+1];
 double  Unew[6+1][N_RBD_PARMS+1];
-double  Y[43+1];
+double  Y[51+1];
 

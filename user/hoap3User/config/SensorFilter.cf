@@ -1,6 +1,6 @@
 /* this file contains the filter specifications for all sensory data.
    For each DOF, cutoff frequency in % of the Nyquist frequency for a
-   second order butterworth filter are given */
+   second order butterworth filter are given 
    Note: the file is parsed according to keywords, after the keyword,
          the values need to come in the correct sequence */
 
@@ -11,28 +11,36 @@ RL_J3	100 	100 	100 	100
 RL_J4	100 	100 	100 	100
 RL_J5	100 	100 	100 	100
 RL_J6	100 	100 	100 	100
+
 RA_J1	100 	100 	100 	100
 RA_J2	100 	100 	100 	100
 RA_J3	100 	100 	100 	100
 RA_J4	100 	100 	100 	100
+
 LL_J1	100 	100 	100 	100
 LL_J2	100 	100 	100 	100
 LL_J3	100 	100 	100 	100
 LL_J4	100 	100 	100 	100
 LL_J5	100 	100 	100 	100
 LL_J6	100 	100 	100 	100
+
 LA_J1	100 	100 	100 	100
 LA_J2	100 	100 	100 	100
 LA_J3	100 	100 	100 	100
 LA_J4	100 	100 	100 	100
+
 B_J 	100 	100 	100 	100
+
 H_J1	100 	100 	100 	100
 H_J2	100 	100 	100 	100
 H_J3	100 	100 	100 	100
-RA_S1	100 	100 	100 	100
-RA_S2	100 	100 	100 	100
-LA_S1	100 	100 	100 	100
-LA_S2	100 	100 	100 	100
+
+RA_J5	100 	100 	100 	100
+RA_J6	100 	100 	100 	100
+
+LA_J5	100 	100 	100 	100
+LA_J6	100 	100 	100 	100
+
   L_SFE  100 100 100 100 
   L_SAA  100 100 100 100 
   L_HR   100 100 100 100 
