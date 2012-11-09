@@ -6109,7 +6109,7 @@ map[2000]=37;
   int mm;                                                   
   int level;                                                
   int xnj=37;                           
-  int fbflag=0;                        
+  int fbflag=1;                        
                                                             
   for ( ii=xnj; ii>=0; --ii) {                              
     level = ii;                                             

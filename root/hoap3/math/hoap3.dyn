@@ -1,6 +1,6 @@
 { (* Base Coordinate System *)
 {jointID,{ID=0}},
-{floatingBase,{0}},
+{floatingBase,{1}},
 {notUsed,{}},
 {notUsed,{}},
 {successors,{2102,21}},

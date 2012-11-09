@@ -445,7 +445,9 @@ double  pm37[6+1];
 
 double  u[37+1];
 
+double  a0[6+1];
 
+double  a1[6+1];
 double  a2[6+1];
 double  a3[6+1];
 double  a4[6+1];
