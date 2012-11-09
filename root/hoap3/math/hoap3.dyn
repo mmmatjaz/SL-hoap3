@@ -181,11 +181,35 @@
 {jointVariables,GenVariablesS["state",ID]},
 {extForce,GenExtForceS["uex",ID]*0}
 }
-{ (* LA_J2 *)
+{ (* RA_J2 *)
 {jointID,{ID=15}},
-{jointAxis,{0,0,1}},
+{jointAxis,{0,-1,0}},
 {translation,{0,0,0}},
-{rotationMatrix,{Pi/2,0,Pi/2}},
+{rotationMatrix,{0,0,0}},
+{successors,{16}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* RA_J3 *)
+{jointID,{ID=16}},
+{jointAxis,{1,0,0}},
+{translation,{0,0,0}},
+{rotationMatrix,{0,0,0}},
+{successors,{17}},
+{inertia,GenInertiaMatrixS["links",ID,1]},
+{massCenterMass,GenMCMVectorS["links",ID,1]}, 
+{mass,GenMassS["links",ID]}, 
+{jointVariables,GenVariablesS["state",ID]},
+{extForce,GenExtForceS["uex",ID]}
+}
+{ (* RA_J4 *)
+{jointID,{ID=17}},
+{jointAxis,{0,0,1}},
+{translation,{ARMLINK2,0,0}},
+{rotationMatrix,{0,0,0}},
 {successors,{420}},
 {inertia,GenInertiaMatrixS["links",ID,1]},
 {massCenterMass,GenMCMVectorS["links",ID,1]}, 
@@ -196,7 +220,7 @@
 { (* test dummy *)
 {jointID,{ID=420}},
 {jointAxis,{0,0,0}},
-{translation,{0,0,ARMLINK2}},
+{translation,{ARMLINK3,0,0}},
 {rotationMatrix,{0,0,0}},
 {successors,{}},
 {inertia,{{0,0,0},{0,0,0},{0,0,0}}},

@@ -62,7 +62,7 @@ enum RobotLinks {
 
   R_SH,
   R_UA,
-
+  R_LA,
 
   B_LINK2,
 
@@ -136,6 +136,8 @@ enum RobotDOFs {
 
   RA_J1,
   RA_J2,
+  RA_J3,
+  RA_J4,
 
 
   N_ROBOT_DOFS

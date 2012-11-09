@@ -51,19 +51,40 @@ glPushMatrix();
 glPushMatrix();
 myDrawGLElement((int)15,(double)0,(int)0);
 glPopMatrix();
-glRotated((GLdouble)90.,(GLdouble)1.,(GLdouble)0.,(GLdouble)0.);
-glRotated((GLdouble)90.,(GLdouble)0.,(GLdouble)0.,(GLdouble)1.);
-glRotated((GLdouble)57.29577951308232*state[15].th,(GLdouble)0,(GLdouble)0,(GLdouble)1);
+glRotated((GLdouble)57.29577951308232*state[15].th,(GLdouble)0,(GLdouble)-1,(GLdouble)0);
+
+/* JointID = 16 */
+
+glPushMatrix();
+glPushMatrix();
+myDrawGLElement((int)16,(double)0,(int)0);
+glPopMatrix();
+glRotated((GLdouble)57.29577951308232*state[16].th,(GLdouble)1,(GLdouble)0,(GLdouble)0);
+
+/* JointID = 17 */
+
+glPushMatrix();
+glPushMatrix();
+if (ARMLINK2==0 && 0==0)
+glRotated((GLdouble)-90.,(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
+else
+glRotated((GLdouble)180.0,(GLdouble)0.5*ARMLINK2,(GLdouble)0.,(GLdouble)0.5*Sqrt(Power(ARMLINK2,2)));
+myDrawGLElement((int)17,(double)Sqrt(Power(ARMLINK2,2)),(int)1);
+glPopMatrix();
+glTranslated((GLdouble)ARMLINK2,(GLdouble)0,(GLdouble)0);
+glRotated((GLdouble)57.29577951308232*state[17].th,(GLdouble)0,(GLdouble)0,(GLdouble)1);
 
 /* JointID = 420 */
 
 glPushMatrix();
 glPushMatrix();
-if (0==0 && 0==0)
-glRotated((GLdouble)90.*(-1. + ARMLINK2/Sqrt(Power(ARMLINK2,2))),(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
+if (ARMLINK3==0 && 0==0)
+glRotated((GLdouble)-90.,(GLdouble)1.0,(GLdouble)0.0,(GLdouble)0.0);
 else
-glRotated((GLdouble)180.0,(GLdouble)0.,(GLdouble)0.,(GLdouble)0.5*(ARMLINK2 + Sqrt(Power(ARMLINK2,2))));
-myDrawGLElement((int)420,(double)Sqrt(Power(ARMLINK2,2)),(int)0);
+glRotated((GLdouble)180.0,(GLdouble)0.5*ARMLINK3,(GLdouble)0.,(GLdouble)0.5*Sqrt(Power(ARMLINK3,2)));
+myDrawGLElement((int)420,(double)Sqrt(Power(ARMLINK3,2)),(int)0);
+glPopMatrix();
+glPopMatrix();
 glPopMatrix();
 glPopMatrix();
 glPopMatrix();

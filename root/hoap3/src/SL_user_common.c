@@ -43,7 +43,9 @@ char joint_names[][20]= {
   {"B_J"},
 
   {"RA_J1"},
-  {"RA_J2"}
+  {"RA_J2"},
+  {"RA_J3"},
+  {"RA_J4"}
 
 };
 
@@ -69,7 +71,7 @@ char link_names[][20]= {
   {"B_LINK1"},
   {"R_SH"},
   {"R_UA"},
-
+  {"R_LA"},
 
   {"B_LINK2"},
 
