@@ -5,29 +5,29 @@
 /* format: keyword, <list of joint names for a processor> */
 
 task_servo    
-              L_HFE  L_HAA  L_HFR L_K L_AR  L_AAA
-              R_HFE  R_HAA  R_HFR R_K R_AR  R_AAA	
-               B_J	
-		RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
-		LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 
-		H_J1	H_J2	H_J3
+          	LL_J1  LL_J2  LL_J3 LL_J4 LL_J5  LL_J6
+			RL_J1  RL_J2  RL_J3 RL_J4 RL_J5  RL_J6	
+        	B_J	
+			RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
+			LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 
+			H_J1	H_J2	H_J3
 task_sim_servo    
-              L_HFE  L_HAA  L_HFR L_K L_AR  L_AAA
-              R_HFE  R_HAA  R_HFR R_K R_AR  R_AAA	
+              LL_J1  LL_J2  LL_J3 LL_J4 LL_J5  LL_J6
+              RL_J1  RL_J2  RL_J3 RL_J4 RL_J5  RL_J6	
                B_J	
 		RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
 		LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 
 		H_J1	H_J2	H_J3
 motor_servo
-              L_HFE  L_HAA  L_HFR L_K L_AR  L_AAA
-              R_HFE  R_HAA  R_HFR R_K R_AR  R_AAA	
+              LL_J1  LL_J2  LL_J3 LL_J4 LL_J5  LL_J6
+              RL_J1  RL_J2  RL_J3 RL_J4 RL_J5  RL_J6	
                B_J	
 		RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
 		LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 
 		H_J1	H_J2	H_J3
 motor_sim_servo
-              L_HFE  L_HAA  L_HFR L_K L_AR  L_AAA
-              R_HFE  R_HAA  R_HFR R_K R_AR  R_AAA	
+              LL_J1  LL_J2  LL_J3 LL_J4 LL_J5  LL_J6
+              RL_J1  RL_J2  RL_J3 RL_J4 RL_J5  RL_J6	
               B_J	
 		RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
 		LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 
@@ -35,15 +35,15 @@ motor_sim_servo
 vision_servo
 vision_sim_servo
 invdyn_servo
-              L_HFE  L_HAA  L_HFR L_K L_AR  L_AAA
-              R_HFE  R_HAA  R_HFR R_K R_AR  R_AAA	
+              LL_J1  LL_J2  LL_J3 LL_J4 LL_J5  LL_J6
+              RL_J1  RL_J2  RL_J3 RL_J4 RL_J5  RL_J6	
                B_J	
 		RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
 		LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 
 		H_J1	H_J2	H_J3
 invdyn_sim_servo
-              L_HFE  L_HAA  L_HFR L_K L_AR  L_AAA
-              R_HFE  R_HAA  R_HFR R_K R_AR  R_AAA	
+              LL_J1  LL_J2  LL_J3 LL_J4 LL_J5  LL_J6
+              RL_J1  RL_J2  RL_J3 RL_J4 RL_J5  RL_J6	
               B_J	
 		RA_J1	RA_J2	RA_J3	RA_J4 RA_J5	RA_J6 
 		LA_J1	LA_J2	LA_J3	LA_J4 RA_J5	RA_J6 

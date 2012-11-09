@@ -125,7 +125,7 @@ compute_force_sensors(void)
   MY_MATRIX(M,1,N_CART,1,N_CART);
   MY_VECTOR(v,1,N_CART);
 
-  /* rotation matrix from world to L_AAA coordinates:
+  /* rotation matrix from world to LL_J6 coordinates:
      we can borrow this matrix from the toes, which have the same
      rotation, but just a different offset vector, which is not
      needed here */
@@ -133,7 +133,7 @@ compute_force_sensors(void)
 
   // transform forces
   for (i=1; i<=N_CART; ++i) {
-    v[i] = ucontact[L_AAA].f[i] - uext_sim[L_AAA].f[i];
+    v[i] = ucontact[LL_J6].f[i] - uext_sim[LL_J6].f[i];
   }
   mat_vec_mult(M,v,v);
 
@@ -143,14 +143,14 @@ compute_force_sensors(void)
 
   // transform torques
   for (i=1; i<=N_CART; ++i)
-    v[i] = ucontact[L_AAA].t[i] - uext_sim[L_AAA].t[i];
+    v[i] = ucontact[LL_J6].t[i] - uext_sim[LL_J6].t[i];
   mat_vec_mult(M,v,v);
 
   misc_sim_sensor[L_CTa] = v[_A_];
   misc_sim_sensor[L_CTb] = v[_B_];
   misc_sim_sensor[L_CTg] = v[_G_];
 
-  /* rotation matrix from world to R_AAA coordinates :
+  /* rotation matrix from world to RL_J6 coordinates :
      we can borrow this matrix from the toes, which have the same
      rotation, but just a different offset vector, which is not
      needed here */
@@ -158,7 +158,7 @@ compute_force_sensors(void)
 
   // transform forces
   for (i=1; i<=N_CART; ++i)
-    v[i] = ucontact[R_AAA].f[i] - uext_sim[R_AAA].f[i];
+    v[i] = ucontact[RL_J6].f[i] - uext_sim[RL_J6].f[i];
   mat_vec_mult(M,v,v);
   //print_vec("v right",v);
   //getchar();
@@ -169,7 +169,7 @@ compute_force_sensors(void)
 
   // transform torques
   for (i=1; i<=N_CART; ++i)
-    v[i] = ucontact[R_AAA].t[i] - uext_sim[R_AAA].t[i];
+    v[i] = ucontact[RL_J6].t[i] - uext_sim[RL_J6].t[i];
   mat_vec_mult(M,v,v);
 
   misc_sim_sensor[R_CTa] = v[_A_];
