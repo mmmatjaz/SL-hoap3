@@ -8,11 +8,11 @@
 
   ==============================================================================
   \remarks
-  
+
   This program contains all graphics user functions for a particular simulation.
-  
+
   ============================================================================*/
-  
+
 // SL general includes of system headers
 #include "SL_system_headers.h"
 
@@ -39,7 +39,7 @@
 #include "SL_shared_memory.h"
 #include "SL_userGraphics.h"
 
-// global variables 
+// global variables
 int print_Hmat = FALSE;
 
 // local variables
@@ -60,6 +60,8 @@ static void drawCuboJoint(int solid,
 
 static void drawCylLink(int solid, double radius, double length);
 static void drawCuboLink(int solid, double a, double b, double length);
+
+void        drawCenterOfPressure(void);
 // global functions
 void display(void);
 void idle(void);
@@ -71,24 +73,24 @@ void idle(void);
  *******************************************************************************
  \note  init_user_openGL
  \date  July 1998
- 
- \remarks 
- 
+
+ \remarks
+
  initializes everything needed for the graphics for this simulation
- 
+
  *******************************************************************************
  Function Parameters: [in]=input,[out]=output
 
  \param[in]     argc : number of elements in argv
  \param[in]     argv : array of argc character strings
- 
+
 
  ******************************************************************************/
 int
 init_user_openGL(int argc, char** argv)
 
 {
-  
+
   int i,j,n;
   int rc;
   int ans;
@@ -113,16 +115,16 @@ init_user_openGL(int argc, char** argv)
  *******************************************************************************
  \note  createWindows
  \date  July 1998
- 
- \remarks 
- 
+
+ \remarks
+
  initializes graphic windows
- 
+
  *******************************************************************************
  Function Parameters: [in]=input,[out]=output
 
  none
- 
+
 
  ******************************************************************************/
 static int
@@ -131,7 +133,7 @@ createWindows(void)
 {
   int i;
   OpenGLWPtr w;
-  
+
   Display *disp;
   int  screen_num;
   int  display_width;
@@ -141,42 +143,42 @@ createWindows(void)
   char xstring[100];
 
   double eye[N_CART+1];
-  
+
   // connect to X server using the DISPLAY environment variable
   if ( (disp=XOpenDisplay(NULL)) == NULL ) {
     printf("Cannot connect to X servo %s\n",XDisplayName(NULL));
     exit(-1);
   }
-  
-  // get screen size from display structure macro 
+
+  // get screen size from display structure macro
   screen_num = DefaultScreen(disp);
   display_width = DisplayWidth(disp, screen_num);
   display_height = DisplayHeight(disp, screen_num);
-  
+
   /* get a window structure, initialized with default values */
   w=getOpenGLWindow();
   if (w==NULL)
     return FALSE;
-  
+
   w->display = display;
   w->idle    = idle;
   w->width   = 400;
   w->height  = 400;
 
   // check for user parameters
-  if (read_parameter_pool_string(config_files[PARAMETERPOOL], 
+  if (read_parameter_pool_string(config_files[PARAMETERPOOL],
 				 "main_window_geometry", string))
-    parseWindowSpecs(string, display_width,display_height,xstring, 
-		     &(w->x), 
-		     &(w->y), 
+    parseWindowSpecs(string, display_width,display_height,xstring,
+		     &(w->x),
+		     &(w->y),
 		     &(w->width),
 		     &(w->height));
 
-  if (read_parameter_pool_double_array(config_files[PARAMETERPOOL], 
+  if (read_parameter_pool_double_array(config_files[PARAMETERPOOL],
 				       "main_window_camera_pos", N_CART, eye))
     for (i=1; i<=N_CART; ++i)
       w->eye[i] = eye[i];
-  
+
   // finally create the window
   for (i=1; i<=N_CART; ++i)
     w->eye0[i] = w->eye[i];
@@ -192,8 +194,8 @@ createWindows(void)
  *******************************************************************************
 \note  display
 \date  August 7, 1992
-   
-\remarks 
+
+\remarks
 
         this function updates the OpenGL graphics
 
@@ -202,7 +204,7 @@ createWindows(void)
 
 
  ******************************************************************************/
-void 
+void
 display(void)
 
 {
@@ -227,7 +229,7 @@ display(void)
   // the standard display functions for openGL
 #include "SL_user_display_core.h"
 
-  //drawCenterOfPressure();
+  drawCenterOfPressure();
   //drawCOG();
 
 }
@@ -236,8 +238,8 @@ display(void)
  *******************************************************************************
 \note  myDrawGLElement
 \date  August 7, 1992
-   
-\remarks 
+
+\remarks
 
         draws a GL element of a particular length in z direction
 
@@ -250,10 +252,73 @@ display(void)
 
 
  ******************************************************************************/
-static void  
+void
+drawCenterOfPressure(void)
+{
+  int i,j,n;
+  GLfloat   color_point[4]={(float)1.0,(float)0.0,(float)0.0,(float)1.0};
+  double    radius = 0.02;
+  double    xcop[N_CART+1];
+  double    sum;
+  int       inds[8+1];
+
+  /* if there are no objects, exit */
+  if (objs==NULL)
+    return;
+
+  /* inds ontains the indices of the foot contact points */
+  // these are link indices - see Linfo_math.h
+  // four links per foot -  ankle to foot corners
+  n = 0;
+  inds[++n] = R_OUT_TOE;  //21;
+  inds[++n] = R_IN_TOE;   //22;
+  inds[++n] = R_OUT_HEEL; //23;
+  inds[++n] = R_IN_HEEL;  //24;
+  inds[++n] = L_OUT_TOE; //30;
+  inds[++n] = L_IN_TOE;  //31;
+  inds[++n] = L_OUT_HEEL;//32;
+  inds[++n] = L_IN_HEEL; //33;
+
+  for (j=1; j<=N_CART; ++j)
+    xcop[j]=0;
+  sum = 1.e-10;
+
+  for (i=1; i<=n; ++i) { /* loop over all foot contact points */
+
+    // check whether there is an active contact
+    if (!contacts[inds[i]].active || !contacts[inds[i]].status)
+      continue;
+
+    // accumulate the cop position as a weighted sum, where the weight is the
+    // z component of the force at each contact point
+    for (j=1; j<=N_CART; ++j)
+      xcop[j] += link_pos[inds[i]][j] * contacts[inds[i]].f[_Z_];
+
+    sum += contacts[inds[i]].f[_Z_];
+
+  }
+
+  for (j=1; j<=N_CART; ++j)
+    xcop[j] /= sum;
+
+
+  // draw a blob at the cop
+  glPushMatrix();
+  glTranslated((GLdouble)xcop[_X_],(GLdouble)xcop[_Y_],(GLdouble)xcop[_Z_]);
+  glColor4fv(color_point);
+  if (solid)
+    glutSolidSphere(radius,10,10);
+  else
+    glutWireSphere(radius,10,10);
+  glPopMatrix();
+
+}
+
+
+static void
 myDrawGLElement(int num, double length, int flag)
 {
-		
+
   double width=0.03;
   double head_width = 0.3;
   double hand_width = 0.07;
@@ -262,7 +327,7 @@ myDrawGLElement(int num, double length, int flag)
   double belly_width = 0.33;
   double thumb_width = 0.02;
   double shoulder_width  = 0.45;
-  
+
 
 
   //printf("\n num %d | len %f | flag %d", num, length, flag);
@@ -270,7 +335,7 @@ int      isphere = 10;
 
 	/*
   if (flag==1) {
-    glTranslated(0.0,0.0,length); 
+    glTranslated(0.0,0.0,length);
 
     if (num==999) {
       glColor4fv(blue);
@@ -476,8 +541,8 @@ static void drawCuboLink(int solid, double a, double b, double length)
  *******************************************************************************
 \note  idle
 \date  June 1999
-   
-\remarks 
+
+\remarks
 
       The function called by openGL whenever processing time available.
 
@@ -508,7 +573,7 @@ idle(void)
 
   if (current_time-last_draw_time >= 1./window_update_rate) {
     glutPostRedisplayAll();
-    last_draw_time = current_time; 
+    last_draw_time = current_time;
   }
 
 }
