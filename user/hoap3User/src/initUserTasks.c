@@ -45,9 +45,9 @@ initUserTasks(void)
 
 {
 
-  // extern void add_test_task();
+  extern void add_test_task();
 
-  // add_test_task();
+  add_test_task();
   // freezeBase(TRUE);
   // setG();
 

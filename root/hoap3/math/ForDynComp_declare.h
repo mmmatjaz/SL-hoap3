@@ -1,1 +1,1 @@
-hoap3_ForDynComp_declare.h
+./hoap3_ForDynComp_declare.h

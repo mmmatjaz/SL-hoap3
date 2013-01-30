@@ -1,1 +1,0 @@
-arm3D_Contact_GJac_math.h
